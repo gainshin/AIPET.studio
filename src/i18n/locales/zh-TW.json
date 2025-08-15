@@ -1,0 +1,162 @@
+{
+  "common": {
+    "loading": "載入中...",
+    "save": "儲存",
+    "cancel": "取消",
+    "delete": "刪除",
+    "edit": "編輯",
+    "back": "返回",
+    "next": "下一步",
+    "previous": "上一步",
+    "search": "搜尋",
+    "filter": "篩選",
+    "all": "全部",
+    "none": "無"
+  },
+  "navigation": {
+    "dashboard": "儀表板",
+    "theory": "理論",
+    "exercises": "實戰練習",
+    "tokens": "Token 管理",
+    "analyzer": "分析器",
+    "research": "研究資源",
+    "case_studies": "案例研究",
+    "patterns": "設計模式"
+  },
+  "dashboard": {
+    "title": "AIPET Studio",
+    "subtitle": "精通 Figma Design Tokens 與 AIPET 框架",
+    "welcome": "歡迎來到 AIPET Studio",
+    "description": "專為設計師打造的綜合學習平台，深入理解並應用 Figma Design Tokens 於 AIPET（Agency、Interaction、Privacy、Experience、Trust）框架中。",
+    "quick_start": "快速開始",
+    "recent_tokens": "最近的 Tokens",
+    "stats": {
+      "total_tokens": "總 Tokens 數",
+      "exercises_completed": "已完成練習",
+      "research_papers": "研究論文",
+      "case_studies": "案例研究"
+    }
+  },
+  "theory": {
+    "title": "AIPET 框架理論",
+    "subtitle": "理解 AI UX 設計的五大支柱",
+    "framework": {
+      "agency": {
+        "title": "代理性",
+        "description": "賦予使用者在 AI 互動中的控制權與選擇權"
+      },
+      "interaction": {
+        "title": "互動性",
+        "description": "設計直觀自然的人機溝通方式"
+      },
+      "privacy": {
+        "title": "隱私性",
+        "description": "保護使用者資料並確保透明度"
+      },
+      "experience": {
+        "title": "體驗性",
+        "description": "創造有意義且引人入勝的 AI 體驗"
+      },
+      "trust": {
+        "title": "信任性",
+        "description": "透過可靠且透明的 AI 建立信心"
+      }
+    },
+    "design_tokens_evolution": "AI 時代的 Design Tokens",
+    "ai_ux_patterns": "AI UX 設計模式"
+  },
+  "exercises": {
+    "title": "實戰練習",
+    "subtitle": "透過引導式 Design Token 練習邊做邊學",
+    "difficulty": "難度",
+    "category": "類別",
+    "levels": {
+      "beginner": "初學者",
+      "intermediate": "中級",
+      "advanced": "進階"
+    },
+    "categories": {
+      "foundation": "基礎",
+      "aipet_framework": "AIPET 框架",
+      "pattern_library": "模式庫",
+      "workflow": "工作流程"
+    }
+  },
+  "tokens": {
+    "title": "Design Tokens",
+    "subtitle": "管理你的 Design Token 庫",
+    "add_token": "新增 Token",
+    "categories": {
+      "color": "顏色",
+      "typography": "字體排版",
+      "spacing": "間距",
+      "radius": "圓角",
+      "shadow": "陰影",
+      "agency": "代理性",
+      "interaction": "互動性",
+      "privacy": "隱私性",
+      "experience": "體驗性",
+      "trust": "信任性"
+    },
+    "frameworks": {
+      "Traditional": "傳統",
+      "Agency": "代理性",
+      "Interaction": "互動性",
+      "Privacy": "隱私性",
+      "Experience": "體驗性",
+      "Trust": "信任性"
+    },
+    "form": {
+      "name": "Token 名稱",
+      "category": "類別",
+      "value": "值",
+      "description": "描述",
+      "figma_key": "Figma 鍵值",
+      "aipet_framework": "AIPET 框架",
+      "usage_context": "使用情境",
+      "css_variable": "CSS 變數"
+    }
+  },
+  "analyzer": {
+    "title": "AI Token 分析器",
+    "subtitle": "使用 AI 從設計中提取 Design Tokens",
+    "upload_prompt": "上傳 Figma 導出檔案或貼上 CSS 程式碼",
+    "analyze": "分析",
+    "results": "分析結果"
+  },
+  "research": {
+    "title": "研究資源庫",
+    "subtitle": "AI UX 領域的學術論文與研究",
+    "categories": {
+      "agentive_ux": "主動式 UX",
+      "agentic_ai": "代理式 AI",
+      "design_tokens": "Design Tokens",
+      "hci": "人機互動",
+      "trust_building": "信任建立",
+      "context_engineering": "情境工程"
+    }
+  },
+  "case_studies": {
+    "title": "案例研究",
+    "subtitle": "AIPET 框架的實際應用案例",
+    "complexity": {
+      "basic": "基礎",
+      "intermediate": "中級",
+      "advanced": "進階",
+      "expert": "專家"
+    }
+  },
+  "patterns": {
+    "title": "AI UX 設計模式",
+    "subtitle": "AI 產品設計的常見模式與最佳實踐",
+    "types": {
+      "canvas_workflow": "畫布工作流",
+      "voice_interface": "語音介面",
+      "generative_interface": "生成式介面",
+      "iterative_prompting": "迭代式提示",
+      "contextual_ui": "情境式 UI",
+      "ai_assistant": "AI 助理",
+      "multi_agent_workflow": "多代理工作流"
+    }
+  }
+}

@@ -1,0 +1,66 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+body {
+  margin: 0;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Animation utilities */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.3s ease-out;
+}
+
+/* AIPET Framework Colors */
+.bg-aipet-agency { @apply bg-purple-500; }
+.bg-aipet-interaction { @apply bg-cyan-500; }
+.bg-aipet-privacy { @apply bg-red-500; }
+.bg-aipet-experience { @apply bg-amber-500; }
+.bg-aipet-trust { @apply bg-emerald-500; }
+
+.text-aipet-agency { @apply text-purple-500; }
+.text-aipet-interaction { @apply text-cyan-500; }
+.text-aipet-privacy { @apply text-red-500; }
+.text-aipet-experience { @apply text-amber-500; }
+.text-aipet-trust { @apply text-emerald-500; }
+
+.border-aipet-agency { @apply border-purple-500; }
+.border-aipet-interaction { @apply border-cyan-500; }
+.border-aipet-privacy { @apply border-red-500; }
+.border-aipet-experience { @apply border-amber-500; }
+.border-aipet-trust { @apply border-emerald-500; }

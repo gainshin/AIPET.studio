@@ -1,0 +1,162 @@
+{
+  "common": {
+    "loading": "Loading...",
+    "save": "Save",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "edit": "Edit",
+    "back": "Back",
+    "next": "Next",
+    "previous": "Previous",
+    "search": "Search",
+    "filter": "Filter",
+    "all": "All",
+    "none": "None"
+  },
+  "navigation": {
+    "dashboard": "Dashboard",
+    "theory": "Theory",
+    "exercises": "Exercises",
+    "tokens": "Tokens",
+    "analyzer": "Analyzer",
+    "research": "Research",
+    "case_studies": "Case Studies",
+    "patterns": "Patterns"
+  },
+  "dashboard": {
+    "title": "AIPET Studio",
+    "subtitle": "Master Figma Design Tokens & AIPET Framework",
+    "welcome": "Welcome to AIPET Studio",
+    "description": "A comprehensive learning platform for designers to understand and apply Figma Design Tokens within the AIPET (Agency, Interaction, Privacy, Experience, Trust) framework.",
+    "quick_start": "Quick Start",
+    "recent_tokens": "Recent Tokens",
+    "stats": {
+      "total_tokens": "Total Tokens",
+      "exercises_completed": "Exercises Completed",
+      "research_papers": "Research Papers",
+      "case_studies": "Case Studies"
+    }
+  },
+  "theory": {
+    "title": "AIPET Framework Theory",
+    "subtitle": "Understanding the Five Pillars of AI UX Design",
+    "framework": {
+      "agency": {
+        "title": "Agency",
+        "description": "Empowering users with control and choice in AI interactions"
+      },
+      "interaction": {
+        "title": "Interaction",
+        "description": "Designing intuitive and natural human-AI communication"
+      },
+      "privacy": {
+        "title": "Privacy",
+        "description": "Protecting user data and ensuring transparency"
+      },
+      "experience": {
+        "title": "Experience",
+        "description": "Creating meaningful and engaging AI experiences"
+      },
+      "trust": {
+        "title": "Trust",
+        "description": "Building confidence through reliable and transparent AI"
+      }
+    },
+    "design_tokens_evolution": "Design Tokens in the AI Era",
+    "ai_ux_patterns": "AI UX Design Patterns"
+  },
+  "exercises": {
+    "title": "Practical Exercises",
+    "subtitle": "Learn by doing with guided Design Token exercises",
+    "difficulty": "Difficulty",
+    "category": "Category",
+    "levels": {
+      "beginner": "Beginner",
+      "intermediate": "Intermediate",
+      "advanced": "Advanced"
+    },
+    "categories": {
+      "foundation": "Foundation",
+      "aipet_framework": "AIPET Framework",
+      "pattern_library": "Pattern Library",
+      "workflow": "Workflow"
+    }
+  },
+  "tokens": {
+    "title": "Design Tokens",
+    "subtitle": "Manage your Design Token library",
+    "add_token": "Add Token",
+    "categories": {
+      "color": "Color",
+      "typography": "Typography",
+      "spacing": "Spacing",
+      "radius": "Radius",
+      "shadow": "Shadow",
+      "agency": "Agency",
+      "interaction": "Interaction",
+      "privacy": "Privacy",
+      "experience": "Experience",
+      "trust": "Trust"
+    },
+    "frameworks": {
+      "Traditional": "Traditional",
+      "Agency": "Agency",
+      "Interaction": "Interaction",
+      "Privacy": "Privacy",
+      "Experience": "Experience",
+      "Trust": "Trust"
+    },
+    "form": {
+      "name": "Token Name",
+      "category": "Category",
+      "value": "Value",
+      "description": "Description",
+      "figma_key": "Figma Key",
+      "aipet_framework": "AIPET Framework",
+      "usage_context": "Usage Context",
+      "css_variable": "CSS Variable"
+    }
+  },
+  "analyzer": {
+    "title": "AI Token Analyzer",
+    "subtitle": "Extract Design Tokens from your designs using AI",
+    "upload_prompt": "Upload Figma export file or paste CSS code",
+    "analyze": "Analyze",
+    "results": "Analysis Results"
+  },
+  "research": {
+    "title": "Research Library",
+    "subtitle": "Academic papers and research in AI UX",
+    "categories": {
+      "agentive_ux": "Agentive UX",
+      "agentic_ai": "Agentic AI",
+      "design_tokens": "Design Tokens",
+      "hci": "Human-Computer Interaction",
+      "trust_building": "Trust Building",
+      "context_engineering": "Context Engineering"
+    }
+  },
+  "case_studies": {
+    "title": "Case Studies",
+    "subtitle": "Real-world applications of AIPET framework",
+    "complexity": {
+      "basic": "Basic",
+      "intermediate": "Intermediate",
+      "advanced": "Advanced",
+      "expert": "Expert"
+    }
+  },
+  "patterns": {
+    "title": "AI UX Design Patterns",
+    "subtitle": "Common patterns and best practices for AI product design",
+    "types": {
+      "canvas_workflow": "Canvas Workflow",
+      "voice_interface": "Voice Interface",
+      "generative_interface": "Generative Interface",
+      "iterative_prompting": "Iterative Prompting",
+      "contextual_ui": "Contextual UI",
+      "ai_assistant": "AI Assistant",
+      "multi_agent_workflow": "Multi-Agent Workflow"
+    }
+  }
+}

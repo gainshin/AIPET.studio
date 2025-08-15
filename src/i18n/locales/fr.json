@@ -1,0 +1,162 @@
+{
+  "common": {
+    "loading": "Chargement...",
+    "save": "Enregistrer",
+    "cancel": "Annuler",
+    "delete": "Supprimer",
+    "edit": "Modifier",
+    "back": "Retour",
+    "next": "Suivant",
+    "previous": "Précédent",
+    "search": "Rechercher",
+    "filter": "Filtrer",
+    "all": "Tous",
+    "none": "Aucun"
+  },
+  "navigation": {
+    "dashboard": "Tableau de bord",
+    "theory": "Théorie",
+    "exercises": "Exercices",
+    "tokens": "Tokens",
+    "analyzer": "Analyseur",
+    "research": "Recherche",
+    "case_studies": "Études de cas",
+    "patterns": "Modèles"
+  },
+  "dashboard": {
+    "title": "AIPET Studio",
+    "subtitle": "Maîtrisez les Design Tokens Figma et le framework AIPET",
+    "welcome": "Bienvenue sur AIPET Studio",
+    "description": "Une plateforme d'apprentissage complète pour les designers afin de comprendre et appliquer les Design Tokens Figma dans le framework AIPET (Agency, Interaction, Privacy, Experience, Trust).",
+    "quick_start": "Démarrage rapide",
+    "recent_tokens": "Tokens récents",
+    "stats": {
+      "total_tokens": "Total des Tokens",
+      "exercises_completed": "Exercices terminés",
+      "research_papers": "Articles de recherche",
+      "case_studies": "Études de cas"
+    }
+  },
+  "theory": {
+    "title": "Théorie du framework AIPET",
+    "subtitle": "Comprendre les cinq piliers de la conception UX IA",
+    "framework": {
+      "agency": {
+        "title": "Agence",
+        "description": "Donner aux utilisateurs le contrôle et le choix dans les interactions IA"
+      },
+      "interaction": {
+        "title": "Interaction",
+        "description": "Concevoir une communication homme-IA intuitive et naturelle"
+      },
+      "privacy": {
+        "title": "Confidentialité",
+        "description": "Protéger les données des utilisateurs et assurer la transparence"
+      },
+      "experience": {
+        "title": "Expérience",
+        "description": "Créer des expériences IA significatives et engageantes"
+      },
+      "trust": {
+        "title": "Confiance",
+        "description": "Établir la confiance grâce à une IA fiable et transparente"
+      }
+    },
+    "design_tokens_evolution": "Design Tokens à l'ère de l'IA",
+    "ai_ux_patterns": "Modèles de conception UX IA"
+  },
+  "exercises": {
+    "title": "Exercices pratiques",
+    "subtitle": "Apprendre en pratiquant avec des exercices guidés de Design Tokens",
+    "difficulty": "Difficulté",
+    "category": "Catégorie",
+    "levels": {
+      "beginner": "Débutant",
+      "intermediate": "Intermédiaire",
+      "advanced": "Avancé"
+    },
+    "categories": {
+      "foundation": "Fondation",
+      "aipet_framework": "Framework AIPET",
+      "pattern_library": "Bibliothèque de modèles",
+      "workflow": "Flux de travail"
+    }
+  },
+  "tokens": {
+    "title": "Design Tokens",
+    "subtitle": "Gérez votre bibliothèque de Design Tokens",
+    "add_token": "Ajouter un Token",
+    "categories": {
+      "color": "Couleur",
+      "typography": "Typographie",
+      "spacing": "Espacement",
+      "radius": "Rayon",
+      "shadow": "Ombre",
+      "agency": "Agence",
+      "interaction": "Interaction",
+      "privacy": "Confidentialité",
+      "experience": "Expérience",
+      "trust": "Confiance"
+    },
+    "frameworks": {
+      "Traditional": "Traditionnel",
+      "Agency": "Agence",
+      "Interaction": "Interaction",
+      "Privacy": "Confidentialité",
+      "Experience": "Expérience",
+      "Trust": "Confiance"
+    },
+    "form": {
+      "name": "Nom du Token",
+      "category": "Catégorie",
+      "value": "Valeur",
+      "description": "Description",
+      "figma_key": "Clé Figma",
+      "aipet_framework": "Framework AIPET",
+      "usage_context": "Contexte d'usage",
+      "css_variable": "Variable CSS"
+    }
+  },
+  "analyzer": {
+    "title": "Analyseur de Tokens IA",
+    "subtitle": "Extraire les Design Tokens de vos designs avec l'IA",
+    "upload_prompt": "Téléchargez un fichier d'export Figma ou collez du code CSS",
+    "analyze": "Analyser",
+    "results": "Résultats d'analyse"
+  },
+  "research": {
+    "title": "Bibliothèque de recherche",
+    "subtitle": "Articles académiques et recherche en UX IA",
+    "categories": {
+      "agentive_ux": "UX agentique",
+      "agentic_ai": "IA agentique",
+      "design_tokens": "Design Tokens",
+      "hci": "Interaction homme-machine",
+      "trust_building": "Construction de confiance",
+      "context_engineering": "Ingénierie de contexte"
+    }
+  },
+  "case_studies": {
+    "title": "Études de cas",
+    "subtitle": "Applications réelles du framework AIPET",
+    "complexity": {
+      "basic": "Basique",
+      "intermediate": "Intermédiaire",
+      "advanced": "Avancé",
+      "expert": "Expert"
+    }
+  },
+  "patterns": {
+    "title": "Modèles de conception UX IA",
+    "subtitle": "Modèles courants et bonnes pratiques pour la conception de produits IA",
+    "types": {
+      "canvas_workflow": "Flux de travail canvas",
+      "voice_interface": "Interface vocale",
+      "generative_interface": "Interface générative",
+      "iterative_prompting": "Prompting itératif",
+      "contextual_ui": "UI contextuelle",
+      "ai_assistant": "Assistant IA",
+      "multi_agent_workflow": "Flux de travail multi-agent"
+    }
+  }
+}
