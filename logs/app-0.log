@@ -1,0 +1,264 @@
+2025-08-15T23:51:09: 
+2025-08-15T23:51:09: > webapp@0.1.0 start
+2025-08-15T23:51:09: > react-scripts start
+2025-08-15T23:51:09: 
+2025-08-15T23:51:12: (node:1330) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2025-08-15T23:51:12: (Use `node --trace-deprecation ...` to show where the warning was created)
+2025-08-15T23:51:12: (node:1330) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2025-08-15T23:51:13: Starting the development server...
+2025-08-15T23:51:13: 
+2025-08-15T23:51:56: Failed to compile.
+2025-08-15T23:51:56: 
+2025-08-15T23:51:56: Attempted import error: 'ExternalLinkIcon' is not exported from '@heroicons/react/24/outline' (imported as 'ExternalLinkIcon').
+2025-08-15T23:51:56: WARNING in [eslint] 
+2025-08-15T23:51:56: src/pages/CaseStudies.tsx
+2025-08-15T23:51:56:   Line 25:6:  React Hook useEffect has a missing dependency: 'loadCaseStudies'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+2025-08-15T23:51:56:   Line 29:6:  React Hook useEffect has a missing dependency: 'applyFilters'. Either include it or remove the dependency array     react-hooks/exhaustive-deps
+2025-08-15T23:51:56: 
+2025-08-15T23:51:56: src/pages/Exercises.tsx
+2025-08-15T23:51:56:   Line 24:6:  React Hook useEffect has a missing dependency: 'loadExercises'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+2025-08-15T23:51:56:   Line 28:6:  React Hook useEffect has a missing dependency: 'applyFilters'. Either include it or remove the dependency array   react-hooks/exhaustive-deps
+2025-08-15T23:51:56: 
+2025-08-15T23:51:56: src/pages/Patterns.tsx
+2025-08-15T23:51:56:   Line 27:6:  React Hook useEffect has a missing dependency: 'loadDesignPatterns'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+2025-08-15T23:51:56: 
+2025-08-15T23:51:56: src/pages/Research.tsx
+2025-08-15T23:51:56:   Line 26:6:  React Hook useEffect has a missing dependency: 'loadResearchPapers'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+2025-08-15T23:51:56:   Line 30:6:  React Hook useEffect has a missing dependency: 'applyFilters'. Either include it or remove the dependency array        react-hooks/exhaustive-deps
+2025-08-15T23:51:56: 
+2025-08-15T23:51:56: src/pages/Tokens.tsx
+2025-08-15T23:51:56:   Line 35:6:  React Hook useEffect has a missing dependency: 'applyFilters'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+2025-08-15T23:51:56: 
+2025-08-15T23:51:56: ERROR in ./src/pages/Research.tsx 532:62-78
+2025-08-15T23:51:56: export 'ExternalLinkIcon' (imported as 'ExternalLinkIcon') was not found in '@heroicons/react/24/outline' (possible exports: AcademicCapIcon, AdjustmentsHorizontalIcon, AdjustmentsVerticalIcon, ArchiveBoxArrowDownIcon, ArchiveBoxIcon, ArchiveBoxXMarkIcon, ArrowDownCircleIcon, ArrowDownIcon, ArrowDownLeftIcon, ArrowDownOnSquareIcon, ArrowDownOnSquareStackIcon, ArrowDownRightIcon, ArrowDownTrayIcon, ArrowLeftCircleIcon, ArrowLeftEndOnRectangleIcon, ArrowLeftIcon, ArrowLeftOnRectangleIcon, ArrowLeftStartOnRectangleIcon, ArrowLongDownIcon, ArrowLongLeftIcon, ArrowLongRightIcon, ArrowLongUpIcon, ArrowPathIcon, ArrowPathRoundedSquareIcon, ArrowRightCircleIcon, ArrowRightEndOnRectangleIcon, ArrowRightIcon, ArrowRightOnRectangleIcon, ArrowRightStartOnRectangleIcon, ArrowSmallDownIcon, ArrowSmallLeftIcon, ArrowSmallRightIcon, ArrowSmallUpIcon, ArrowTopRightOnSquareIcon, ArrowTrendingDownIcon, ArrowTrendingUpIcon, ArrowTurnDownLeftIcon, ArrowTurnDownRightIcon, ArrowTurnLeftDownIcon, ArrowTurnLeftUpIcon, ArrowTurnRightDownIcon, ArrowTurnRightUpIcon, ArrowTurnUpLeftIcon, ArrowTurnUpRightIcon, ArrowUpCircleIcon, ArrowUpIcon, ArrowUpLeftIcon, ArrowUpOnSquareIcon, ArrowUpOnSquareStackIcon, ArrowUpRightIcon, ArrowUpTrayIcon, ArrowUturnDownIcon, ArrowUturnLeftIcon, ArrowUturnRightIcon, ArrowUturnUpIcon, ArrowsPointingInIcon, ArrowsPointingOutIcon, ArrowsRightLeftIcon, ArrowsUpDownIcon, AtSymbolIcon, BackspaceIcon, BackwardIcon, BanknotesIcon, Bars2Icon, Bars3BottomLeftIcon, Bars3BottomRightIcon, Bars3CenterLeftIcon, Bars3Icon, Bars4Icon, BarsArrowDownIcon, BarsArrowUpIcon, Battery0Icon, Battery100Icon, Battery50Icon, BeakerIcon, BellAlertIcon, BellIcon, BellSlashIcon, BellSnoozeIcon, BoldIcon, BoltIcon, BoltSlashIcon, BookOpenIcon, BookmarkIcon, BookmarkSlashIcon, BookmarkSquareIcon, BriefcaseIcon, BugAntIcon, BuildingLibraryIcon, BuildingOffice2Icon, BuildingOfficeIcon, BuildingStorefrontIcon, CakeIcon, CalculatorIcon, CalendarDateRangeIcon, CalendarDaysIcon, CalendarIcon, CameraIcon, ChartBarIcon, ChartBarSquareIcon, ChartPieIcon, ChatBubbleBottomCenterIcon, ChatBubbleBottomCenterTextIcon, ChatBubbleLeftEllipsisIcon, ChatBubbleLeftIcon, ChatBubbleLeftRightIcon, ChatBubbleOvalLeftEllipsisIcon, ChatBubbleOvalLeftIcon, CheckBadgeIcon, CheckCircleIcon, CheckIcon, ChevronDoubleDownIcon, ChevronDoubleLeftIcon, ChevronDoubleRightIcon, ChevronDoubleUpIcon, ChevronDownIcon, ChevronLeftIcon, ChevronRightIcon, ChevronUpDownIcon, ChevronUpIcon, CircleStackIcon, ClipboardDocumentCheckIcon, ClipboardDocumentIcon, ClipboardDocumentListIcon, ClipboardIcon, ClockIcon, CloudArrowDownIcon, CloudArrowUpIcon, CloudIcon, CodeBracketIcon, CodeBracketSquareIcon, Cog6ToothIcon, Cog8ToothIcon, CogIcon, CommandLineIcon, ComputerDesktopIcon, CpuChipIcon, CreditCardIcon, CubeIcon, CubeTransparentIcon, CurrencyBangladeshiIcon, CurrencyDollarIcon, CurrencyEuroIcon, CurrencyPoundIcon, CurrencyRupeeIcon, CurrencyYenIcon, CursorArrowRaysIcon, CursorArrowRippleIcon, DevicePhoneMobileIcon, DeviceTabletIcon, DivideIcon, DocumentArrowDownIcon, DocumentArrowUpIcon, DocumentChartBarIcon, DocumentCheckIcon, DocumentCurrencyBangladeshiIcon, DocumentCurrencyDollarIcon, DocumentCurrencyEuroIcon, DocumentCurrencyPoundIcon, DocumentCurrencyRupeeIcon, DocumentCurrencyYenIcon, DocumentDuplicateIcon, DocumentIcon, DocumentMagnifyingGlassIcon, DocumentMinusIcon, DocumentPlusIcon, DocumentTextIcon, EllipsisHorizontalCircleIcon, EllipsisHorizontalIcon, EllipsisVerticalIcon, EnvelopeIcon, EnvelopeOpenIcon, EqualsIcon, ExclamationCircleIcon, ExclamationTriangleIcon, EyeDropperIcon, EyeIcon, EyeSlashIcon, FaceFrownIcon, FaceSmileIcon, FilmIcon, FingerPrintIcon, FireIcon, FlagIcon, FolderArrowDownIcon, FolderIcon, FolderMinusIcon, FolderOpenIcon, FolderPlusIcon, ForwardIcon, FunnelIcon, GifIcon, GiftIcon, GiftTopIcon, GlobeAltIcon, GlobeAmericasIcon, GlobeAsiaAustraliaIcon, GlobeEuropeAfricaIcon, H1Icon, H2Icon, H3Icon, HandRaisedIcon, HandThumbDownIcon, HandThumbUpIcon, HashtagIcon, HeartIcon, HomeIcon, HomeModernIcon, IdentificationIcon, InboxArrowDownIcon, InboxIcon, InboxStackIcon, InformationCircleIcon, ItalicIcon, KeyIcon, LanguageIcon, LifebuoyIcon, LightBulbIcon, LinkIcon, LinkSlashIcon, ListBulletIcon, LockClosedIcon, LockOpenIcon, MagnifyingGlassCircleIcon, MagnifyingGlassIcon, MagnifyingGlassMinusIcon, MagnifyingGlassPlusIcon, MapIcon, MapPinIcon, MegaphoneIcon, MicrophoneIcon, MinusCircleIcon, MinusIcon, MinusSmallIcon, MoonIcon, MusicalNoteIcon, NewspaperIcon, NoSymbolIcon, NumberedListIcon, PaintBrushIcon, PaperAirplaneIcon, PaperClipIcon, PauseCircleIcon, PauseIcon, PencilIcon, PencilSquareIcon, PercentBadgeIcon, PhoneArrowDownLeftIcon, PhoneArrowUpRightIcon, PhoneIcon, PhoneXMarkIcon, PhotoIcon, PlayCircleIcon, PlayIcon, PlayPauseIcon, PlusCircleIcon, PlusIcon, PlusSmallIcon, PowerIcon, PresentationChartBarIcon, PresentationChartLineIcon, PrinterIcon, PuzzlePieceIcon, QrCodeIcon, QuestionMarkCircleIcon, QueueListIcon, RadioIcon, ReceiptPercentIcon, ReceiptRefundIcon, RectangleGroupIcon, RectangleStackIcon, RocketLaunchIcon, RssIcon, ScaleIcon, ScissorsIcon, ServerIcon, ServerStackIcon, ShareIcon, ShieldCheckIcon, ShieldExclamationIcon, ShoppingBagIcon, ShoppingCartIcon, SignalIcon, SignalSlashIcon, SlashIcon, SparklesIcon, SpeakerWaveIcon, SpeakerXMarkIcon, Square2StackIcon, Square3Stack3DIcon, Squares2X2Icon, SquaresPlusIcon, StarIcon, StopCircleIcon, StopIcon, StrikethroughIcon, SunIcon, SwatchIcon, TableCellsIcon, TagIcon, TicketIcon, TrashIcon, TrophyIcon, TruckIcon, TvIcon, UnderlineIcon, UserCircleIcon, UserGroupIcon, UserIcon, UserMinusIcon, UserPlusIcon, UsersIcon, VariableIcon, VideoCameraIcon, VideoCameraSlashIcon, ViewColumnsIcon, ViewfinderCircleIcon, WalletIcon, WifiIcon, WindowIcon, WrenchIcon, WrenchScrewdriverIcon, XCircleIcon, XMarkIcon)
+2025-08-15T23:51:56: 
+2025-08-15T23:51:56: ERROR in ./src/index.css (./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[5].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[5].use[2]!./node_modules/source-map-loader/dist/cjs.js!./src/index.css)
+2025-08-15T23:51:56: Module build failed (from ./node_modules/postcss-loader/dist/cjs.js):
+2025-08-15T23:51:56: Error: It looks like you're trying to use `tailwindcss` directly as a PostCSS plugin. The PostCSS plugin has moved to a separate package, so to continue using Tailwind CSS with PostCSS you'll need to install `@tailwindcss/postcss` and update your PostCSS configuration.
+2025-08-15T23:51:56:     at We (/home/user/webapp/node_modules/tailwindcss/dist/lib.js:35:2121)
+2025-08-15T23:51:56:     at LazyResult.runOnRoot (/home/user/webapp/node_modules/postcss/lib/lazy-result.js:361:16)
+2025-08-15T23:51:56:     at LazyResult.runAsync (/home/user/webapp/node_modules/postcss/lib/lazy-result.js:290:26)
+2025-08-15T23:51:56:     at LazyResult.async (/home/user/webapp/node_modules/postcss/lib/lazy-result.js:192:30)
+2025-08-15T23:51:56:     at LazyResult.then (/home/user/webapp/node_modules/postcss/lib/lazy-result.js:436:17)
+2025-08-15T23:51:56: 
+2025-08-15T23:51:56: webpack compiled with 2 errors and 1 warning
+2025-08-15T23:51:56: ERROR in src/pages/Research.tsx:11:3
+2025-08-15T23:51:56: TS2305: Module '"@heroicons/react/24/outline"' has no exported member 'ExternalLinkIcon'.
+2025-08-15T23:51:56:      9 |   CalendarIcon,
+2025-08-15T23:51:56:     10 |   UserGroupIcon,
+2025-08-15T23:51:56:   > 11 |   ExternalLinkIcon
+2025-08-15T23:51:56:        |   ^^^^^^^^^^^^^^^^
+2025-08-15T23:51:56:     12 | } from '@heroicons/react/24/outline';
+2025-08-15T23:51:56:     13 | import { ResearchPaperEntity, ResearchPaper, ResearchCategory, FrameworkRelevance } from '../entities';
+2025-08-15T23:51:56:     14 |
+2025-08-15T23:51:56: 
+2025-08-15T23:58:15: 
+2025-08-15T23:58:15: > webapp@0.1.0 start
+2025-08-15T23:58:15: > react-scripts start
+2025-08-15T23:58:15: 
+2025-08-15T23:58:18: (node:1646) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2025-08-15T23:58:18: (Use `node --trace-deprecation ...` to show where the warning was created)
+2025-08-15T23:58:18: (node:1646) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2025-08-15T23:58:18: Starting the development server...
+2025-08-15T23:58:18: 
+2025-08-15T23:58:25: Failed to compile.
+2025-08-15T23:58:25: 
+2025-08-15T23:58:25: Attempted import error: 'ExternalLinkIcon' is not exported from '@heroicons/react/24/outline' (imported as 'ExternalLinkIcon').
+2025-08-15T23:58:25: WARNING in [eslint] 
+2025-08-15T23:58:25: src/pages/CaseStudies.tsx
+2025-08-15T23:58:25:   Line 25:6:  React Hook useEffect has a missing dependency: 'loadCaseStudies'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+2025-08-15T23:58:25:   Line 29:6:  React Hook useEffect has a missing dependency: 'applyFilters'. Either include it or remove the dependency array     react-hooks/exhaustive-deps
+2025-08-15T23:58:25: 
+2025-08-15T23:58:25: src/pages/Patterns.tsx
+2025-08-15T23:58:25:   Line 27:6:  React Hook useEffect has a missing dependency: 'loadDesignPatterns'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+2025-08-15T23:58:25: 
+2025-08-15T23:58:25: src/pages/Research.tsx
+2025-08-15T23:58:25:   Line 26:6:  React Hook useEffect has a missing dependency: 'loadResearchPapers'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+2025-08-15T23:58:25:   Line 30:6:  React Hook useEffect has a missing dependency: 'applyFilters'. Either include it or remove the dependency array        react-hooks/exhaustive-deps
+2025-08-15T23:58:25: 
+2025-08-15T23:58:25: ERROR in ./src/pages/Research.tsx 532:62-78
+2025-08-15T23:58:25: export 'ExternalLinkIcon' (imported as 'ExternalLinkIcon') was not found in '@heroicons/react/24/outline' (possible exports: AcademicCapIcon, AdjustmentsHorizontalIcon, AdjustmentsVerticalIcon, ArchiveBoxArrowDownIcon, ArchiveBoxIcon, ArchiveBoxXMarkIcon, ArrowDownCircleIcon, ArrowDownIcon, ArrowDownLeftIcon, ArrowDownOnSquareIcon, ArrowDownOnSquareStackIcon, ArrowDownRightIcon, ArrowDownTrayIcon, ArrowLeftCircleIcon, ArrowLeftEndOnRectangleIcon, ArrowLeftIcon, ArrowLeftOnRectangleIcon, ArrowLeftStartOnRectangleIcon, ArrowLongDownIcon, ArrowLongLeftIcon, ArrowLongRightIcon, ArrowLongUpIcon, ArrowPathIcon, ArrowPathRoundedSquareIcon, ArrowRightCircleIcon, ArrowRightEndOnRectangleIcon, ArrowRightIcon, ArrowRightOnRectangleIcon, ArrowRightStartOnRectangleIcon, ArrowSmallDownIcon, ArrowSmallLeftIcon, ArrowSmallRightIcon, ArrowSmallUpIcon, ArrowTopRightOnSquareIcon, ArrowTrendingDownIcon, ArrowTrendingUpIcon, ArrowTurnDownLeftIcon, ArrowTurnDownRightIcon, ArrowTurnLeftDownIcon, ArrowTurnLeftUpIcon, ArrowTurnRightDownIcon, ArrowTurnRightUpIcon, ArrowTurnUpLeftIcon, ArrowTurnUpRightIcon, ArrowUpCircleIcon, ArrowUpIcon, ArrowUpLeftIcon, ArrowUpOnSquareIcon, ArrowUpOnSquareStackIcon, ArrowUpRightIcon, ArrowUpTrayIcon, ArrowUturnDownIcon, ArrowUturnLeftIcon, ArrowUturnRightIcon, ArrowUturnUpIcon, ArrowsPointingInIcon, ArrowsPointingOutIcon, ArrowsRightLeftIcon, ArrowsUpDownIcon, AtSymbolIcon, BackspaceIcon, BackwardIcon, BanknotesIcon, Bars2Icon, Bars3BottomLeftIcon, Bars3BottomRightIcon, Bars3CenterLeftIcon, Bars3Icon, Bars4Icon, BarsArrowDownIcon, BarsArrowUpIcon, Battery0Icon, Battery100Icon, Battery50Icon, BeakerIcon, BellAlertIcon, BellIcon, BellSlashIcon, BellSnoozeIcon, BoldIcon, BoltIcon, BoltSlashIcon, BookOpenIcon, BookmarkIcon, BookmarkSlashIcon, BookmarkSquareIcon, BriefcaseIcon, BugAntIcon, BuildingLibraryIcon, BuildingOffice2Icon, BuildingOfficeIcon, BuildingStorefrontIcon, CakeIcon, CalculatorIcon, CalendarDateRangeIcon, CalendarDaysIcon, CalendarIcon, CameraIcon, ChartBarIcon, ChartBarSquareIcon, ChartPieIcon, ChatBubbleBottomCenterIcon, ChatBubbleBottomCenterTextIcon, ChatBubbleLeftEllipsisIcon, ChatBubbleLeftIcon, ChatBubbleLeftRightIcon, ChatBubbleOvalLeftEllipsisIcon, ChatBubbleOvalLeftIcon, CheckBadgeIcon, CheckCircleIcon, CheckIcon, ChevronDoubleDownIcon, ChevronDoubleLeftIcon, ChevronDoubleRightIcon, ChevronDoubleUpIcon, ChevronDownIcon, ChevronLeftIcon, ChevronRightIcon, ChevronUpDownIcon, ChevronUpIcon, CircleStackIcon, ClipboardDocumentCheckIcon, ClipboardDocumentIcon, ClipboardDocumentListIcon, ClipboardIcon, ClockIcon, CloudArrowDownIcon, CloudArrowUpIcon, CloudIcon, CodeBracketIcon, CodeBracketSquareIcon, Cog6ToothIcon, Cog8ToothIcon, CogIcon, CommandLineIcon, ComputerDesktopIcon, CpuChipIcon, CreditCardIcon, CubeIcon, CubeTransparentIcon, CurrencyBangladeshiIcon, CurrencyDollarIcon, CurrencyEuroIcon, CurrencyPoundIcon, CurrencyRupeeIcon, CurrencyYenIcon, CursorArrowRaysIcon, CursorArrowRippleIcon, DevicePhoneMobileIcon, DeviceTabletIcon, DivideIcon, DocumentArrowDownIcon, DocumentArrowUpIcon, DocumentChartBarIcon, DocumentCheckIcon, DocumentCurrencyBangladeshiIcon, DocumentCurrencyDollarIcon, DocumentCurrencyEuroIcon, DocumentCurrencyPoundIcon, DocumentCurrencyRupeeIcon, DocumentCurrencyYenIcon, DocumentDuplicateIcon, DocumentIcon, DocumentMagnifyingGlassIcon, DocumentMinusIcon, DocumentPlusIcon, DocumentTextIcon, EllipsisHorizontalCircleIcon, EllipsisHorizontalIcon, EllipsisVerticalIcon, EnvelopeIcon, EnvelopeOpenIcon, EqualsIcon, ExclamationCircleIcon, ExclamationTriangleIcon, EyeDropperIcon, EyeIcon, EyeSlashIcon, FaceFrownIcon, FaceSmileIcon, FilmIcon, FingerPrintIcon, FireIcon, FlagIcon, FolderArrowDownIcon, FolderIcon, FolderMinusIcon, FolderOpenIcon, FolderPlusIcon, ForwardIcon, FunnelIcon, GifIcon, GiftIcon, GiftTopIcon, GlobeAltIcon, GlobeAmericasIcon, GlobeAsiaAustraliaIcon, GlobeEuropeAfricaIcon, H1Icon, H2Icon, H3Icon, HandRaisedIcon, HandThumbDownIcon, HandThumbUpIcon, HashtagIcon, HeartIcon, HomeIcon, HomeModernIcon, IdentificationIcon, InboxArrowDownIcon, InboxIcon, InboxStackIcon, InformationCircleIcon, ItalicIcon, KeyIcon, LanguageIcon, LifebuoyIcon, LightBulbIcon, LinkIcon, LinkSlashIcon, ListBulletIcon, LockClosedIcon, LockOpenIcon, MagnifyingGlassCircleIcon, MagnifyingGlassIcon, MagnifyingGlassMinusIcon, MagnifyingGlassPlusIcon, MapIcon, MapPinIcon, MegaphoneIcon, MicrophoneIcon, MinusCircleIcon, MinusIcon, MinusSmallIcon, MoonIcon, MusicalNoteIcon, NewspaperIcon, NoSymbolIcon, NumberedListIcon, PaintBrushIcon, PaperAirplaneIcon, PaperClipIcon, PauseCircleIcon, PauseIcon, PencilIcon, PencilSquareIcon, PercentBadgeIcon, PhoneArrowDownLeftIcon, PhoneArrowUpRightIcon, PhoneIcon, PhoneXMarkIcon, PhotoIcon, PlayCircleIcon, PlayIcon, PlayPauseIcon, PlusCircleIcon, PlusIcon, PlusSmallIcon, PowerIcon, PresentationChartBarIcon, PresentationChartLineIcon, PrinterIcon, PuzzlePieceIcon, QrCodeIcon, QuestionMarkCircleIcon, QueueListIcon, RadioIcon, ReceiptPercentIcon, ReceiptRefundIcon, RectangleGroupIcon, RectangleStackIcon, RocketLaunchIcon, RssIcon, ScaleIcon, ScissorsIcon, ServerIcon, ServerStackIcon, ShareIcon, ShieldCheckIcon, ShieldExclamationIcon, ShoppingBagIcon, ShoppingCartIcon, SignalIcon, SignalSlashIcon, SlashIcon, SparklesIcon, SpeakerWaveIcon, SpeakerXMarkIcon, Square2StackIcon, Square3Stack3DIcon, Squares2X2Icon, SquaresPlusIcon, StarIcon, StopCircleIcon, StopIcon, StrikethroughIcon, SunIcon, SwatchIcon, TableCellsIcon, TagIcon, TicketIcon, TrashIcon, TrophyIcon, TruckIcon, TvIcon, UnderlineIcon, UserCircleIcon, UserGroupIcon, UserIcon, UserMinusIcon, UserPlusIcon, UsersIcon, VariableIcon, VideoCameraIcon, VideoCameraSlashIcon, ViewColumnsIcon, ViewfinderCircleIcon, WalletIcon, WifiIcon, WindowIcon, WrenchIcon, WrenchScrewdriverIcon, XCircleIcon, XMarkIcon)
+2025-08-15T23:58:25: 
+2025-08-15T23:58:25: ERROR in ./src/index.css (./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[5].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[5].use[2]!./node_modules/source-map-loader/dist/cjs.js!./src/index.css)
+2025-08-15T23:58:25: Module build failed (from ./node_modules/postcss-loader/dist/cjs.js):
+2025-08-15T23:58:25: Error: It looks like you're trying to use `tailwindcss` directly as a PostCSS plugin. The PostCSS plugin has moved to a separate package, so to continue using Tailwind CSS with PostCSS you'll need to install `@tailwindcss/postcss` and update your PostCSS configuration.
+2025-08-15T23:58:25:     at We (/home/user/webapp/node_modules/tailwindcss/dist/lib.js:35:2121)
+2025-08-15T23:58:25:     at LazyResult.runOnRoot (/home/user/webapp/node_modules/postcss/lib/lazy-result.js:361:16)
+2025-08-15T23:58:25:     at LazyResult.runAsync (/home/user/webapp/node_modules/postcss/lib/lazy-result.js:290:26)
+2025-08-15T23:58:25:     at LazyResult.async (/home/user/webapp/node_modules/postcss/lib/lazy-result.js:192:30)
+2025-08-15T23:58:25:     at LazyResult.then (/home/user/webapp/node_modules/postcss/lib/lazy-result.js:436:17)
+2025-08-15T23:58:25: 
+2025-08-15T23:58:25: webpack compiled with 2 errors and 1 warning
+2025-08-15T23:58:25: ERROR in src/pages/Research.tsx:11:3
+2025-08-15T23:58:25: TS2305: Module '"@heroicons/react/24/outline"' has no exported member 'ExternalLinkIcon'.
+2025-08-15T23:58:25:      9 |   CalendarIcon,
+2025-08-15T23:58:25:     10 |   UserGroupIcon,
+2025-08-15T23:58:25:   > 11 |   ExternalLinkIcon
+2025-08-15T23:58:25:        |   ^^^^^^^^^^^^^^^^
+2025-08-15T23:58:25:     12 | } from '@heroicons/react/24/outline';
+2025-08-15T23:58:25:     13 | import { ResearchPaperEntity, ResearchPaper, ResearchCategory, FrameworkRelevance } from '../entities';
+2025-08-15T23:58:25:     14 |
+2025-08-15T23:58:25: 
+2025-08-16T01:18:40: 
+2025-08-16T01:18:40: > webapp@0.1.0 start
+2025-08-16T01:18:40: > react-scripts start
+2025-08-16T01:18:40: 
+2025-08-16T01:18:44: (node:1980) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2025-08-16T01:18:44: (Use `node --trace-deprecation ...` to show where the warning was created)
+2025-08-16T01:18:44: (node:1980) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2025-08-16T01:18:45: Starting the development server...
+2025-08-16T01:18:45: 
+2025-08-16T01:18:58: Failed to compile.
+2025-08-16T01:18:58: 
+2025-08-16T01:18:58: Attempted import error: 'ExternalLinkIcon' is not exported from '@heroicons/react/24/outline' (imported as 'ExternalLinkIcon').
+2025-08-16T01:18:58: WARNING in [eslint] 
+2025-08-16T01:18:58: src/pages/CaseStudies.tsx
+2025-08-16T01:18:58:   Line 25:6:  React Hook useEffect has a missing dependency: 'loadCaseStudies'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+2025-08-16T01:18:58:   Line 29:6:  React Hook useEffect has a missing dependency: 'applyFilters'. Either include it or remove the dependency array     react-hooks/exhaustive-deps
+2025-08-16T01:18:58: 
+2025-08-16T01:18:58: src/pages/Exercises.tsx
+2025-08-16T01:18:58:   Line 24:6:  React Hook useEffect has a missing dependency: 'loadExercises'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+2025-08-16T01:18:58:   Line 28:6:  React Hook useEffect has a missing dependency: 'applyFilters'. Either include it or remove the dependency array   react-hooks/exhaustive-deps
+2025-08-16T01:18:58: 
+2025-08-16T01:18:58: src/pages/Patterns.tsx
+2025-08-16T01:18:58:   Line 27:6:  React Hook useEffect has a missing dependency: 'loadDesignPatterns'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+2025-08-16T01:18:58: 
+2025-08-16T01:18:58: src/pages/Research.tsx
+2025-08-16T01:18:58:   Line 26:6:  React Hook useEffect has a missing dependency: 'loadResearchPapers'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+2025-08-16T01:18:58:   Line 30:6:  React Hook useEffect has a missing dependency: 'applyFilters'. Either include it or remove the dependency array        react-hooks/exhaustive-deps
+2025-08-16T01:18:58: 
+2025-08-16T01:18:58: src/pages/Tokens.tsx
+2025-08-16T01:18:58:   Line 35:6:  React Hook useEffect has a missing dependency: 'applyFilters'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+2025-08-16T01:18:58: 
+2025-08-16T01:18:58: ERROR in ./src/pages/Research.tsx 532:62-78
+2025-08-16T01:18:58: export 'ExternalLinkIcon' (imported as 'ExternalLinkIcon') was not found in '@heroicons/react/24/outline' (possible exports: AcademicCapIcon, AdjustmentsHorizontalIcon, AdjustmentsVerticalIcon, ArchiveBoxArrowDownIcon, ArchiveBoxIcon, ArchiveBoxXMarkIcon, ArrowDownCircleIcon, ArrowDownIcon, ArrowDownLeftIcon, ArrowDownOnSquareIcon, ArrowDownOnSquareStackIcon, ArrowDownRightIcon, ArrowDownTrayIcon, ArrowLeftCircleIcon, ArrowLeftEndOnRectangleIcon, ArrowLeftIcon, ArrowLeftOnRectangleIcon, ArrowLeftStartOnRectangleIcon, ArrowLongDownIcon, ArrowLongLeftIcon, ArrowLongRightIcon, ArrowLongUpIcon, ArrowPathIcon, ArrowPathRoundedSquareIcon, ArrowRightCircleIcon, ArrowRightEndOnRectangleIcon, ArrowRightIcon, ArrowRightOnRectangleIcon, ArrowRightStartOnRectangleIcon, ArrowSmallDownIcon, ArrowSmallLeftIcon, ArrowSmallRightIcon, ArrowSmallUpIcon, ArrowTopRightOnSquareIcon, ArrowTrendingDownIcon, ArrowTrendingUpIcon, ArrowTurnDownLeftIcon, ArrowTurnDownRightIcon, ArrowTurnLeftDownIcon, ArrowTurnLeftUpIcon, ArrowTurnRightDownIcon, ArrowTurnRightUpIcon, ArrowTurnUpLeftIcon, ArrowTurnUpRightIcon, ArrowUpCircleIcon, ArrowUpIcon, ArrowUpLeftIcon, ArrowUpOnSquareIcon, ArrowUpOnSquareStackIcon, ArrowUpRightIcon, ArrowUpTrayIcon, ArrowUturnDownIcon, ArrowUturnLeftIcon, ArrowUturnRightIcon, ArrowUturnUpIcon, ArrowsPointingInIcon, ArrowsPointingOutIcon, ArrowsRightLeftIcon, ArrowsUpDownIcon, AtSymbolIcon, BackspaceIcon, BackwardIcon, BanknotesIcon, Bars2Icon, Bars3BottomLeftIcon, Bars3BottomRightIcon, Bars3CenterLeftIcon, Bars3Icon, Bars4Icon, BarsArrowDownIcon, BarsArrowUpIcon, Battery0Icon, Battery100Icon, Battery50Icon, BeakerIcon, BellAlertIcon, BellIcon, BellSlashIcon, BellSnoozeIcon, BoldIcon, BoltIcon, BoltSlashIcon, BookOpenIcon, BookmarkIcon, BookmarkSlashIcon, BookmarkSquareIcon, BriefcaseIcon, BugAntIcon, BuildingLibraryIcon, BuildingOffice2Icon, BuildingOfficeIcon, BuildingStorefrontIcon, CakeIcon, CalculatorIcon, CalendarDateRangeIcon, CalendarDaysIcon, CalendarIcon, CameraIcon, ChartBarIcon, ChartBarSquareIcon, ChartPieIcon, ChatBubbleBottomCenterIcon, ChatBubbleBottomCenterTextIcon, ChatBubbleLeftEllipsisIcon, ChatBubbleLeftIcon, ChatBubbleLeftRightIcon, ChatBubbleOvalLeftEllipsisIcon, ChatBubbleOvalLeftIcon, CheckBadgeIcon, CheckCircleIcon, CheckIcon, ChevronDoubleDownIcon, ChevronDoubleLeftIcon, ChevronDoubleRightIcon, ChevronDoubleUpIcon, ChevronDownIcon, ChevronLeftIcon, ChevronRightIcon, ChevronUpDownIcon, ChevronUpIcon, CircleStackIcon, ClipboardDocumentCheckIcon, ClipboardDocumentIcon, ClipboardDocumentListIcon, ClipboardIcon, ClockIcon, CloudArrowDownIcon, CloudArrowUpIcon, CloudIcon, CodeBracketIcon, CodeBracketSquareIcon, Cog6ToothIcon, Cog8ToothIcon, CogIcon, CommandLineIcon, ComputerDesktopIcon, CpuChipIcon, CreditCardIcon, CubeIcon, CubeTransparentIcon, CurrencyBangladeshiIcon, CurrencyDollarIcon, CurrencyEuroIcon, CurrencyPoundIcon, CurrencyRupeeIcon, CurrencyYenIcon, CursorArrowRaysIcon, CursorArrowRippleIcon, DevicePhoneMobileIcon, DeviceTabletIcon, DivideIcon, DocumentArrowDownIcon, DocumentArrowUpIcon, DocumentChartBarIcon, DocumentCheckIcon, DocumentCurrencyBangladeshiIcon, DocumentCurrencyDollarIcon, DocumentCurrencyEuroIcon, DocumentCurrencyPoundIcon, DocumentCurrencyRupeeIcon, DocumentCurrencyYenIcon, DocumentDuplicateIcon, DocumentIcon, DocumentMagnifyingGlassIcon, DocumentMinusIcon, DocumentPlusIcon, DocumentTextIcon, EllipsisHorizontalCircleIcon, EllipsisHorizontalIcon, EllipsisVerticalIcon, EnvelopeIcon, EnvelopeOpenIcon, EqualsIcon, ExclamationCircleIcon, ExclamationTriangleIcon, EyeDropperIcon, EyeIcon, EyeSlashIcon, FaceFrownIcon, FaceSmileIcon, FilmIcon, FingerPrintIcon, FireIcon, FlagIcon, FolderArrowDownIcon, FolderIcon, FolderMinusIcon, FolderOpenIcon, FolderPlusIcon, ForwardIcon, FunnelIcon, GifIcon, GiftIcon, GiftTopIcon, GlobeAltIcon, GlobeAmericasIcon, GlobeAsiaAustraliaIcon, GlobeEuropeAfricaIcon, H1Icon, H2Icon, H3Icon, HandRaisedIcon, HandThumbDownIcon, HandThumbUpIcon, HashtagIcon, HeartIcon, HomeIcon, HomeModernIcon, IdentificationIcon, InboxArrowDownIcon, InboxIcon, InboxStackIcon, InformationCircleIcon, ItalicIcon, KeyIcon, LanguageIcon, LifebuoyIcon, LightBulbIcon, LinkIcon, LinkSlashIcon, ListBulletIcon, LockClosedIcon, LockOpenIcon, MagnifyingGlassCircleIcon, MagnifyingGlassIcon, MagnifyingGlassMinusIcon, MagnifyingGlassPlusIcon, MapIcon, MapPinIcon, MegaphoneIcon, MicrophoneIcon, MinusCircleIcon, MinusIcon, MinusSmallIcon, MoonIcon, MusicalNoteIcon, NewspaperIcon, NoSymbolIcon, NumberedListIcon, PaintBrushIcon, PaperAirplaneIcon, PaperClipIcon, PauseCircleIcon, PauseIcon, PencilIcon, PencilSquareIcon, PercentBadgeIcon, PhoneArrowDownLeftIcon, PhoneArrowUpRightIcon, PhoneIcon, PhoneXMarkIcon, PhotoIcon, PlayCircleIcon, PlayIcon, PlayPauseIcon, PlusCircleIcon, PlusIcon, PlusSmallIcon, PowerIcon, PresentationChartBarIcon, PresentationChartLineIcon, PrinterIcon, PuzzlePieceIcon, QrCodeIcon, QuestionMarkCircleIcon, QueueListIcon, RadioIcon, ReceiptPercentIcon, ReceiptRefundIcon, RectangleGroupIcon, RectangleStackIcon, RocketLaunchIcon, RssIcon, ScaleIcon, ScissorsIcon, ServerIcon, ServerStackIcon, ShareIcon, ShieldCheckIcon, ShieldExclamationIcon, ShoppingBagIcon, ShoppingCartIcon, SignalIcon, SignalSlashIcon, SlashIcon, SparklesIcon, SpeakerWaveIcon, SpeakerXMarkIcon, Square2StackIcon, Square3Stack3DIcon, Squares2X2Icon, SquaresPlusIcon, StarIcon, StopCircleIcon, StopIcon, StrikethroughIcon, SunIcon, SwatchIcon, TableCellsIcon, TagIcon, TicketIcon, TrashIcon, TrophyIcon, TruckIcon, TvIcon, UnderlineIcon, UserCircleIcon, UserGroupIcon, UserIcon, UserMinusIcon, UserPlusIcon, UsersIcon, VariableIcon, VideoCameraIcon, VideoCameraSlashIcon, ViewColumnsIcon, ViewfinderCircleIcon, WalletIcon, WifiIcon, WindowIcon, WrenchIcon, WrenchScrewdriverIcon, XCircleIcon, XMarkIcon)
+2025-08-16T01:18:58: 
+2025-08-16T01:18:58: webpack compiled with 1 error and 1 warning
+2025-08-16T01:18:58: ERROR in src/pages/Research.tsx:11:3
+2025-08-16T01:18:58: TS2305: Module '"@heroicons/react/24/outline"' has no exported member 'ExternalLinkIcon'.
+2025-08-16T01:18:58:      9 |   CalendarIcon,
+2025-08-16T01:18:58:     10 |   UserGroupIcon,
+2025-08-16T01:18:58:   > 11 |   ExternalLinkIcon
+2025-08-16T01:18:58:        |   ^^^^^^^^^^^^^^^^
+2025-08-16T01:18:58:     12 | } from '@heroicons/react/24/outline';
+2025-08-16T01:18:58:     13 | import { ResearchPaperEntity, ResearchPaper, ResearchCategory, FrameworkRelevance } from '../entities';
+2025-08-16T01:18:58:     14 |
+2025-08-16T01:18:58: 
+2025-08-16T01:19:10: Compiling...
+2025-08-16T01:19:13: Failed to compile.
+2025-08-16T01:19:13: 
+2025-08-16T01:19:13: [eslint] 
+2025-08-16T01:19:13: src/pages/Research.tsx
+2025-08-16T01:19:13:   Line 375:24:  'ExternalLinkIcon' is not defined  react/jsx-no-undef
+2025-08-16T01:19:13: 
+2025-08-16T01:19:13: Search for the keywords to learn more about each error.
+2025-08-16T01:19:14: WARNING in [eslint] 
+2025-08-16T01:19:14: src/pages/CaseStudies.tsx
+2025-08-16T01:19:14:   Line 25:6:  React Hook useEffect has a missing dependency: 'loadCaseStudies'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+2025-08-16T01:19:14:   Line 29:6:  React Hook useEffect has a missing dependency: 'applyFilters'. Either include it or remove the dependency array     react-hooks/exhaustive-deps
+2025-08-16T01:19:14: 
+2025-08-16T01:19:14: src/pages/Exercises.tsx
+2025-08-16T01:19:14:   Line 24:6:  React Hook useEffect has a missing dependency: 'loadExercises'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+2025-08-16T01:19:14:   Line 28:6:  React Hook useEffect has a missing dependency: 'applyFilters'. Either include it or remove the dependency array   react-hooks/exhaustive-deps
+2025-08-16T01:19:14: 
+2025-08-16T01:19:14: src/pages/Patterns.tsx
+2025-08-16T01:19:14:   Line 27:6:  React Hook useEffect has a missing dependency: 'loadDesignPatterns'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+2025-08-16T01:19:14: 
+2025-08-16T01:19:14: src/pages/Research.tsx
+2025-08-16T01:19:14:   Line 11:3:  'ArrowTopRightOnSquareIcon' is defined but never used                                                                  @typescript-eslint/no-unused-vars
+2025-08-16T01:19:14:   Line 26:6:  React Hook useEffect has a missing dependency: 'loadResearchPapers'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+2025-08-16T01:19:14:   Line 30:6:  React Hook useEffect has a missing dependency: 'applyFilters'. Either include it or remove the dependency array        react-hooks/exhaustive-deps
+2025-08-16T01:19:14: 
+2025-08-16T01:19:14: src/pages/Tokens.tsx
+2025-08-16T01:19:14:   Line 35:6:  React Hook useEffect has a missing dependency: 'applyFilters'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+2025-08-16T01:19:14: 
+2025-08-16T01:19:14: ERROR in [eslint] 
+2025-08-16T01:19:14: src/pages/Research.tsx
+2025-08-16T01:19:14:   Line 375:24:  'ExternalLinkIcon' is not defined  react/jsx-no-undef
+2025-08-16T01:19:14: 
+2025-08-16T01:19:14: Search for the keywords to learn more about each error.
+2025-08-16T01:19:14: 
+2025-08-16T01:19:14: webpack compiled with 1 error and 1 warning
+2025-08-16T01:19:15: ERROR in src/pages/Research.tsx:375:24
+2025-08-16T01:19:15: TS2304: Cannot find name 'ExternalLinkIcon'.
+2025-08-16T01:19:15:     373 |                     >
+2025-08-16T01:19:15:     374 |                       Read Paper
+2025-08-16T01:19:15:   > 375 |                       <ArrowTopRightOnSquareIcon className="w-4 h-4 ml-1" />
+2025-08-16T01:19:15:         |                        ^^^^^^^^^^^^^^^^
+2025-08-16T01:19:15:     376 |                     </a>
+2025-08-16T01:19:15:     377 |                   </div>
+2025-08-16T01:19:15:     378 |                 </div>
+2025-08-16T01:19:15: 
+2025-08-16T01:19:16: Compiling...
+2025-08-16T01:21:22: Compiled with warnings.
+2025-08-16T01:21:22: 
+2025-08-16T01:21:22: [eslint] 
+2025-08-16T01:21:22: src/pages/CaseStudies.tsx
+2025-08-16T01:21:22:   Line 25:6:  React Hook useEffect has a missing dependency: 'loadCaseStudies'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+2025-08-16T01:21:22:   Line 29:6:  React Hook useEffect has a missing dependency: 'applyFilters'. Either include it or remove the dependency array     react-hooks/exhaustive-deps
+2025-08-16T01:21:22: 
+2025-08-16T01:21:22: src/pages/Exercises.tsx
+2025-08-16T01:21:22:   Line 24:6:  React Hook useEffect has a missing dependency: 'loadExercises'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+2025-08-16T01:21:22:   Line 28:6:  React Hook useEffect has a missing dependency: 'applyFilters'. Either include it or remove the dependency array   react-hooks/exhaustive-deps
+2025-08-16T01:21:22: 
+2025-08-16T01:21:22: src/pages/Patterns.tsx
+2025-08-16T01:21:22:   Line 27:6:  React Hook useEffect has a missing dependency: 'loadDesignPatterns'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+2025-08-16T01:21:22: 
+2025-08-16T01:21:22: src/pages/Research.tsx
+2025-08-16T01:21:22:   Line 26:6:  React Hook useEffect has a missing dependency: 'loadResearchPapers'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+2025-08-16T01:21:22:   Line 30:6:  React Hook useEffect has a missing dependency: 'applyFilters'. Either include it or remove the dependency array        react-hooks/exhaustive-deps
+2025-08-16T01:21:22: 
+2025-08-16T01:21:22: src/pages/Tokens.tsx
+2025-08-16T01:21:22:   Line 35:6:  React Hook useEffect has a missing dependency: 'applyFilters'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+2025-08-16T01:21:22: 
+2025-08-16T01:21:22: Search for the keywords to learn more about each warning.
+2025-08-16T01:21:22: To ignore, add // eslint-disable-next-line to the line before.
+2025-08-16T01:21:22: 
+2025-08-16T01:21:23: WARNING in [eslint] 
+2025-08-16T01:21:23: src/pages/CaseStudies.tsx
+2025-08-16T01:21:23:   Line 25:6:  React Hook useEffect has a missing dependency: 'loadCaseStudies'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+2025-08-16T01:21:23:   Line 29:6:  React Hook useEffect has a missing dependency: 'applyFilters'. Either include it or remove the dependency array     react-hooks/exhaustive-deps
+2025-08-16T01:21:23: 
+2025-08-16T01:21:23: src/pages/Exercises.tsx
+2025-08-16T01:21:23:   Line 24:6:  React Hook useEffect has a missing dependency: 'loadExercises'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+2025-08-16T01:21:23:   Line 28:6:  React Hook useEffect has a missing dependency: 'applyFilters'. Either include it or remove the dependency array   react-hooks/exhaustive-deps
+2025-08-16T01:21:23: 
+2025-08-16T01:21:23: src/pages/Patterns.tsx
+2025-08-16T01:21:23:   Line 27:6:  React Hook useEffect has a missing dependency: 'loadDesignPatterns'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+2025-08-16T01:21:23: 
+2025-08-16T01:21:23: src/pages/Research.tsx
+2025-08-16T01:21:23:   Line 26:6:  React Hook useEffect has a missing dependency: 'loadResearchPapers'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+2025-08-16T01:21:23:   Line 30:6:  React Hook useEffect has a missing dependency: 'applyFilters'. Either include it or remove the dependency array        react-hooks/exhaustive-deps
+2025-08-16T01:21:23: 
+2025-08-16T01:21:23: src/pages/Tokens.tsx
+2025-08-16T01:21:23:   Line 35:6:  React Hook useEffect has a missing dependency: 'applyFilters'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+2025-08-16T01:21:23: 
+2025-08-16T01:21:23: webpack compiled with 1 warning
+2025-08-16T01:21:23: No issues found.
+2025-08-16T01:21:33: The build failed because the process exited too early. This probably means the system ran out of memory or someone called `kill -9` on the process.
+2025-08-16T01:21:40: 
+2025-08-16T01:21:40: > webapp@0.1.0 start
+2025-08-16T01:21:40: > react-scripts start
+2025-08-16T01:21:40: 
+2025-08-16T01:21:42: (node:2141) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2025-08-16T01:21:42: (Use `node --trace-deprecation ...` to show where the warning was created)
+2025-08-16T01:21:42: (node:2141) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2025-08-16T01:21:43: Starting the development server...
+2025-08-16T01:21:43: 
+2025-08-16T01:21:50: Compiled with warnings.
+2025-08-16T01:21:50: 
+2025-08-16T01:21:50: [eslint] 
+2025-08-16T01:21:50: src/pages/Research.tsx
+2025-08-16T01:21:50:   Line 26:6:  React Hook useEffect has a missing dependency: 'loadResearchPapers'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+2025-08-16T01:21:50:   Line 30:6:  React Hook useEffect has a missing dependency: 'applyFilters'. Either include it or remove the dependency array        react-hooks/exhaustive-deps
+2025-08-16T01:21:50: 
+2025-08-16T01:21:50: Search for the keywords to learn more about each warning.
+2025-08-16T01:21:50: To ignore, add // eslint-disable-next-line to the line before.
+2025-08-16T01:21:50: 
+2025-08-16T01:21:50: WARNING in [eslint] 
+2025-08-16T01:21:50: src/pages/Research.tsx
+2025-08-16T01:21:50:   Line 26:6:  React Hook useEffect has a missing dependency: 'loadResearchPapers'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+2025-08-16T01:21:50:   Line 30:6:  React Hook useEffect has a missing dependency: 'applyFilters'. Either include it or remove the dependency array        react-hooks/exhaustive-deps
+2025-08-16T01:21:50: 
+2025-08-16T01:21:50: webpack compiled with 1 warning
+2025-08-16T01:21:50: No issues found.
