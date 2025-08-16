@@ -11,3 +11,42 @@
 2025-08-15T23:51:56:     13 | import { ResearchPaperEntity, ResearchPaper, ResearchCategory, FrameworkRelevance } from '../entities';
 2025-08-15T23:51:56:     14 |
 2025-08-15T23:51:56: 
+2025-08-15T23:58:18: (node:1646) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2025-08-15T23:58:18: (Use `node --trace-deprecation ...` to show where the warning was created)
+2025-08-15T23:58:18: (node:1646) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2025-08-15T23:58:25: ERROR in src/pages/Research.tsx:11:3
+2025-08-15T23:58:25: TS2305: Module '"@heroicons/react/24/outline"' has no exported member 'ExternalLinkIcon'.
+2025-08-15T23:58:25:      9 |   CalendarIcon,
+2025-08-15T23:58:25:     10 |   UserGroupIcon,
+2025-08-15T23:58:25:   > 11 |   ExternalLinkIcon
+2025-08-15T23:58:25:        |   ^^^^^^^^^^^^^^^^
+2025-08-15T23:58:25:     12 | } from '@heroicons/react/24/outline';
+2025-08-15T23:58:25:     13 | import { ResearchPaperEntity, ResearchPaper, ResearchCategory, FrameworkRelevance } from '../entities';
+2025-08-15T23:58:25:     14 |
+2025-08-15T23:58:25: 
+2025-08-16T01:18:44: (node:1980) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2025-08-16T01:18:44: (Use `node --trace-deprecation ...` to show where the warning was created)
+2025-08-16T01:18:44: (node:1980) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2025-08-16T01:18:58: ERROR in src/pages/Research.tsx:11:3
+2025-08-16T01:18:58: TS2305: Module '"@heroicons/react/24/outline"' has no exported member 'ExternalLinkIcon'.
+2025-08-16T01:18:58:      9 |   CalendarIcon,
+2025-08-16T01:18:58:     10 |   UserGroupIcon,
+2025-08-16T01:18:58:   > 11 |   ExternalLinkIcon
+2025-08-16T01:18:58:        |   ^^^^^^^^^^^^^^^^
+2025-08-16T01:18:58:     12 | } from '@heroicons/react/24/outline';
+2025-08-16T01:18:58:     13 | import { ResearchPaperEntity, ResearchPaper, ResearchCategory, FrameworkRelevance } from '../entities';
+2025-08-16T01:18:58:     14 |
+2025-08-16T01:18:58: 
+2025-08-16T01:19:15: ERROR in src/pages/Research.tsx:375:24
+2025-08-16T01:19:15: TS2304: Cannot find name 'ExternalLinkIcon'.
+2025-08-16T01:19:15:     373 |                     >
+2025-08-16T01:19:15:     374 |                       Read Paper
+2025-08-16T01:19:15:   > 375 |                       <ArrowTopRightOnSquareIcon className="w-4 h-4 ml-1" />
+2025-08-16T01:19:15:         |                        ^^^^^^^^^^^^^^^^
+2025-08-16T01:19:15:     376 |                     </a>
+2025-08-16T01:19:15:     377 |                   </div>
+2025-08-16T01:19:15:     378 |                 </div>
+2025-08-16T01:19:15: 
+2025-08-16T01:21:42: (node:2141) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2025-08-16T01:21:42: (Use `node --trace-deprecation ...` to show where the warning was created)
+2025-08-16T01:21:42: (node:2141) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.

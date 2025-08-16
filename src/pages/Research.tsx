@@ -8,7 +8,7 @@ import {
   DocumentTextIcon,
   CalendarIcon,
   UserGroupIcon,
-  ExternalLinkIcon
+  ArrowTopRightOnSquareIcon
 } from '@heroicons/react/24/outline';
 import { ResearchPaperEntity, ResearchPaper, ResearchCategory, FrameworkRelevance } from '../entities';
 
@@ -372,7 +372,7 @@ const Research: React.FC = () => {
                       className="flex items-center text-sm text-primary-600 hover:text-primary-700 font-medium transition-colors"
                     >
                       Read Paper
-                      <ExternalLinkIcon className="w-4 h-4 ml-1" />
+                      <ArrowTopRightOnSquareIcon className="w-4 h-4 ml-1" />
                     </a>
                   </div>
                 </div>
