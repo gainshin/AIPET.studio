@@ -36,9 +36,9 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
   ];
 
   const languages = [
-    { code: 'en', name: 'English', flag: '🇺🇸' },
-    { code: 'zh-TW', name: '繁體中文', flag: '🇹🇼' },
-    { code: 'fr', name: 'Français', flag: '🇫🇷' }
+    { code: 'en', name: 'English' },
+    { code: 'zh-TW', name: '繁體中文' },
+    { code: 'fr', name: 'Français' }
   ];
 
   const changeLanguage = (langCode: string) => {
@@ -96,7 +96,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                 <button className="flex items-center px-3 py-2 text-gray-600 hover:text-primary-600 transition-colors">
                   <GlobeAltIcon className="w-4 h-4 mr-1" />
                   <span className="hidden sm:inline text-sm">
-                    {languages.find(lang => lang.code === i18n.language)?.flag} 
+                    {languages.find(lang => lang.code === i18n.language)?.name} 
                   </span>
                 </button>
                 
@@ -110,7 +110,6 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                         i18n.language === lang.code ? 'text-primary-600 bg-primary-50' : 'text-gray-700'
                       }`}
                     >
-                      <span className="mr-2">{lang.flag}</span>
                       {lang.name}
                     </button>
                   ))}
