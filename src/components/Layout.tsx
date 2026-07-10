@@ -1,15 +1,8 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { 
-  HomeIcon,
+import {
   BookOpenIcon,
-  AcademicCapIcon,
-  CubeTransparentIcon,
-  MagnifyingGlassIcon,
-  DocumentTextIcon,
-  PresentationChartLineIcon,
-  Squares2X2Icon,
   Bars3Icon,
   XMarkIcon,
   GlobeAltIcon
@@ -25,14 +18,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const navigation = [
-    { name: t('navigation.dashboard'), href: '/', icon: HomeIcon, tooltip: 'Main dashboard and overview' },
     { name: t('navigation.theory'), href: '/theory', icon: BookOpenIcon, tooltip: 'AIPET framework theory' },
-    { name: t('navigation.exercises'), href: '/exercises', icon: AcademicCapIcon, tooltip: 'Practical exercises' },
-    { name: t('navigation.tokens'), href: '/tokens', icon: CubeTransparentIcon, tooltip: 'Design token management' },
-    { name: t('navigation.analyzer'), href: '/analyzer', icon: MagnifyingGlassIcon, tooltip: 'AI-powered token analyzer' },
-    { name: t('navigation.research'), href: '/research', icon: DocumentTextIcon, tooltip: 'Research library' },
-    { name: t('navigation.case_studies'), href: '/case-studies', icon: PresentationChartLineIcon, tooltip: 'Real-world case studies' },
-    { name: t('navigation.patterns'), href: '/patterns', icon: Squares2X2Icon, tooltip: 'AI UX design patterns' },
   ];
 
   const languages = [
@@ -64,7 +50,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
               {navigation.map((item) => {
                 const Icon = item.icon;
                 const isActive = location.pathname === item.href;
-                
+
                 return (
                   <div key={item.name} className="relative group">
                     <Link
@@ -78,7 +64,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                       <Icon className="w-4 h-4 mr-2" />
                       {item.name}
                     </Link>
-                    
+
                     {/* Tooltip */}
                     <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-3 py-1 bg-gray-900 text-white text-xs rounded-md opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none z-50">
                       {item.tooltip}
@@ -96,10 +82,10 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                 <button className="flex items-center px-3 py-2 text-gray-600 hover:text-primary-600 transition-colors">
                   <GlobeAltIcon className="w-4 h-4 mr-1" />
                   <span className="hidden sm:inline text-sm">
-                    {languages.find(lang => lang.code === i18n.language)?.name} 
+                    {languages.find(lang => lang.code === i18n.language)?.name}
                   </span>
                 </button>
-                
+
                 {/* Language Dropdown */}
                 <div className="absolute right-0 top-full mt-1 w-40 bg-white border border-gray-200 rounded-md shadow-lg opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none group-hover:pointer-events-auto z-50">
                   {languages.map((lang) => (
@@ -138,7 +124,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
               {navigation.map((item) => {
                 const Icon = item.icon;
                 const isActive = location.pathname === item.href;
-                
+
                 return (
                   <Link
                     key={item.name}
@@ -178,8 +164,9 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                 <span className="text-xl font-bold">AIPET Studio</span>
               </div>
               <p className="text-gray-300 text-sm leading-relaxed">
-                A comprehensive learning platform for designers to master Figma Design Tokens 
-                and understand the AIPET framework for AI UX design.
+                A three-column architecture tool for Agentic product designers: immutable raw
+                sources, an LLM Wiki as second brain, and dedicated UX agents orchestrated by
+                a human Curator.
               </p>
             </div>
 
@@ -188,9 +175,6 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
               <h3 className="text-sm font-semibold text-white mb-4">Learning Resources</h3>
               <ul className="space-y-2">
                 <li><Link to="/theory" className="text-gray-300 hover:text-white text-sm transition-colors">AIPET Framework Theory</Link></li>
-                <li><Link to="/research" className="text-gray-300 hover:text-white text-sm transition-colors">Academic Research</Link></li>
-                <li><Link to="/case-studies" className="text-gray-300 hover:text-white text-sm transition-colors">Industry Case Studies</Link></li>
-                <li><Link to="/patterns" className="text-gray-300 hover:text-white text-sm transition-colors">AI UX Pattern Library</Link></li>
               </ul>
             </div>
 
@@ -208,7 +192,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
 
           <div className="border-t border-gray-700 pt-8 mt-8">
             <p className="text-gray-400 text-sm text-center">
-              © 2024 AIPET Studio. Built for the design community to advance AI UX practices.
+              © 2026 AIPET Studio. Built for the design community to advance AI UX practices.
             </p>
           </div>
         </div>

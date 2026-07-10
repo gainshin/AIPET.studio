@@ -1,5 +1,5 @@
 {
-  "name": "webapp",
+  "name": "aipet-studio",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -16,7 +16,6 @@
     "@types/react-router-dom": "^5.3.3",
     "i18next": "^25.3.6",
     "lucide-react": "^0.539.0",
-    "pm2": "^6.0.8",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
     "react-i18next": "^15.6.1",

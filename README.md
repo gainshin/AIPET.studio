@@ -1,46 +1,20 @@
-# Getting Started with Create React App
+# AIPET.studio
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+三欄架構的工具實現：左欄 immutable 原始素材 → 中欄 LLM Wiki（第二大腦）→ 右欄四個專責 UX agent + Orchestrator（= 人類 Curator）。幫助 Agentic 產品設計/開發者在 POC 階段跑通「Wiki → Builder → Auditor → Synthesis → 寫回 Wiki」的完整閉環。
 
-## Available Scripts
+- 規劃書：[PLAN.md](PLAN.md)
+- 開發規則與當前任務：[CLAUDE.md](CLAUDE.md)
 
-In the project directory, you can run:
+## 開發
 
-### `npm start`
+```bash
+npm install
+npm start        # 開發伺服器 http://localhost:3000
+npm run build    # production build
+```
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+> 現階段（P0）仍為 Create React App 腳手架，CRA → Vite 遷移排在 P0-2。
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## 目前狀態
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+**P0-1 已完成**：repo 重整至 `main` branch，保留 i18n（zh-TW / en / fr）與 Theory 頁，移除 base44SDK 與其餘無關頁面。後續里程碑見 [CLAUDE.md](CLAUDE.md) 的 P0 清單。
