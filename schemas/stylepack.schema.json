@@ -1,0 +1,86 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://aipet.studio/schemas/stylepack.schema.json",
+  "title": "StylePack",
+  "description": "驗證 stylepacks/<pack>/DESIGN.md 的 frontmatter。DESIGN.md 本體是人類可讀的設計規格，frontmatter 是機器可執行的 token 層。",
+  "type": "object",
+  "required": ["name", "version", "status", "tokens"],
+  "additionalProperties": false,
+  "properties": {
+    "name": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$",
+      "description": "pack 識別名，kebab-case，需與資料夾名一致"
+    },
+    "title": { "type": "string", "description": "顯示名稱" },
+    "version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$"
+    },
+    "status": {
+      "type": "string",
+      "enum": ["draft", "needs-curation", "stable", "deprecated"],
+      "description": "needs-curation = 素材不完整（如反向抽取來源缺席），禁止作為 Auditor 判準"
+    },
+    "source": {
+      "type": "string",
+      "description": "來源出處（如 reverse-extracted from CTBC deck v7）"
+    },
+    "description": { "type": "string" },
+    "tokens": {
+      "type": "object",
+      "required": ["color", "typography"],
+      "additionalProperties": false,
+      "properties": {
+        "color": {
+          "type": "object",
+          "description": "pack 原生色票，key 為 pack 自有命名，value 為 CSS 色值",
+          "additionalProperties": { "type": "string" },
+          "minProperties": 1
+        },
+        "typography": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["fontFamily"],
+          "properties": {
+            "fontFamily": {
+              "type": "object",
+              "additionalProperties": { "type": "string" },
+              "minProperties": 1
+            },
+            "scale": {
+              "type": "object",
+              "description": "字級階，如 xs/sm/base/lg/xl…，value 為 CSS size 或 size/lineHeight",
+              "additionalProperties": { "type": "string" }
+            },
+            "weight": {
+              "type": "object",
+              "additionalProperties": { "type": ["string", "integer"] }
+            }
+          }
+        },
+        "spacing": {
+          "type": "object",
+          "additionalProperties": { "type": "string" }
+        },
+        "radius": {
+          "type": "object",
+          "additionalProperties": { "type": "string" }
+        },
+        "shadow": {
+          "type": "object",
+          "additionalProperties": { "type": "string" }
+        }
+      }
+    },
+    "voice": {
+      "type": "object",
+      "description": "voice & tone 關鍵詞，供 Copy Agent 與 Auditor 引用",
+      "additionalProperties": false,
+      "properties": {
+        "keywords": { "type": "array", "items": { "type": "string" } },
+        "avoid": { "type": "array", "items": { "type": "string" } }
+      }
+    }
+  }
+}

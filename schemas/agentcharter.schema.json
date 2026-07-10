@@ -1,0 +1,76 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://aipet.studio/schemas/agentcharter.schema.json",
+  "title": "AgentCharter",
+  "description": "驗證 wiki/schema/agents/*.charter.md 的 frontmatter。右欄固定五席：四個 AI worker + 人類 Orchestrator（憲法第 1、2 條）。charter 修訂 = 一筆 governance 類 log entry。",
+  "type": "object",
+  "required": ["name", "seat", "kind", "version", "status", "mission", "inputs", "outputs", "forbidden", "escalation", "kpi"],
+  "additionalProperties": false,
+  "properties": {
+    "name": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$",
+      "description": "與檔名一致（<name>.charter.md）"
+    },
+    "seat": {
+      "type": "string",
+      "enum": ["design", "research", "copy", "red-team", "orchestrator"],
+      "description": "五席之一；新增席位需 charter 證明 + 人類簽核"
+    },
+    "kind": {
+      "type": "string",
+      "enum": ["ai-worker", "human"],
+      "description": "orchestrator 必為 human——編排權在人，不是 AI"
+    },
+    "version": { "type": "string", "pattern": "^\\d+\\.\\d+\\.\\d+$" },
+    "status": {
+      "type": "string",
+      "enum": ["draft", "active", "suspended", "retired"]
+    },
+    "mission": {
+      "type": "string",
+      "minLength": 1,
+      "description": "一句話任務定位"
+    },
+    "inputs": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string" },
+      "description": "只能來自中欄 wiki 的路徑/查詢（憲法第 4 條：不直接讀 raw sources）"
+    },
+    "outputs": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string" },
+      "description": "產出形式；AI worker 的畫布輸出僅限 PatchOp"
+    },
+    "forbidden": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string" },
+      "description": "明文禁區；runtime 據此攔截越權 op"
+    },
+    "escalation": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string" },
+      "description": "何時停手上報 Curator"
+    },
+    "kpi": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string" },
+      "description": "定位漂移偵測的量測基準；週期 LINT 產報告、人做裁決"
+    }
+  },
+  "allOf": [
+    {
+      "if": { "properties": { "seat": { "const": "orchestrator" } } },
+      "then": { "properties": { "kind": { "const": "human" } } }
+    },
+    {
+      "if": { "properties": { "seat": { "enum": ["design", "research", "copy", "red-team"] } } },
+      "then": { "properties": { "kind": { "const": "ai-worker" } } }
+    }
+  ]
+}

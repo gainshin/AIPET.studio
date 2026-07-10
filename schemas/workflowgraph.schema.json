@@ -1,0 +1,77 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://aipet.studio/schemas/workflowgraph.schema.json",
+  "title": "WorkflowGraph",
+  "description": "三節拍辯證的工作流定義：Builder → Auditor（Red Team 必經）→ Synthesis（人類三選一）→ 寫回 wiki 閉環。一個 feature = 一個完整回合。",
+  "type": "object",
+  "required": ["id", "name", "version", "nodes", "edges"],
+  "additionalProperties": false,
+  "properties": {
+    "id": { "type": "string", "pattern": "^wf-[a-z0-9][a-z0-9-]*$" },
+    "name": { "type": "string" },
+    "version": { "type": "string", "pattern": "^\\d+\\.\\d+\\.\\d+$" },
+    "description": { "type": "string" },
+    "nodes": {
+      "type": "array",
+      "minItems": 3,
+      "items": {
+        "type": "object",
+        "required": ["id", "beat", "actor"],
+        "additionalProperties": false,
+        "properties": {
+          "id": { "type": "string", "pattern": "^n-[a-z0-9][a-z0-9-]*$" },
+          "beat": {
+            "type": "string",
+            "enum": ["builder", "auditor", "synthesis"],
+            "description": "所屬節拍；auditor 節拍必經 red-team-agent"
+          },
+          "actor": {
+            "type": "string",
+            "enum": ["design-agent", "research-agent", "copy-agent", "red-team-agent", "orchestrator-human"]
+          },
+          "inputs": {
+            "type": "array",
+            "items": { "type": "string" },
+            "description": "wiki 路徑或上游 node 產物"
+          },
+          "outputs": {
+            "type": "array",
+            "items": { "type": "string" },
+            "description": "如 candidates（PatchOp 批次）、audit 報告、decision + rationale"
+          }
+        }
+      }
+    },
+    "edges": {
+      "type": "array",
+      "minItems": 2,
+      "items": {
+        "type": "object",
+        "required": ["from", "to"],
+        "additionalProperties": false,
+        "properties": {
+          "from": { "type": "string" },
+          "to": { "type": "string" },
+          "condition": {
+            "type": "string",
+            "description": "轉移條件（如 audit 全數回填後才進 synthesis）"
+          }
+        }
+      }
+    },
+    "closure": {
+      "type": "object",
+      "description": "閉環要求：synthesis 的 decision + rationale 必須寫回 wiki",
+      "required": ["writeBack"],
+      "additionalProperties": false,
+      "properties": {
+        "writeBack": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "type": "string" },
+          "description": "寫回目標，如 wiki/decisions/、wiki/log.md、preferences.jsonl"
+        }
+      }
+    }
+  }
+}

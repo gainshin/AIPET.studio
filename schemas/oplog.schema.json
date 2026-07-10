@@ -1,0 +1,51 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://aipet.studio/schemas/oplog.schema.json",
+  "title": "OpLog",
+  "description": "Event-sourced 操作紀錄（JSON 真相源）。wiki/log.md 是它的人類可讀投影——同一資料源、兩種視圖。append-only：既有 entry 永不改寫。",
+  "type": "object",
+  "required": ["version", "entries"],
+  "additionalProperties": false,
+  "properties": {
+    "version": { "type": "string", "pattern": "^\\d+\\.\\d+$" },
+    "entries": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "ts", "actor", "kind", "summary"],
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^log-\\d{8}-[a-z0-9][a-z0-9-]*$",
+            "description": "log-YYYYMMDD-slug"
+          },
+          "ts": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "actor": {
+            "type": "string",
+            "enum": ["design-agent", "research-agent", "copy-agent", "red-team-agent", "orchestrator-human", "system"],
+            "description": "system = ingest 管線 / LINT 等自動程序"
+          },
+          "kind": {
+            "type": "string",
+            "enum": ["patchop", "audit", "decision", "ingest", "schema-change", "charter-revision", "lint-report", "system"],
+            "description": "decision = Synthesis 三選一結果；schema-change / charter-revision 屬 governance"
+          },
+          "summary": { "type": "string", "minLength": 1 },
+          "refs": {
+            "type": "array",
+            "items": { "type": "string" },
+            "description": "關聯的 wiki 頁 / PatchOp id / candidate id"
+          },
+          "supersedes": {
+            "type": "string",
+            "description": "被本條修正的舊 entry id（左欄 immutable：修正以新版本進 log，舊版留檔）"
+          }
+        }
+      }
+    }
+  }
+}

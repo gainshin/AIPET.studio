@@ -1,0 +1,155 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://aipet.studio/schemas/wikischema.schema.json",
+  "title": "WikiSchema",
+  "description": "第二大腦（LLM Wiki）的結構定義：index/log/curated/schema 四層 + 28 種 UX 文件歸位規則。驗證 wiki/wiki.config.json。中欄是唯一介面（憲法第 4 條）。",
+  "type": "object",
+  "required": ["version", "layers", "docTypes"],
+  "additionalProperties": false,
+  "properties": {
+    "version": { "type": "string", "pattern": "^\\d+\\.\\d+$" },
+    "layers": {
+      "type": "object",
+      "description": "四層結構；路徑相對於 wiki/",
+      "required": ["index", "log", "curated", "schema"],
+      "additionalProperties": false,
+      "properties": {
+        "index": {
+          "type": "object",
+          "required": ["path", "generated"],
+          "additionalProperties": false,
+          "properties": {
+            "path": { "const": "index.md" },
+            "generated": { "const": true, "description": "分類目錄由工具自動再生，不手改" }
+          }
+        },
+        "log": {
+          "type": "object",
+          "required": ["path", "appendOnly", "sourceOfTruth"],
+          "additionalProperties": false,
+          "properties": {
+            "path": { "const": "log.md" },
+            "appendOnly": { "const": true },
+            "sourceOfTruth": {
+              "type": "string",
+              "description": "對應的 OpLog JSON 路徑——同一資料源、兩種視圖"
+            }
+          }
+        },
+        "curated": {
+          "type": "object",
+          "required": ["folders"],
+          "additionalProperties": false,
+          "properties": {
+            "folders": {
+              "type": "array",
+              "minItems": 1,
+              "items": { "type": "string", "pattern": "^[a-z0-9-]+/$" },
+              "description": "策展主題頁資料夾（persona/、decisions/ …），Curator 手寫 + agent 草擬人審"
+            }
+          }
+        },
+        "schema": {
+          "type": "object",
+          "required": ["path"],
+          "additionalProperties": false,
+          "properties": {
+            "path": { "const": "schema/" },
+            "description": {
+              "type": "string",
+              "description": "槓桿層：檔名規範、lint 規則、voice & tone、agent charters。schema 變更本身寫入 log"
+            }
+          }
+        }
+      }
+    },
+    "naming": {
+      "type": "object",
+      "description": "檔名規範（schema 層的一部分）",
+      "additionalProperties": false,
+      "properties": {
+        "pattern": { "type": "string", "description": "如 ^[a-z0-9]+(-[a-z0-9]+)*\\.md$" },
+        "datePrefix": { "type": "boolean", "description": "時序性文件是否要求 YYYYMMDD- 前綴" }
+      }
+    },
+    "docTypes": {
+      "type": "array",
+      "description": "28 種 UX 文件的歸位規則：每種文件屬於哪一層、放進哪個資料夾",
+      "minItems": 28,
+      "maxItems": 28,
+      "items": {
+        "type": "object",
+        "required": ["id", "layer", "folder"],
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "enum": [
+              "prd",
+              "feature-list",
+              "module-list",
+              "page-list",
+              "journey-map",
+              "user-flow",
+              "sitemap",
+              "persona",
+              "empathy-map",
+              "jtbd",
+              "research-plan",
+              "interview-guide",
+              "interview-transcript",
+              "survey-report",
+              "usability-test-plan",
+              "usability-test-report",
+              "competitive-analysis",
+              "heuristic-evaluation",
+              "accessibility-audit",
+              "information-architecture",
+              "wireframe-note",
+              "prototype-note",
+              "design-token-spec",
+              "style-guide",
+              "component-spec",
+              "voice-and-tone",
+              "copy-deck",
+              "decision-record"
+            ]
+          },
+          "layer": {
+            "type": "string",
+            "enum": ["curated", "schema"],
+            "description": "多數歸 curated；design-token-spec / style-guide / voice-and-tone 等規格類歸 schema 層"
+          },
+          "folder": {
+            "type": "string",
+            "pattern": "^[a-z0-9-]+(/[a-z0-9-]+)*/$"
+          },
+          "titlePattern": { "type": "string", "description": "頁面標題慣例" },
+          "requiredSections": {
+            "type": "array",
+            "items": { "type": "string" },
+            "description": "該類文件的必備章節，LINT 據此檢查"
+          },
+          "sourceable": {
+            "type": "boolean",
+            "description": "是否常由左欄 raw source ingest 而來（true 者必附 ingest QA 報告）"
+          }
+        }
+      }
+    },
+    "crossRef": {
+      "type": "object",
+      "description": "cross-ref / backlinks 慣例——不維護就退化，維護成本必須自動化到接近零",
+      "additionalProperties": false,
+      "properties": {
+        "linkSyntax": { "type": "string", "enum": ["wikilink", "markdown"] },
+        "orphanPolicy": {
+          "type": "string",
+          "enum": ["warn", "block"],
+          "description": "孤兒頁（無 backlink）處理：進 Curator Console 待辦"
+        },
+        "brokenLinkPolicy": { "type": "string", "enum": ["warn", "block"] }
+      }
+    }
+  }
+}

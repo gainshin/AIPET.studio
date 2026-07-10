@@ -1,0 +1,60 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://aipet.studio/schemas/patchop.schema.json",
+  "title": "PatchOp",
+  "description": "Agent 對畫布的唯一合法輸出單位。Agent 只能發 PatchOp，不得整段重寫 HTML（憲法第 5 條）。",
+  "type": "object",
+  "required": ["id", "lane", "agent", "target", "op", "payload", "rationale"],
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^op-[a-z0-9][a-z0-9-]*$"
+    },
+    "lane": {
+      "type": "string",
+      "enum": ["typography", "color", "component", "layout", "content", "svg", "particle", "governance"],
+      "description": "七個工作 lane + governance（schema/charter 變更專用）"
+    },
+    "agent": {
+      "type": "string",
+      "enum": ["design-agent", "research-agent", "copy-agent", "red-team-agent", "orchestrator-human"],
+      "description": "發出此 op 的席位；governance lane 僅 orchestrator-human 可發"
+    },
+    "target": {
+      "type": "object",
+      "description": "以 data-* 標註定位，不用脆弱的 CSS 結構 selector",
+      "required": ["dataLayer"],
+      "additionalProperties": false,
+      "properties": {
+        "dataLayer": { "type": "string" },
+        "dataName": { "type": "string" },
+        "dataModule": { "type": "string" },
+        "index": { "type": "integer", "minimum": 0, "description": "同名多實例時的序號" }
+      }
+    },
+    "op": {
+      "type": "string",
+      "enum": ["set-token", "set-style", "set-attr", "replace-text", "insert-after", "insert-before", "remove", "move"],
+      "description": "動作類型；set-token 走 StylePack 語意 token，優先於 set-style"
+    },
+    "payload": {
+      "type": "object",
+      "description": "動作參數，結構依 op 而異（如 set-token: {token, value-ref}；replace-text: {text}）"
+    },
+    "rationale": {
+      "type": "string",
+      "minLength": 1,
+      "description": "為什麼做這個修改；Auditor 與 Synthesis 都會讀"
+    },
+    "refs": {
+      "type": "array",
+      "description": "引用的 wiki 頁面或規格條文路徑（如 wiki/schema/voice-and-tone.md#tone）",
+      "items": { "type": "string" }
+    },
+    "candidateId": {
+      "type": "string",
+      "description": "所屬 candidate 批次（Builder 節拍一次產 2–3 個 candidate）"
+    }
+  }
+}
