@@ -6,6 +6,7 @@ import { getToken } from '../core/stylepack';
 
 /**
  * Style 頁：把「當下套用的 StylePack」翻成人看得懂、agent 引得到的文件。
+ * 版型：兩欄式——左欄是區塊導言（桌面 sticky），右欄是內容；<lg 疊成單欄。
  * 資料來源：stylepacks/aipet-loyal-shadow/DESIGN.md frontmatter（單一真相源）
  *          + stylepacks/_bridge.map.json（語意 token 橋接）。
  */
@@ -115,6 +116,29 @@ const CSSVAR_MAP: Record<string, string> = {
   'space.section': '—',
 };
 
+/** 兩欄區塊：左欄導言（lg 起 sticky），右欄內容；窄版疊單欄 */
+const SectionRow: React.FC<{
+  name: string;
+  kicker: string;
+  title: React.ReactNode;
+  lede?: React.ReactNode;
+  children: React.ReactNode;
+}> = ({ name, kicker, title, lede, children }) => (
+  <section
+    className="grid grid-cols-1 lg:grid-cols-[300px_minmax(0,1fr)] gap-8 lg:gap-14 py-14 lg:py-20 border-t border-dotted border-line first:border-t-0"
+    data-layer="section"
+    data-name={name}
+    data-module="style"
+  >
+    <div className="lg:sticky lg:top-24 self-start">
+      <p className="font-mono text-xs uppercase tracking-kicker text-faint mb-4">{kicker}</p>
+      <h2 className="font-display text-3xl sm:text-4xl font-normal leading-tight">{title}</h2>
+      {lede && <p className="text-sm text-muted leading-relaxed mt-4">{lede}</p>}
+    </div>
+    <div className="min-w-0">{children}</div>
+  </section>
+);
+
 const StyleGuide: React.FC = () => {
   const meta = useMemo(() => parseStylePackMeta(designRaw), []);
   const packBridge = (bridge as { semanticTokens: string[]; packs: Record<string, Record<string, string>> })
@@ -132,15 +156,15 @@ const StyleGuide: React.FC = () => {
 
   return (
     <div className="min-h-screen" data-layer="page" data-name="style-guide" data-module="style">
-      {/* Intro */}
+      {/* Intro（滿版開場，之後全部兩欄） */}
       <section
-        className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-16"
+        className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 sm:pt-20 pb-10"
         data-layer="section" data-name="style-intro" data-module="style"
       >
-        <p className="font-mono text-xs uppercase tracking-kicker text-faint mb-6">
+        <p className="font-mono text-[10px] sm:text-xs uppercase tracking-kicker text-faint mb-6 break-words">
           Active StylePack · {meta.name} · v{meta.version} · {meta.status}
         </p>
-        <h1 className="font-display text-5xl sm:text-6xl font-normal leading-[1.05] tracking-tight max-w-4xl">
+        <h1 className="font-display text-4xl sm:text-6xl font-normal leading-[1.05] tracking-tight max-w-4xl">
           A <em>loyal shadow</em>, documented.
         </h1>
         <p className="text-muted max-w-2xl leading-relaxed mt-6">
@@ -148,25 +172,25 @@ const StyleGuide: React.FC = () => {
           色彩的角色、字型的分工、形狀的紀律。人類 Curator 用它核對畫面，
           agent 用最下方的語意 token 表引用規格條文。
         </p>
-        <p className="font-mono text-[11px] text-faint mt-6 tracking-wider">
+        <p className="font-mono text-[11px] text-faint mt-6 tracking-wider break-words">
           source of truth → {PACK_PATH}
         </p>
       </section>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
-        {/* Color palette */}
-        <section className="mb-24" data-layer="section" data-name="style-colors" data-module="style">
-          <p className="font-mono text-xs uppercase tracking-kicker text-faint mb-4">Color palette</p>
-          <h2 className="font-display text-4xl font-normal mb-12">
-            Thirteen names, <em>one lamp</em>
-          </h2>
-
+        {/* Colors */}
+        <SectionRow
+          name="style-colors"
+          kicker="Color palette"
+          title={<>Thirteen names, <em>one lamp</em></>}
+          lede="四組角色：底色疊層次、苔綠收邊線、奶油字三級、琥珀只做強調。每個色塊點擊即複製 hex。"
+        >
           {COLOR_GROUPS.map((group) => (
-            <div key={group.group} className="mb-10">
+            <div key={group.group} className="mb-8 last:mb-0">
               <h3 className="font-mono text-[11px] uppercase tracking-kicker text-faint mb-4">
                 {group.group}
               </h3>
-              <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {group.entries.map(({ token, role, usage }) => {
                   const value = getToken(meta, `color.${token}`) ?? '';
                   return (
@@ -178,12 +202,12 @@ const StyleGuide: React.FC = () => {
                       <button
                         onClick={() => copy(value)}
                         title={`copy ${value}`}
-                        className="w-14 h-14 rounded-md border border-line shrink-0 cursor-pointer"
+                        className="w-12 h-12 sm:w-14 sm:h-14 rounded-md border border-line shrink-0 cursor-pointer"
                         style={{ backgroundColor: value }}
                         aria-label={`copy ${token} ${value}`}
                       />
                       <div className="min-w-0">
-                        <p className="font-mono text-xs text-ink">
+                        <p className="font-mono text-xs text-ink break-words">
                           {token}
                           <button
                             onClick={() => copy(value)}
@@ -201,21 +225,16 @@ const StyleGuide: React.FC = () => {
               </div>
             </div>
           ))}
-        </section>
+        </SectionRow>
 
         {/* Typography */}
-        <section className="mb-24" data-layer="section" data-name="style-typography" data-module="style">
-          <p className="font-mono text-xs uppercase tracking-kicker text-faint mb-4">Typography</p>
-          <h2 className="font-display text-4xl font-normal mb-6">
-            Serif speaks, sans <em>listens</em>, mono keeps records
-          </h2>
-          <p className="text-muted max-w-3xl leading-relaxed mb-12">
-            三個字族各司其職：襯線只負責大聲說話（xl 以上、weight 400、負字距），
-            無襯線以 300 光體承載閱讀，mono 管標籤與數據。層次來自字級與字距，
-            從不來自加粗——這是本 pack 與 generic 深色系統最大的分野。
-          </p>
-
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 mb-12">
+        <SectionRow
+          name="style-typography"
+          kicker="Typography"
+          title={<>Serif speaks, sans <em>listens</em>, mono keeps records</>}
+          lede="三字族各司其職：襯線只在 xl 以上大聲說話（weight 400、負字距），無襯線以 300 光體承載閱讀，mono 管標籤與數據。層次來自字級與字距，從不來自加粗。"
+        >
+          <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4 mb-8">
             {(['heading', 'body', 'mono'] as const).map((slot) => {
               const stack = meta.tokens.typography.fontFamily[slot] ?? '';
               const primary = stack.split(',')[0].replace(/'/g, '').trim();
@@ -224,11 +243,11 @@ const StyleGuide: React.FC = () => {
                 : slot === 'body' ? '300（正文）· 400（強調）'
                 : '500 · 600';
               return (
-                <div key={slot} className="bg-surface border border-line rounded-portrait p-6"
+                <div key={slot} className="bg-surface border border-line rounded-portrait p-5 min-w-0"
                   data-layer="card" data-name={`font-${slot}`} data-module="style">
                   <p className="font-mono text-[10px] uppercase tracking-kicker text-faint mb-3">{slot}</p>
                   <p
-                    className="text-3xl text-ink mb-3"
+                    className="text-2xl sm:text-3xl text-ink mb-3 break-words"
                     style={{ fontFamily: stack, fontWeight: slot === 'body' ? 300 : 400 }}
                   >
                     {primary}
@@ -240,7 +259,7 @@ const StyleGuide: React.FC = () => {
             })}
           </div>
 
-          <div className="bg-surface border border-line rounded-card p-6 sm:p-8"
+          <div className="bg-surface border border-line rounded-card p-5 sm:p-8"
             data-layer="card" data-name="type-scale" data-module="style">
             <h3 className="font-mono text-[11px] uppercase tracking-kicker text-faint mb-6">Type scale</h3>
             {scaleEntries.map(([step, spec]) => {
@@ -249,13 +268,15 @@ const StyleGuide: React.FC = () => {
               const isDisplay = ['xl', 'xxl', 'hero'].includes(step);
               return (
                 <div key={step}
-                  className="grid grid-cols-[72px_110px_1fr] gap-4 items-baseline py-3 border-b border-dotted border-line last:border-b-0">
-                  <span className="font-mono text-[11px] text-accent">{step}</span>
-                  <span className="font-mono text-[11px] text-faint">{px} · lh {lh}</span>
+                  className="py-3 border-b border-dotted border-line last:border-b-0 sm:grid sm:grid-cols-[64px_110px_minmax(0,1fr)] sm:gap-4 sm:items-baseline">
+                  <div className="flex items-baseline gap-3 sm:contents">
+                    <span className="font-mono text-[11px] text-accent">{step}</span>
+                    <span className="font-mono text-[11px] text-faint">{px} · lh {lh}</span>
+                  </div>
                   <span
-                    className="text-ink truncate"
+                    className="block text-ink truncate mt-1 sm:mt-0"
                     style={{
-                      fontSize: size.trim(),
+                      fontSize: `min(${size.trim()}, 11vw)`,
                       lineHeight: Number(lh),
                       fontFamily: isDisplay ? 'var(--font-display)' : 'var(--font-body)',
                       fontWeight: isDisplay ? 400 : 300,
@@ -268,37 +289,37 @@ const StyleGuide: React.FC = () => {
               );
             })}
           </div>
-        </section>
+        </SectionRow>
 
         {/* Spacing & shape */}
-        <section className="mb-24" data-layer="section" data-name="style-shape" data-module="style">
-          <p className="font-mono text-xs uppercase tracking-kicker text-faint mb-4">Spacing &amp; shape</p>
-          <h2 className="font-display text-4xl font-normal mb-12">
-            Lines instead of <em>shadows</em>
-          </h2>
-
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
-            <div className="bg-surface border border-line rounded-portrait p-6"
+        <SectionRow
+          name="style-shape"
+          kicker="Spacing &amp; shape"
+          title={<>Lines instead of <em>shadows</em></>}
+          lede="層次靠 1px 邊線與底色半階差，不靠陰影堆疊；圓角三級 + pill，資料列一律 dotted。"
+        >
+          <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4">
+            <div className="bg-surface border border-line rounded-portrait p-5"
               data-layer="card" data-name="spacing-table" data-module="style">
               <h3 className="font-mono text-[11px] uppercase tracking-kicker text-faint mb-4">Spacing</h3>
               {Object.entries(meta.tokens.spacing ?? {}).map(([k, v]) => (
-                <div key={k} className="flex items-center justify-between py-2.5 border-b border-dotted border-line last:border-b-0">
+                <div key={k} className="grid grid-cols-[40px_56px_1fr] items-center gap-2 py-2.5 border-b border-dotted border-line last:border-b-0">
                   <span className="font-mono text-xs text-ink">{k}</span>
                   <span className="font-mono text-[11px] text-faint">{v}</span>
-                  <span className="bg-sage/40 h-1 rounded-sm" style={{ width: v }} />
+                  <span className="bg-sage/40 h-1 rounded-sm max-w-full" style={{ width: v }} />
                 </div>
               ))}
             </div>
 
-            <div className="bg-surface border border-line rounded-portrait p-6"
+            <div className="bg-surface border border-line rounded-portrait p-5"
               data-layer="card" data-name="radius-table" data-module="style">
               <h3 className="font-mono text-[11px] uppercase tracking-kicker text-faint mb-4">Border radius</h3>
               {Object.entries(meta.tokens.radius ?? {}).map(([k, v]) => (
-                <div key={k} className="flex items-center justify-between py-2.5 border-b border-dotted border-line last:border-b-0">
+                <div key={k} className="flex items-center justify-between gap-2 py-2.5 border-b border-dotted border-line last:border-b-0">
                   <span className="font-mono text-xs text-ink">{k}</span>
                   <span className="font-mono text-[11px] text-faint">{v}</span>
                   <span
-                    className="w-10 h-6 border border-line-strong bg-raised"
+                    className="w-10 h-6 border border-line-strong bg-raised shrink-0"
                     style={{ borderRadius: k === 'pill' ? '999px' : v }}
                   />
                 </div>
@@ -308,7 +329,7 @@ const StyleGuide: React.FC = () => {
               </p>
             </div>
 
-            <div className="bg-surface border border-line rounded-portrait p-6"
+            <div className="bg-surface border border-line rounded-portrait p-5 sm:col-span-2 xl:col-span-1"
               data-layer="card" data-name="shadow-table" data-module="style">
               <h3 className="font-mono text-[11px] uppercase tracking-kicker text-faint mb-4">Shadow</h3>
               {Object.entries(meta.tokens.shadow ?? {}).map(([k, v]) => (
@@ -318,21 +339,21 @@ const StyleGuide: React.FC = () => {
                 </div>
               ))}
               <p className="text-xs text-muted leading-relaxed mt-4">
-                層次靠邊線與底色半階差；shadow 只有 overlay 一種正當用途。
+                shadow 只有 overlay 一種正當用途。
               </p>
             </div>
           </div>
-        </section>
+        </SectionRow>
 
         {/* Guidelines */}
-        <section className="mb-24" data-layer="section" data-name="style-guidelines" data-module="style">
-          <p className="font-mono text-xs uppercase tracking-kicker text-faint mb-4">Guidelines</p>
-          <h2 className="font-display text-4xl font-normal mb-12">
-            The discipline that <em>keeps it recognizable</em>
-          </h2>
-
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-            <div className="bg-surface border border-line rounded-card p-7"
+        <SectionRow
+          name="style-guidelines"
+          kicker="Guidelines"
+          title={<>The discipline that <em>keeps it recognizable</em></>}
+          lede="七條該做、七條不該做——識別度來自紀律，不來自裝飾。"
+        >
+          <div className="grid grid-cols-1 xl:grid-cols-2 gap-6">
+            <div className="bg-surface border border-line rounded-card p-6 sm:p-7"
               data-layer="card" data-name="guidelines-do" data-module="style">
               <h3 className="font-mono text-[11px] uppercase tracking-kicker text-sage mb-5">Do</h3>
               <ul>
@@ -345,7 +366,7 @@ const StyleGuide: React.FC = () => {
               </ul>
             </div>
 
-            <div className="bg-surface border border-line rounded-card p-7"
+            <div className="bg-surface border border-line rounded-card p-6 sm:p-7"
               data-layer="card" data-name="guidelines-dont" data-module="style">
               <h3 className="font-mono text-[11px] uppercase tracking-kicker text-rust mb-5">Don&apos;t</h3>
               <ul>
@@ -358,25 +379,26 @@ const StyleGuide: React.FC = () => {
               </ul>
             </div>
           </div>
-        </section>
+        </SectionRow>
 
         {/* Agent reference */}
-        <section data-layer="section" data-name="style-agent-reference" data-module="style">
-          <p className="font-mono text-xs uppercase tracking-kicker text-faint mb-4">Agent reference</p>
-          <h2 className="font-display text-4xl font-normal mb-6">
-            How agents <em>cite this style</em>
-          </h2>
-          <p className="text-muted max-w-3xl leading-relaxed mb-8">
-            Agent 發 PatchOp 時只講語意 token（左欄），橋接表把它翻成本 pack 的原生
-            token；<code className="font-mono text-xs text-accent">refs</code> 欄位引用
-            <code className="font-mono text-xs text-accent"> {PACK_PATH}</code> 的條文。
-            換膚 = 換 pack，PatchOp 與元件 class 一字不動。
-          </p>
-
+        <SectionRow
+          name="style-agent-reference"
+          kicker="Agent reference"
+          title={<>How agents <em>cite this style</em></>}
+          lede={
+            <>
+              Agent 發 PatchOp 時只講語意 token，橋接表翻成本 pack 的原生 token；
+              <code className="font-mono text-xs text-accent">refs</code> 欄位引用
+              <code className="font-mono text-xs text-accent"> {PACK_PATH}</code> 的條文。
+              換膚 = 換 pack，PatchOp 與元件 class 一字不動。窄螢幕下表格可左右捲動。
+            </>
+          }
+        >
           <div className="bg-surface border border-line rounded-card p-4 sm:p-6 overflow-x-auto"
             data-layer="card" data-name="semantic-token-table" data-module="style">
-            <div className="min-w-[760px]">
-              <div className="grid grid-cols-[150px_190px_1fr_140px_170px] gap-3 py-2 font-mono text-[10px] uppercase tracking-kicker text-faint">
+            <div className="min-w-[720px]">
+              <div className="grid grid-cols-[140px_180px_1fr_130px_160px] gap-3 py-2 font-mono text-[10px] uppercase tracking-kicker text-faint">
                 <span>Semantic token</span>
                 <span>Pack token</span>
                 <span>Value</span>
@@ -388,7 +410,7 @@ const StyleGuide: React.FC = () => {
                 const isColor = semantic.startsWith('color.');
                 return (
                   <div key={semantic}
-                    className="grid grid-cols-[150px_190px_1fr_140px_170px] gap-3 items-center py-2.5 border-t border-dotted border-line">
+                    className="grid grid-cols-[140px_180px_1fr_130px_160px] gap-3 items-center py-2.5 border-t border-dotted border-line">
                     <span className="font-mono text-xs text-accent">{semantic}</span>
                     <span className="font-mono text-xs text-ink">{packPath}</span>
                     <span className="flex items-center gap-2 min-w-0">
@@ -411,11 +433,11 @@ const StyleGuide: React.FC = () => {
             </div>
           </div>
 
-          <p className="font-mono text-[11px] text-faint mt-6 tracking-wider leading-relaxed">
+          <p className="font-mono text-[11px] text-faint mt-6 tracking-wider leading-relaxed break-words">
             PatchOp 範例 → {'{'} op: "set-token", payload: {'{'} token: "color.accent" {'}'},
             refs: ["{PACK_PATH}#用色規則"] {'}'}
           </p>
-        </section>
+        </SectionRow>
       </div>
     </div>
   );
