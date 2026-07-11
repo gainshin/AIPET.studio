@@ -1,5 +1,6 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
+import ArchitectureFigure from '../components/figures/ArchitectureFigure';
 import {
   UserIcon,
   LightBulbIcon,
@@ -203,6 +204,25 @@ const Theory: React.FC = () => {
                 </ul>
               </article>
             ))}
+          </div>
+        </section>
+
+        {/* Three-column architecture */}
+        <section className="mb-24" data-layer="section" data-name="architecture" data-module="theory">
+          <p className="font-mono text-xs uppercase tracking-kicker text-faint mb-4">
+            Architecture · Wiki-as-Interface
+          </p>
+          <h2 className="font-display text-4xl font-normal mb-4">
+            The wiki is the <em>only interface</em>
+          </h2>
+          <p className="text-muted max-w-2xl leading-relaxed mb-10">
+            左欄 immutable 原始素材經一次性 ingest 進中欄 LLM Wiki；右欄的 agents
+            不直接讀 raw sources、不互相直接對話——一切經 wiki query。編排權在第五席：
+            人類 Curator 用 schema 層寫作做策展，改 schema 比改每個頁面有效。
+          </p>
+          <div className="bg-surface border border-line rounded-card p-5 sm:p-8"
+            data-layer="card" data-name="architecture-figure" data-module="theory">
+            <ArchitectureFigure />
           </div>
         </section>
 

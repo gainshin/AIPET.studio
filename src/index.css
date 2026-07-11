@@ -25,6 +25,18 @@
   --c-rust: #D8744F;          /* alert               rust-400   */
   --c-fern: #4A7C59;          /* link underline      fern-600   */
 
+  /* chart series（圖表專用色階，經 validate_palette 驗證） */
+  --c-series-amber: #C96F1E;
+  --c-series-sage: #3AA254;
+  --c-series-gold: #9E962A;
+  --c-series-rust: #CF6A45;
+  /* sequential ramp（有序強度，amber 淺→深，亮度單調遞減） */
+  --c-ramp-1: #D9A05F;
+  --c-ramp-2: #CC8B3E;
+  --c-ramp-3: #BC762A;
+  --c-ramp-4: #A5621D;
+  --c-ramp-5: #8C4F14;
+
   --font-display: 'EB Garamond', 'Noto Serif TC', Georgia, serif;
   --font-body: 'Inter', 'Noto Sans TC', system-ui, -apple-system, sans-serif;
   --font-mono: 'JetBrains Mono', ui-monospace, 'SF Mono', monospace;

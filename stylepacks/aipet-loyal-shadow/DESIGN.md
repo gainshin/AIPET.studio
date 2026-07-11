@@ -24,6 +24,11 @@ tokens:
     series-sage: "#3AA254"
     series-gold: "#9E962A"
     series-rust: "#CF6A45"
+    ramp-amber-1: "#D9A05F"
+    ramp-amber-2: "#CC8B3E"
+    ramp-amber-3: "#BC762A"
+    ramp-amber-4: "#A5621D"
+    ramp-amber-5: "#8C4F14"
   typography:
     fontFamily:
       heading: "'EB Garamond', 'Noto Serif TC', Georgia, serif"
@@ -115,6 +120,36 @@ voice:
   堆疊段與相鄰 bar 之間 2px 底色縫。
 - 圖表文字永遠用文字色（cream/olive），不用 series 色；系列識別靠色塊 + 直標。
 - 禁漸層、禁陰影；SVG 節點必帶 `data-layer` 標註（svg lane，憲法第 8 條）。
+
+### Sequential ramp（有序強度）
+
+- `ramp-amber-1 → 5`：單色相 amber 淺→深五步，亮度單調遞減（已數值驗證），
+  用於 L1–L5 這類有序強度，**絕不用於類別識別**。
+- ramp cell 上的文字：1–2 步用 `forest-950` 深字，3–5 步用 `cream-100`。
+
+### Timeline（甘特）規格
+
+- 結構：phase 分組列（display 襯線 + mono 註）→ activity 列（中文名 + mono 英文標）；
+  sprint 欄 dotted 縱格線；phase 之間 1px 實線分隔。
+- bar：高 12px、圓角 3px、跨 sprint 起訖；貫穿全程的 ongoing 項改 8px 高 + 55% 透明。
+- 分類維度（如 AI tier）配色講語意：A = `series-sage`（wiki 原生、agent 可寫）、
+  B = `series-gold`（混合形式）、C = `moss-500` 中性（系統邊界外的資產）。
+  每列右側必帶 tier 徽章直標（CVD 次要編碼）。
+
+### Diagram（架構圖）規格
+
+- 節點框：`forest-900` 底 + `moss-700` 1px 邊 + 6px 圓角；框內 = 中文標題
+  （cream）+ mono 小標（olive）。群組容器同語彙、只加大留白。
+- 箭頭語彙固定：**dotted = ingest（單向、不可逆）**、**solid = query（雙向介面）**；
+  線色 `moss-500`，箭頭小三角同色。
+- 人類席位（Orchestrator）用 `amber-400` 邊框強調——全圖唯一的 amber 框。
+- 退化帶（cross-ref strip）用 dashed 邊框表達「不維護就散」。
+
+### Level table（層級表）規格
+
+- 層級 cell 用 sequential ramp 依序上色；視圖列（MV/PV 類）用中性 `forest-800`。
+- 欄序固定：層級 → 概念名（en + zh）→ 工作流對應（含 `code` 路徑引用）。
+- 表格用 HTML（文字可選取），窄版在容器內橫捲，頁面本體不溢出。
 
 ## 禁區
 
