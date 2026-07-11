@@ -20,6 +20,10 @@ tokens:
     sage-400: "#7DDC8C"
     rust-400: "#D8744F"
     fern-600: "#4A7C59"
+    series-amber: "#C96F1E"
+    series-sage: "#3AA254"
+    series-gold: "#9E962A"
+    series-rust: "#CF6A45"
   typography:
     fontFamily:
       heading: "'EB Garamond', 'Noto Serif TC', Georgia, serif"
@@ -94,6 +98,23 @@ voice:
 - 資料列用 1px dotted `moss-700` 分隔，不用實線表格。
 - 環形 monogram：細 1px `amber-400` @ 45% 透明度的正圓，內置 display 大字——
   這是品牌簽名元素，一頁最多出現一組（如 AIPET 五柱各一字）。
+
+## SVG 圖表規則
+
+- **series 色階是圖表專用**（UI accent 太亮、彩度分佈不符資料標記要求）：
+  固定順序 `series-amber → series-sage → series-gold → series-rust`，
+  依實體指派、永不循環；超過 4 個系列摺進「Other」或拆小倍數圖。
+- 色盤已通過六項檢查（validate_palette，dark mode，2026-07-11）：
+  亮度帶 L 0.48–0.67、彩度地板、對底色對比 ≥3:1；CVD 最差鄰對 ΔE 11.1
+  （8–12 地帶）→ **直接標值與 2px 底色縫是強制的次要編碼，不是裝飾**。
+  改任何 series 色都必須重跑驗證。
+- 單一量值的長條圖用單色（`series-sage`）；`series-amber` 只做選擇性強調。
+- 一張圖一個軸，禁止雙軸；兩個不同尺度的量 = 兩張圖。
+- 網格 1px dotted `moss-700`、軸標 mono `olive-500`、數值 mono tabular-nums。
+- 標記規格：bar 資料端 4px 圓角（基線端直角）、折線 2px、資料點直徑 ≥8px、
+  堆疊段與相鄰 bar 之間 2px 底色縫。
+- 圖表文字永遠用文字色（cream/olive），不用 series 色；系列識別靠色塊 + 直標。
+- 禁漸層、禁陰影；SVG 節點必帶 `data-layer` 標註（svg lane，憲法第 8 條）。
 
 ## 禁區
 

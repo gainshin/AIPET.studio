@@ -45,6 +45,15 @@ const COLOR_GROUPS: { group: string; entries: ColorEntry[] }[] = [
     ],
   },
   {
+    group: 'Chart series',
+    entries: [
+      { token: 'series-amber', role: 'Series 1', usage: '圖表專用色階第一位；也作單色圖的選擇性強調' },
+      { token: 'series-sage', role: 'Series 2', usage: '第二系列；單一量值長條圖的預設色' },
+      { token: 'series-gold', role: 'Series 3', usage: '第三系列；金橄欖，與 rust 的 CVD 分離已驗證' },
+      { token: 'series-rust', role: 'Series 4', usage: '第四系列；超過四個系列摺進 Other' },
+    ],
+  },
+  {
     group: 'Accents',
     entries: [
       { token: 'amber-400', role: 'Primary accent', usage: '唯一強調色：標題 em、主要 CTA、active 態；黑暗中的一盞燈，禁止大面積鋪色' },
@@ -153,6 +162,18 @@ const StyleGuide: React.FC = () => {
   };
 
   const scaleEntries = Object.entries(meta.tokens.typography.scale ?? {});
+
+  // 圖表 series 與輔助色——一律從 DESIGN.md frontmatter 解值，不硬編碼
+  const chart = {
+    amber: getToken(meta, 'color.series-amber') ?? '',
+    sage: getToken(meta, 'color.series-sage') ?? '',
+    gold: getToken(meta, 'color.series-gold') ?? '',
+    rust: getToken(meta, 'color.series-rust') ?? '',
+    grid: getToken(meta, 'color.moss-700') ?? '',
+    axis: getToken(meta, 'color.olive-500') ?? '',
+    ink: getToken(meta, 'color.cream-100') ?? '',
+    muted: getToken(meta, 'color.cream-300') ?? '',
+  };
 
   return (
     <div className="min-h-screen" data-layer="page" data-name="style-guide" data-module="style">
@@ -341,6 +362,206 @@ const StyleGuide: React.FC = () => {
               <p className="text-xs text-muted leading-relaxed mt-4">
                 shadow 只有 overlay 一種正當用途。
               </p>
+            </div>
+          </div>
+        </SectionRow>
+
+        {/* SVG charts */}
+        <SectionRow
+          name="style-charts"
+          kicker="SVG charts"
+          title={<>Data wears <em>work clothes</em></>}
+          lede={
+            <>
+              圖表用專屬 series 色階（UI accent 不下場）。色盤經六項檢查驗證
+              （dark mode，2026-07-11）；CVD 最差鄰對 ΔE 11.1 屬 8–12 地帶——
+              所以直接標值與 2px 底色縫是強制編碼，不是裝飾。窄螢幕下圖表可左右捲動。
+            </>
+          }
+        >
+          <div className="space-y-4">
+            {/* Sample 1: single-measure bars */}
+            <div className="bg-surface border border-line rounded-card p-5 sm:p-6"
+              data-layer="card" data-name="chart-bars" data-module="style">
+              <p className="font-mono text-[11px] uppercase tracking-kicker text-faint mb-1">
+                Bar · single measure
+              </p>
+              <p className="text-xs text-muted mb-4">
+                單一量值 = 單色（series-sage），數值直標於資料端；範例資料：一回合的 PatchOps 分佈
+              </p>
+              <div className="overflow-x-auto">
+                <svg viewBox="0 0 560 178" width="100%" style={{ minWidth: 480 }} role="img"
+                  aria-label="PatchOps per lane, sample round"
+                  data-layer="svg" data-name="chart-patchops-by-lane" data-module="style">
+                  {[0, 3, 6, 9].map((v) => (
+                    <g key={v}>
+                      <line x1={110 + (v / 9) * 340} y1={6} x2={110 + (v / 9) * 340} y2={152}
+                        stroke={chart.grid} strokeWidth="1" strokeDasharray="1 3" />
+                      <text x={110 + (v / 9) * 340} y={168} textAnchor="middle"
+                        fontFamily="var(--font-mono)" fontSize="10" fill={chart.axis}>{v}</text>
+                    </g>
+                  ))}
+                  {[
+                    ['typography', 6], ['color', 9], ['component', 4], ['layout', 7], ['content', 5],
+                  ].map(([lane, v], i) => {
+                    const w = (Number(v) / 9) * 340;
+                    const y = 10 + i * 28;
+                    return (
+                      <g key={String(lane)}>
+                        <title>{`${lane} · ${v} ops`}</title>
+                        <text x={100} y={y + 12} textAnchor="end"
+                          fontFamily="var(--font-mono)" fontSize="11" fill={chart.axis}>{lane}</text>
+                        <path
+                          d={`M110 ${y} H ${110 + w - 4} a4 4 0 0 1 4 4 v 8 a4 4 0 0 1 -4 4 H 110 Z`}
+                          fill={chart.sage}
+                        />
+                        <text x={110 + w + 8} y={y + 12}
+                          fontFamily="var(--font-mono)" fontSize="11" fill={chart.ink}
+                          style={{ fontVariantNumeric: 'tabular-nums' }}>{v}</text>
+                      </g>
+                    );
+                  })}
+                </svg>
+              </div>
+            </div>
+
+            {/* Sample 2: two-series line */}
+            <div className="bg-surface border border-line rounded-card p-5 sm:p-6"
+              data-layer="card" data-name="chart-line" data-module="style">
+              <p className="font-mono text-[11px] uppercase tracking-kicker text-faint mb-1">
+                Line · two series
+              </p>
+              <p className="text-xs text-muted mb-3">
+                兩系列依固定順序取色（amber → sage），2px 線、8px 點 + 2px 底色環、線尾直標；範例資料：audit 一次通過率
+              </p>
+              <div className="flex items-center gap-5 mb-2">
+                {[['Design', chart.amber], ['Copy', chart.sage]].map(([name, c]) => (
+                  <span key={String(name)} className="flex items-center gap-2 font-mono text-[11px] text-muted">
+                    <span className="w-3 h-3 rounded-sm shrink-0" style={{ backgroundColor: String(c) }} />
+                    {name}
+                  </span>
+                ))}
+              </div>
+              <div className="overflow-x-auto">
+                <svg viewBox="0 0 560 200" width="100%" style={{ minWidth: 480 }} role="img"
+                  aria-label="Audit first-pass rate across six rounds, Design vs Copy"
+                  data-layer="svg" data-name="chart-audit-pass-rate" data-module="style">
+                  {[40, 60, 80].map((v) => {
+                    const y = 12 + ((90 - v) / 50) * 150;
+                    return (
+                      <g key={v}>
+                        <line x1={34} y1={y} x2={464} y2={y}
+                          stroke={chart.grid} strokeWidth="1" strokeDasharray="1 3" />
+                        <text x={28} y={y + 3} textAnchor="end"
+                          fontFamily="var(--font-mono)" fontSize="10" fill={chart.axis}>{v}</text>
+                      </g>
+                    );
+                  })}
+                  {[0, 1, 2, 3, 4, 5].map((i) => (
+                    <text key={i} x={34 + i * 86} y={192} textAnchor="middle"
+                      fontFamily="var(--font-mono)" fontSize="10" fill={chart.axis}>R{i + 1}</text>
+                  ))}
+                  {[
+                    { name: 'Design', color: chart.amber, data: [55, 62, 58, 71, 78, 84] },
+                    { name: 'Copy', color: chart.sage, data: [48, 52, 63, 66, 72, 75] },
+                  ].map((s) => {
+                    const pts = s.data.map((v, i) => [34 + i * 86, 12 + ((90 - v) / 50) * 150]);
+                    return (
+                      <g key={s.name}>
+                        <polyline points={pts.map((p) => p.join(',')).join(' ')}
+                          fill="none" stroke={s.color} strokeWidth="2" />
+                        {pts.map(([x, y], i) => (
+                          <circle key={i} cx={x} cy={y} r="4" fill={s.color}
+                            stroke="var(--c-surface)" strokeWidth="2">
+                            <title>{`R${i + 1} · ${s.name} ${s.data[i]}%`}</title>
+                          </circle>
+                        ))}
+                        <text x={pts[5][0] + 12} y={pts[5][1] + 4}
+                          fontFamily="var(--font-mono)" fontSize="11" fill={chart.muted}
+                          style={{ fontVariantNumeric: 'tabular-nums' }}>
+                          {s.name} {s.data[5]}%
+                        </text>
+                      </g>
+                    );
+                  })}
+                </svg>
+              </div>
+            </div>
+
+            {/* Sample 3: stacked proportion */}
+            <div className="bg-surface border border-line rounded-card p-5 sm:p-6"
+              data-layer="card" data-name="chart-stacked" data-module="style">
+              <p className="font-mono text-[11px] uppercase tracking-kicker text-faint mb-1">
+                Stacked · proportion
+              </p>
+              <p className="text-xs text-muted mb-4">
+                段與段之間 2px 底色縫；範例資料：Synthesis 三選一的分佈
+              </p>
+              <div className="overflow-x-auto">
+                <svg viewBox="0 0 560 32" width="100%" style={{ minWidth: 480 }} role="img"
+                  aria-label="Synthesis decision distribution"
+                  data-layer="svg" data-name="chart-synthesis-decisions" data-module="style">
+                  {(() => {
+                    const data: [string, number, string][] = [
+                      ['採 A', 46, chart.amber], ['採 B', 32, chart.sage], ['改 schema', 22, chart.gold],
+                    ];
+                    const gap = 2;
+                    const total = 560 - gap * (data.length - 1);
+                    let x = 0;
+                    return data.map(([label, v, c], i) => {
+                      const w = (v / 100) * total;
+                      const x0 = x;
+                      x += w + gap;
+                      const first = i === 0;
+                      const last = i === data.length - 1;
+                      const d = `M ${x0 + (first ? 4 : 0)} 4
+                        H ${x0 + w - (last ? 4 : 0)}
+                        ${last ? 'a4 4 0 0 1 4 4' : ''} V ${last ? 24 : 28} ${last ? 'a4 4 0 0 1 -4 4' : ''}
+                        H ${x0 + (first ? 4 : 0)}
+                        ${first ? 'a4 4 0 0 1 -4 -4' : ''} V ${first ? 8 : 4} ${first ? 'a4 4 0 0 1 4 -4' : ''} Z`;
+                      return (
+                        <g key={label}>
+                          <title>{`${label} · ${v}%`}</title>
+                          <path d={d} fill={String(c)} />
+                          <text x={x0 + w / 2} y={20} textAnchor="middle"
+                            fontFamily="var(--font-mono)" fontSize="11" fill="var(--c-bg)"
+                            style={{ fontVariantNumeric: 'tabular-nums' }}>{v}%</text>
+                        </g>
+                      );
+                    });
+                  })()}
+                </svg>
+              </div>
+              <div className="flex flex-wrap items-center gap-5 mt-3">
+                {[['採 A', 46, chart.amber], ['採 B', 32, chart.sage], ['改 schema', 22, chart.gold]].map(([name, v, c]) => (
+                  <span key={String(name)} className="flex items-center gap-2 font-mono text-[11px] text-muted">
+                    <span className="w-3 h-3 rounded-sm shrink-0" style={{ backgroundColor: String(c) }} />
+                    {name} · {v}%
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            {/* Chart rules */}
+            <div className="bg-surface border border-line rounded-card p-6 sm:p-7"
+              data-layer="card" data-name="chart-rules" data-module="style">
+              <h3 className="font-mono text-[11px] uppercase tracking-kicker text-faint mb-5">Chart rules</h3>
+              <ul>
+                {[
+                  '一張圖一個軸，禁止雙軸；兩個不同尺度的量 = 兩張圖',
+                  'series 固定順序 amber → sage → gold → rust，依實體指派、永不循環；超過 4 個系列摺進 Other',
+                  '單一量值長條用單色 series-sage；series-amber 只做選擇性強調',
+                  '圖表文字永遠用文字色（cream / olive），不用 series 色；系列識別靠色塊與直標',
+                  '網格 1px dotted moss-700、軸標 mono olive-500、數值 tabular-nums',
+                  'bar 資料端 4px 圓角、折線 2px、資料點 ≥8px、堆疊段 2px 底色縫',
+                  '改任何 series 色必須重跑 validate_palette（規則寫在 DESIGN.md「SVG 圖表規則」）',
+                ].map((rule, i) => (
+                  <li key={i} className="flex gap-3 text-sm text-muted leading-relaxed py-2.5 border-b border-dotted border-line last:border-b-0">
+                    <span className="w-1.5 h-1.5 rounded-full bg-sage shrink-0 mt-1.5" />
+                    {rule}
+                  </li>
+                ))}
+              </ul>
             </div>
           </div>
         </SectionRow>
