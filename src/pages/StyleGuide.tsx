@@ -367,7 +367,8 @@ const StyleGuide: React.FC = () => {
             <>
               三個課程 V5 的真實 figure，各自示範一種 spec 原語：timeline、diagram、
               level table。series 色階經六項檢查驗證（CVD 最差鄰對 ΔE 11.1 → 直標與
-              2px 縫為強制編碼）；sequential ramp 亮度單調遞減已數值驗證。窄螢幕下圖可左右捲動。
+              2px 縫為強制編碼）；sequential ramp 亮度單調遞減已數值驗證。
+              任何斷點都不出現水平捲軸——桌面 SVG 等比縮放、窄版換直列版式。
             </>
           }
         >
@@ -424,7 +425,7 @@ const StyleGuide: React.FC = () => {
               <HarnessTable />
               <p className="font-mono text-[10px] text-faint mt-4 tracking-wider leading-relaxed">
                 spec → Level table 規格：ramp 依序上色 · 亮 cell 深字 / 深 cell 奶油字 ·
-                HTML 表格可選取 · 容器內橫捲
+                HTML 表格可選取 · 窄版直列疊排
               </p>
             </div>
 
@@ -501,14 +502,14 @@ const StyleGuide: React.FC = () => {
               Agent 發 PatchOp 時只講語意 token，橋接表翻成本 pack 的原生 token；
               <code className="font-mono text-xs text-accent">refs</code> 欄位引用
               <code className="font-mono text-xs text-accent"> {PACK_PATH}</code> 的條文。
-              換膚 = 換 pack，PatchOp 與元件 class 一字不動。窄螢幕下表格可左右捲動。
+              換膚 = 換 pack，PatchOp 與元件 class 一字不動。
             </>
           }
         >
-          <div className="bg-surface border border-line rounded-card p-4 sm:p-6 overflow-x-auto"
+          <div className="bg-surface border border-line rounded-card p-4 sm:p-6"
             data-layer="card" data-name="semantic-token-table" data-module="style">
-            <div className="min-w-[720px]">
-              <div className="grid grid-cols-[140px_180px_1fr_130px_160px] gap-3 py-2 font-mono text-[10px] uppercase tracking-kicker text-faint">
+            <div>
+              <div className="hidden lg:grid grid-cols-[140px_180px_1fr_130px_160px] gap-3 py-2 font-mono text-[10px] uppercase tracking-kicker text-faint">
                 <span>Semantic token</span>
                 <span>Pack token</span>
                 <span>Value</span>
@@ -520,10 +521,21 @@ const StyleGuide: React.FC = () => {
                 const isColor = semantic.startsWith('color.');
                 return (
                   <div key={semantic}
-                    className="grid grid-cols-[140px_180px_1fr_130px_160px] gap-3 items-center py-2.5 border-t border-dotted border-line">
-                    <span className="font-mono text-xs text-accent">{semantic}</span>
+                    className="grid grid-cols-1 lg:grid-cols-[140px_180px_1fr_130px_160px] gap-1.5 lg:gap-3 lg:items-center py-3 lg:py-2.5 border-t border-dotted border-line">
+                    <span className="flex items-center justify-between gap-2 lg:block">
+                      <span className="font-mono text-xs text-accent">{semantic}</span>
+                      <span className="flex items-center gap-2 lg:hidden">
+                        {isColor && (
+                          <span className="w-4 h-4 rounded-sm border border-line shrink-0" style={{ backgroundColor: value }} />
+                        )}
+                        <button onClick={() => copy(value)} title="copy value"
+                          className={`font-mono text-[11px] ${copied === value ? 'text-sage' : 'text-muted hover:text-accent'}`}>
+                          {value}
+                        </button>
+                      </span>
+                    </span>
                     <span className="font-mono text-xs text-ink">{packPath}</span>
-                    <span className="flex items-center gap-2 min-w-0">
+                    <span className="hidden lg:flex items-center gap-2 min-w-0">
                       {isColor && (
                         <span className="w-4 h-4 rounded-sm border border-line shrink-0" style={{ backgroundColor: value }} />
                       )}
@@ -535,8 +547,11 @@ const StyleGuide: React.FC = () => {
                         {value}
                       </button>
                     </span>
-                    <span className="font-mono text-[11px] text-faint">{CSSVAR_MAP[semantic] ?? '—'}</span>
-                    <span className="font-mono text-[11px] text-faint">{TAILWIND_MAP[semantic] ?? '—'}</span>
+                    <span className="font-mono text-[10px] lg:text-[11px] text-faint break-words">
+                      <span className="lg:hidden">{CSSVAR_MAP[semantic] ?? '—'} · {TAILWIND_MAP[semantic] ?? '—'}</span>
+                      <span className="hidden lg:inline">{CSSVAR_MAP[semantic] ?? '—'}</span>
+                    </span>
+                    <span className="hidden lg:block font-mono text-[11px] text-faint">{TAILWIND_MAP[semantic] ?? '—'}</span>
                   </div>
                 );
               })}

@@ -131,17 +131,19 @@ voice:
 
 - 結構：phase 分組列（display 襯線 + mono 註）→ activity 列（中文名 + mono 英文標）；
   sprint 欄 dotted 縱格線；phase 之間 1px 實線分隔。
-- bar：高 12px、圓角 3px、跨 sprint 起訖；貫穿全程的 ongoing 項改 8px 高 + 55% 透明。
-- 分類維度（如 AI tier）配色講語意：A = `series-sage`（wiki 原生、agent 可寫）、
-  B = `series-gold`（混合形式）、C = `moss-500` 中性（系統邊界外的資產）。
-  每列右側必帶 tier 徽章直標（CVD 次要編碼）。
+- bar：高 14px、圓角 3px、跨 sprint 起訖；貫穿全程的 ongoing 項改 8px 高 + 55% 透明。
+- 分類維度（如 AI tier）配色講語意且守暖色調性：A = `series-amber`（wiki 原生、
+  agent 可寫——本命資產用品牌色）、B = `series-gold`（混合形式）、
+  C = `moss-500` 中性（系統邊界外的資產）。**sage 不做 timeline 主色**——
+  大面積綠色與 forest 底同色系，讀起來糊。每列右側必帶 tier 徽章直標（CVD 次要編碼）。
 
 ### Diagram（架構圖）規格
 
 - 節點框：`forest-900` 底 + `moss-700` 1px 邊 + 6px 圓角；框內 = 中文標題
   （cream）+ mono 小標（olive）。群組容器同語彙、只加大留白。
 - 箭頭語彙固定：**dotted = ingest（單向、不可逆）**、**solid = query（雙向介面）**；
-  線色 `moss-500`，箭頭小三角同色。
+  線色 `olive-500`（moss 在深底上不可見）、線寬 ≥1.4、箭頭三角 ≥7px。
+  連線是圖的語意主角，不是背景裝飾——畫完必須肉眼可辨。
 - 人類席位（Orchestrator）用 `amber-400` 邊框強調——全圖唯一的 amber 框。
 - 退化帶（cross-ref strip）用 dashed 邊框表達「不維護就散」。
 
@@ -149,7 +151,15 @@ voice:
 
 - 層級 cell 用 sequential ramp 依序上色；視圖列（MV/PV 類）用中性 `forest-800`。
 - 欄序固定：層級 → 概念名（en + zh）→ 工作流對應（含 `code` 路徑引用）。
-- 表格用 HTML（文字可選取），窄版在容器內橫捲，頁面本體不溢出。
+- 表格用 HTML（文字可選取），窄版改直列疊排。
+
+### 響應式鐵律（所有圖表與表格）
+
+- **任何斷點都不允許水平捲軸**——頁面本體與圖表容器皆然。
+- 寬圖的處理只有兩招：桌面（≥md）SVG 等比縮放置入欄寬；窄版（<md）
+  **換版式**（直列 HTML 疊排），不是縮小到不可讀、更不是橫捲。
+- SVG 文字以「縮放後的有效字級」驗收：正文有效字級 ≥12px、
+  mono 註記 ≥9px；達不到就是版式要換，不是字再縮。
 
 ## 禁區
 

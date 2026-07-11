@@ -39,11 +39,11 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             {/* Wordmark */}
-            <Link to="/" className="flex items-center space-x-3">
-              <span className="w-8 h-8 rounded-full border border-accent-dim flex items-center justify-center font-display text-lg leading-none pt-0.5">
+            <Link to="/" className="flex items-center gap-3 shrink-0">
+              <span className="hidden sm:flex w-8 h-8 rounded-full border border-accent-dim items-center justify-center font-display text-lg leading-none pt-0.5">
                 A
               </span>
-              <span className="font-display text-2xl tracking-tight">
+              <span className="font-display text-xl sm:text-2xl tracking-tight whitespace-nowrap">
                 AIPET<span className="italic text-accent">.studio</span>
               </span>
             </Link>
@@ -75,7 +75,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                   <button
                     key={lang.code}
                     onClick={() => changeLanguage(lang.code)}
-                    className={`font-mono text-[11px] tracking-wider rounded-full px-3 py-1.5 border transition-colors ${
+                    className={`font-mono text-[11px] tracking-wider rounded-full px-2.5 sm:px-3 py-1.5 border whitespace-nowrap transition-colors ${
                       i18n.language === lang.code
                         ? 'bg-accent text-on-accent border-accent'
                         : 'text-faint border-line hover:text-ink hover:border-faint'
