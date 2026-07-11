@@ -1,66 +1,72 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@500;600&family=Noto+Serif+TC:wght@500;600&family=Noto+Sans+TC:wght@300;400&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+/*
+ * 語意 token → CSS 變數。
+ * 真相源：stylepacks/aipet-loyal-shadow/DESIGN.md（經 stylepacks/_bridge.map.json 橋接）。
+ * 換膚 = 換這一段變數值，不動任何元件 class。
+ */
+:root {
+  --c-bg: #0A120C;            /* color.bg            forest-950 */
+  --c-surface: #0F1810;       /* color.surface       forest-900 */
+  --c-raised: #141D16;        /* raised / portrait   forest-800 */
+  --c-border: #243027;        /* color.border        moss-700   */
+  --c-border-strong: #3A4A3E; /*                     moss-500   */
+  --c-text: #E8E0C8;          /* color.text          cream-100  */
+  --c-muted: #C5C4B0;         /* color.text-muted    cream-300  */
+  --c-faint: #9A9A80;         /* labels              olive-500  */
+  --c-accent: #FF9A3C;        /* color.accent        amber-400  */
+  --c-accent-hover: #FFD66E;  /* color.accent-hover  amber-300  */
+  --c-on-accent: #0A120C;     /* color.on-accent     forest-950 */
+  --c-sage: #7DDC8C;          /* secondary identity  sage-400   */
+  --c-rust: #D8744F;          /* alert               rust-400   */
+  --c-fern: #4A7C59;          /* link underline      fern-600   */
+
+  --font-display: 'EB Garamond', 'Noto Serif TC', Georgia, serif;
+  --font-body: 'Inter', 'Noto Sans TC', system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, 'SF Mono', monospace;
+}
+
 body {
   margin: 0;
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  background: var(--c-bg);
+  color: var(--c-text);
+  font-family: var(--font-body);
+  font-weight: 300;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* 標題強調字：英/法斜體 + 琥珀；中文不斜體，只上色 */
+h1 em,
+h2 em,
+h3 em {
+  font-style: italic;
+  color: var(--c-accent);
+}
+html[lang='zh-TW'] h1 em,
+html[lang='zh-TW'] h2 em,
+html[lang='zh-TW'] h3 em {
+  font-style: normal;
+}
+
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  font-family: var(--font-mono);
 }
 
-/* Custom scrollbar */
-::-webkit-scrollbar {
-  width: 8px;
+::selection {
+  background: var(--c-accent);
+  color: var(--c-on-accent);
 }
 
-::-webkit-scrollbar-track {
-  background: #f1f5f9;
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
 }
-
-::-webkit-scrollbar-thumb {
-  background: #cbd5e1;
-  border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: #94a3b8;
-}
-
-/* Animation utilities */
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-.animate-fadeIn {
-  animation: fadeIn 0.3s ease-out;
-}
-
-/* AIPET Framework Colors */
-.bg-aipet-agency { @apply bg-purple-500; }
-.bg-aipet-interaction { @apply bg-cyan-500; }
-.bg-aipet-privacy { @apply bg-red-500; }
-.bg-aipet-experience { @apply bg-amber-500; }
-.bg-aipet-trust { @apply bg-emerald-500; }
-
-.text-aipet-agency { @apply text-purple-500; }
-.text-aipet-interaction { @apply text-cyan-500; }
-.text-aipet-privacy { @apply text-red-500; }
-.text-aipet-experience { @apply text-amber-500; }
-.text-aipet-trust { @apply text-emerald-500; }
-
-.border-aipet-agency { @apply border-purple-500; }
-.border-aipet-interaction { @apply border-cyan-500; }
-.border-aipet-privacy { @apply border-red-500; }
-.border-aipet-experience { @apply border-amber-500; }
-.border-aipet-trust { @apply border-emerald-500; }
