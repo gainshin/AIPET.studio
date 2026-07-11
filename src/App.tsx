@@ -4,6 +4,7 @@ import { I18nextProvider } from 'react-i18next';
 import i18n from './i18n';
 import Layout from './components/Layout';
 import Theory from './pages/Theory';
+import StyleGuide from './pages/StyleGuide';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Theory />} />
             <Route path="/theory" element={<Theory />} />
+            <Route path="/style" element={<StyleGuide />} />
             <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
         </Layout>

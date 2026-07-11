@@ -14,6 +14,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
 
   const navigation = [
     { name: t('navigation.theory'), href: '/theory' },
+    { name: t('navigation.style'), href: '/style' },
   ];
 
   const languages = [
@@ -50,7 +51,9 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
             {/* Desktop Navigation */}
             <nav className="hidden md:flex items-center space-x-8">
               {navigation.map((item) => {
-                const isActive = location.pathname === item.href || location.pathname === '/';
+                const isActive =
+                  location.pathname === item.href ||
+                  (item.href === '/theory' && location.pathname === '/');
                 return (
                   <Link
                     key={item.name}

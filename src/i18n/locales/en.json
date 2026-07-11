@@ -14,7 +14,8 @@
     "none": "None"
   },
   "navigation": {
-    "theory": "Theory"
+    "theory": "Theory",
+    "style": "Style"
   },
   "theory": {
     "title": "AIPET Framework Theory",

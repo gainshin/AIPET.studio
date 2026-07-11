@@ -14,7 +14,8 @@
     "none": "無"
   },
   "navigation": {
-    "theory": "理論"
+    "theory": "理論",
+    "style": "樣式"
   },
   "theory": {
     "title": "AIPET 框架理論",
