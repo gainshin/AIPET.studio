@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#0A120C">
+<title>Inspector POC · AIPET.studio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@500;600&family=Noto+Serif+TC:wght@500&family=Noto+Sans+TC:wght@300;400&display=swap">
+<style>
+  /* 語意 token → CSS 變數（真相源：stylepacks/aipet-loyal-shadow/DESIGN.md） */
+  :root {
+    --c-bg:#0A120C; --c-surface:#0F1810; --c-raised:#141D16;
+    --c-border:#243027; --c-border-strong:#3A4A3E;
+    --c-text:#E8E0C8; --c-muted:#C5C4B0; --c-faint:#9A9A80;
+    --c-accent:#FF9A3C; --c-accent-hover:#FFD66E; --c-on-accent:#0A120C;
+    --c-sage:#7DDC8C; --c-rust:#D8744F;
+    --c-series-amber:#C96F1E; --c-series-sage:#3AA254; --c-series-gold:#9E962A; --c-series-rust:#CF6A45;
+    --font-display:'EB Garamond','Noto Serif TC',Georgia,serif;
+    --font-body:'Inter','Noto Sans TC',system-ui,sans-serif;
+    --font-mono:'JetBrains Mono',ui-monospace,'SF Mono',monospace;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:var(--c-bg); color:var(--c-text); font:300 15px/1.65 var(--font-body); overflow-x:hidden; }
+  em { font-style:italic; color:var(--c-accent); }
+  .kicker { font:500 10px/1.6 var(--font-mono); letter-spacing:.22em; text-transform:uppercase; color:var(--c-faint); }
+
+  header.app { position:sticky; top:0; z-index:9; display:flex; align-items:center; justify-content:space-between;
+    gap:12px; padding:12px 20px; background:rgba(10,18,12,.92); backdrop-filter:blur(6px); border-bottom:1px solid var(--c-border); }
+  .wordmark { font-family:var(--font-display); font-size:20px; white-space:nowrap; text-decoration:none; color:var(--c-text); }
+  .wordmark em { font-size:inherit; }
+  header.app .mode { font:500 10px/1 var(--font-mono); letter-spacing:.18em; color:var(--c-sage); text-transform:uppercase; }
+  header.app a.switch { font:500 11px/1 var(--font-mono); letter-spacing:.08em; color:var(--c-faint);
+    border:1px solid var(--c-border); border-radius:999px; padding:7px 14px; text-decoration:none; white-space:nowrap; }
+  header.app a.switch:hover { color:var(--c-accent); border-color:var(--c-accent); }
+
+  .shell { display:grid; grid-template-columns:minmax(0,1fr) 400px; gap:0; min-height:calc(100vh - 57px); }
+  @media (max-width: 900px){ .shell { grid-template-columns:1fr; } aside.panel { border-left:none; border-top:1px solid var(--c-border);} }
+
+  /* ── 畫布（唯讀投影） ───────────────────────── */
+  main.canvas { padding:36px 32px 64px; }
+  .canvas-note { font:500 10px/1.6 var(--font-mono); letter-spacing:.14em; color:var(--c-faint); margin-bottom:20px; }
+  .canvas-note b { color:var(--c-sage); font-weight:500; }
+  #deck [data-layer] { cursor:crosshair; transition:outline-color .15s; outline:1px dashed transparent; outline-offset:4px; }
+  #deck [data-layer]:hover { outline-color:var(--c-border-strong); }
+  #deck [data-layer].selected { outline:1.5px dashed var(--c-accent); }
+  #deck [data-layer].op-flash { outline:1.5px solid var(--c-sage); }
+
+  /* demo deck 內容樣式（全走語意 token） */
+  .slide { max-width:860px; }
+  .slide h1 { font-family:var(--font-display); font-weight:400; font-size:clamp(30px,5vw,52px); line-height:1.08; letter-spacing:-.015em; margin:18px 0 16px; }
+  .slide p.lede { color:var(--c-muted); max-width:34em; }
+  .cta { display:inline-block; margin-top:22px; font:600 12px/1 var(--font-mono); letter-spacing:.1em; text-transform:uppercase;
+    color:var(--c-on-accent); background:var(--c-accent); padding:13px 24px; border-radius:999px; text-decoration:none; }
+  .stats { display:flex; flex-wrap:wrap; gap:14px; margin-top:36px; }
+  .stat { flex:1 1 150px; background:var(--c-surface); border:1px solid var(--c-border); border-radius:18px; padding:16px 18px; }
+  .stat .v { font-family:var(--font-display); font-size:34px; line-height:1.1; }
+  .stat:first-child .v { color:var(--c-accent); }
+  .stat .k { font:500 9px/1.6 var(--font-mono); letter-spacing:.18em; text-transform:uppercase; color:var(--c-faint); margin-top:4px; }
+
+  /* ── 右欄面板 ───────────────────────── */
+  aside.panel { border-left:1px solid var(--c-border); background:var(--c-surface); display:flex; flex-direction:column; min-width:0; }
+  .tabs { display:flex; flex-wrap:wrap; gap:4px; padding:12px 14px; border-bottom:1px solid var(--c-border); }
+  .tab { font:500 10px/1 var(--font-mono); letter-spacing:.1em; text-transform:uppercase; color:var(--c-faint);
+    background:none; border:1px solid var(--c-border); border-radius:999px; padding:7px 12px; cursor:pointer; }
+  .tab.active { color:var(--c-on-accent); background:var(--c-accent); border-color:var(--c-accent); }
+  .tab:disabled { opacity:.38; cursor:not-allowed; }
+  .panel-body { padding:18px 18px 28px; overflow-y:auto; flex:1; }
+  .panel-body h3 { font-family:var(--font-display); font-weight:400; font-size:20px; margin-bottom:10px; }
+  .hint { color:var(--c-faint); font-size:13px; }
+  .idrow { display:flex; justify-content:space-between; gap:10px; padding:8px 0; border-bottom:1px dotted var(--c-border); font-size:13px; }
+  .idrow .k { font:500 10px/1.8 var(--font-mono); letter-spacing:.14em; text-transform:uppercase; color:var(--c-faint); }
+  .idrow .v { font:500 12px/1.6 var(--font-mono); color:var(--c-text); text-align:right; word-break:break-all; }
+  .op { border:1px solid var(--c-border); border-radius:12px; padding:12px 14px; margin-top:12px; background:var(--c-raised); cursor:pointer; }
+  .op:hover { border-color:var(--c-border-strong); }
+  .op .head { display:flex; align-items:center; gap:8px; flex-wrap:wrap; }
+  .op .id { font:600 11px/1 var(--font-mono); color:var(--c-text); }
+  .lane { font:600 9px/1 var(--font-mono); letter-spacing:.1em; text-transform:uppercase; padding:4px 8px; border-radius:999px; }
+  .lane.color { background:var(--c-series-amber); color:var(--c-bg); }
+  .lane.content { background:var(--c-series-gold); color:var(--c-bg); }
+  .lane.typography { background:var(--c-series-rust); color:var(--c-bg); }
+  .lane.governance { background:var(--c-raised); color:var(--c-accent); border:1px solid var(--c-accent); }
+  .op .agent { font:500 10px/1 var(--font-mono); color:var(--c-faint); margin-left:auto; }
+  .op .why { color:var(--c-muted); font-size:13px; margin-top:8px; }
+  .op .refs { font:500 10px/1.7 var(--font-mono); color:var(--c-faint); margin-top:6px; word-break:break-all; }
+  .op .refs span { color:var(--c-sage); }
+  .tokrow { display:grid; grid-template-columns:auto 1fr auto; gap:10px; align-items:center; padding:8px 0; border-bottom:1px dotted var(--c-border); }
+  .swatch { width:18px; height:18px; border-radius:4px; border:1px solid var(--c-border); }
+  .tokrow .name { font:500 12px/1.5 var(--font-mono); color:var(--c-accent); }
+  .tokrow .val { font:500 11px/1.5 var(--font-mono); color:var(--c-faint); }
+  footer.note { padding:12px 18px; border-top:1px dotted var(--c-border); font:500 9.5px/1.7 var(--font-mono); letter-spacing:.06em; color:var(--c-faint); }
+  footer.note b { color:var(--c-rust); font-weight:600; }
+</style>
+</head>
+<body data-layer="page" data-name="inspector-poc" data-module="poc">
+
+<header class="app">
+  <a class="wordmark" href="../index.html">AIPET<em>.studio</em></a>
+  <span class="mode">Inspector · Read-only</span>
+  <a class="switch" href="editor.html">→ Editor POC</a>
+</header>
+
+<div class="shell">
+  <main class="canvas" data-layer="section" data-name="canvas" data-module="poc">
+    <p class="canvas-note">CANVAS — op log 的投影 · <b>唯讀</b> · 點任何帶 data-layer 的元素觀測它</p>
+
+    <!-- demo deck：所有節點帶 data-* 標註（憲法第 8 條） -->
+    <div id="deck">
+      <section class="slide" data-layer="section" data-name="hero" data-module="demo-deck">
+        <p class="kicker" data-layer="label" data-name="hero-kicker" data-module="demo-deck">AIPET.STUDIO · DEMO DECK</p>
+        <h1 data-layer="heading" data-name="hero-title" data-module="demo-deck">
+          三節拍，跑出<em>可稽核的設計</em>。
+        </h1>
+        <p class="lede" data-layer="text" data-name="hero-lede" data-module="demo-deck">
+          Builder 出候選、Auditor 給證據、Synthesis 由人收斂——每一條變更都有出處，
+          每一次決策都寫回 wiki。
+        </p>
+        <a class="cta" data-layer="cta" data-name="hero-cta" data-module="demo-deck">加入閉環</a>
+
+        <div class="stats" data-layer="component" data-name="stat-row" data-module="demo-deck">
+          <div class="stat" data-layer="card" data-name="stat-rounds" data-module="demo-deck">
+            <div class="v">12</div><div class="k">closed loops</div>
+          </div>
+          <div class="stat" data-layer="card" data-name="stat-decisions" data-module="demo-deck">
+            <div class="v">47</div><div class="k">decisions logged</div>
+          </div>
+          <div class="stat" data-layer="card" data-name="stat-pass" data-module="demo-deck">
+            <div class="v">84%</div><div class="k">first-pass audit</div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <aside class="panel" data-layer="section" data-name="inspector-panel" data-module="poc">
+    <div class="tabs">
+      <button class="tab active" data-view="selection">Selection</button>
+      <button class="tab" data-view="tokens">Tokens</button>
+      <button class="tab" data-view="history">History</button>
+      <button class="tab" disabled title="P0-2 拆入 src/inspector/ 後提供">CSS</button>
+      <button class="tab" disabled title="P0-2 拆入 src/inspector/ 後提供">Markdown</button>
+      <button class="tab" disabled title="P0-2 拆入 src/inspector/ 後提供">Sitemap</button>
+      <button class="tab" disabled title="P0-2 拆入 src/inspector/ 後提供">Flow</button>
+    </div>
+    <div class="panel-body" id="panelBody"></div>
+    <footer class="note">
+      Inspector 沒有任何寫入路徑。<b>「儲存 HTML」不存在</b>——變更請到 Editor 發 PatchOp。
+    </footer>
+  </aside>
+</div>
+
+<script>
+/* ── demo 資料：op log（真相源在 repo 是 oplog.json + wiki/log.md 投影） ── */
+const OPLOG = [
+  { id:'op-001', lane:'typography', agent:'design-agent', target:'hero-title',
+    op:'set-token', payload:{ token:'font.heading' },
+    rationale:'標題改走 display 襯線——層次靠字級，不靠加粗。',
+    refs:['stylepacks/aipet-loyal-shadow/DESIGN.md#字型規則'], candidate:'cand-A' },
+  { id:'op-002', lane:'color', agent:'design-agent', target:'hero-title',
+    op:'set-token', payload:{ token:'color.accent', scope:'em' },
+    rationale:'強調字上琥珀——黑暗中的一盞燈，只點在關鍵詞。',
+    refs:['stylepacks/aipet-loyal-shadow/DESIGN.md#用色規則'], candidate:'cand-A' },
+  { id:'op-003', lane:'content', agent:'copy-agent', target:'hero-lede',
+    op:'replace-text',
+    payload:{ text:'Builder 出候選、Auditor 給證據、Synthesis 由人收斂……' },
+    rationale:'三節拍各給一個動詞，句式對仗、去形容詞。',
+    refs:['wiki/schema/voice-and-tone.md#tone'], candidate:'cand-A' },
+  { id:'op-004', lane:'content', agent:'copy-agent', target:'hero-cta',
+    op:'replace-text', payload:{ text:'加入閉環' },
+    rationale:'CTA 用系統母語「閉環」，不用泛用的「開始使用」。',
+    refs:['wiki/schema/voice-and-tone.md#cta'], candidate:'cand-A' },
+  { id:'op-005', lane:'governance', agent:'orchestrator-human', target:'stat-row',
+    op:'set-attr', payload:{ 'data-module':'demo-deck' },
+    rationale:'補齊模組標註；無標註者 Auditor 直接 fail（憲法第 8 條）。',
+    refs:['CLAUDE.md#憲法'], candidate:null },
+];
+
+const TOKENS = [
+  ['color.bg','#0A120C'], ['color.surface','#0F1810'], ['color.text','#E8E0C8'],
+  ['color.text-muted','#C5C4B0'], ['color.accent','#FF9A3C'], ['color.border','#243027'],
+  ['font.heading','EB Garamond / Noto Serif TC'], ['font.body','Inter / Noto Sans TC'],
+  ['font.mono','JetBrains Mono'], ['radius.card','24px'],
+];
+
+let selected = null;
+const body = document.getElementById('panelBody');
+const tabs = [...document.querySelectorAll('.tab:not(:disabled)')];
+let view = 'selection';
+
+function laneChip(l){ return `<span class="lane ${l}">${l}</span>`; }
+function opCard(o){
+  return `<div class="op" data-op-target="${o.target}">
+    <div class="head"><span class="id">${o.id}</span>${laneChip(o.lane)}<span class="agent">${o.agent}</span></div>
+    <p class="why">${o.rationale}</p>
+    <p class="refs">refs → <span>${o.refs.join('</span> · <span>')}</span>${o.candidate ? ' · ' + o.candidate : ''}</p>
+  </div>`;
+}
+
+function render(){
+  if(view === 'tokens'){
+    body.innerHTML = `<h3>Semantic tokens</h3>
+      <p class="hint">真相源 → stylepacks/aipet-loyal-shadow/DESIGN.md（經 _bridge.map.json 橋接）</p>` +
+      TOKENS.map(([n,v]) => `<div class="tokrow">
+        ${n.startsWith('color.') ? `<span class="swatch" style="background:${v}"></span>` : '<span class="swatch" style="background:var(--c-raised)"></span>'}
+        <span class="name">${n}</span><span class="val">${v}</span></div>`).join('');
+    return;
+  }
+  if(view === 'history'){
+    body.innerHTML = `<h3>Op log <span class="hint">（append-only 投影）</span></h3>
+      <p class="hint">點一筆 op 會在畫布上定位它的 target。</p>` + OPLOG.map(opCard).join('');
+    bindOpCards();
+    return;
+  }
+  // selection
+  if(!selected){
+    body.innerHTML = `<h3>尚未選取</h3>
+      <p class="hint">點畫布上任何帶 data-layer 的元素——Inspector 會告訴你它是誰、
+      被哪些 PatchOp 動過、每一筆的 rationale 與規格引用。</p>`;
+    return;
+  }
+  const d = selected.dataset;
+  const ops = OPLOG.filter(o => o.target === d.name);
+  body.innerHTML = `<h3>${d.name}</h3>
+    <div class="idrow"><span class="k">data-layer</span><span class="v">${d.layer}</span></div>
+    <div class="idrow"><span class="k">data-name</span><span class="v">${d.name}</span></div>
+    <div class="idrow"><span class="k">data-module</span><span class="v">${d.module || '<span style="color:var(--c-rust)">缺！Auditor fail</span>'}</span></div>
+    <h3 style="margin-top:20px">Ops（${ops.length}）</h3>
+    ${ops.length ? ops.map(opCard).join('') : '<p class="hint">沒有 op 動過這個節點——它還是 baseline 原樣。</p>'}`;
+  bindOpCards();
+}
+
+function bindOpCards(){
+  body.querySelectorAll('.op').forEach(el => el.addEventListener('click', () => {
+    const t = document.querySelector(`#deck [data-name="${el.dataset.opTarget}"]`);
+    if(!t) return;
+    t.scrollIntoView({ block:'center', behavior:'smooth' });
+    t.classList.add('op-flash');
+    setTimeout(() => t.classList.remove('op-flash'), 1200);
+  }));
+}
+
+tabs.forEach(t => t.addEventListener('click', () => {
+  tabs.forEach(x => x.classList.remove('active'));
+  t.classList.add('active');
+  view = t.dataset.view;
+  render();
+}));
+
+document.getElementById('deck').addEventListener('click', e => {
+  const el = e.target.closest('[data-layer]');
+  if(!el) return;
+  e.preventDefault();
+  document.querySelectorAll('#deck .selected').forEach(x => x.classList.remove('selected'));
+  el.classList.add('selected');
+  selected = el;
+  view = 'selection';
+  tabs.forEach(x => x.classList.toggle('active', x.dataset.view === 'selection'));
+  render();
+});
+
+render();
+</script>
+</body>
+</html>

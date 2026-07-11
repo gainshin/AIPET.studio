@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#0A120C">
+<title>Editor POC · AIPET.studio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@500;600&family=Noto+Serif+TC:wght@500&family=Noto+Sans+TC:wght@300;400&display=swap">
+<style>
+  :root {
+    --c-bg:#0A120C; --c-surface:#0F1810; --c-raised:#141D16;
+    --c-border:#243027; --c-border-strong:#3A4A3E;
+    --c-text:#E8E0C8; --c-muted:#C5C4B0; --c-faint:#9A9A80;
+    --c-accent:#FF9A3C; --c-accent-hover:#FFD66E; --c-on-accent:#0A120C;
+    --c-sage:#7DDC8C; --c-rust:#D8744F;
+    --c-series-amber:#C96F1E; --c-series-gold:#9E962A; --c-series-rust:#CF6A45;
+    --font-display:'EB Garamond','Noto Serif TC',Georgia,serif;
+    --font-body:'Inter','Noto Sans TC',system-ui,sans-serif;
+    --font-mono:'JetBrains Mono',ui-monospace,'SF Mono',monospace;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:var(--c-bg); color:var(--c-text); font:300 15px/1.65 var(--font-body); overflow-x:hidden; }
+  em { font-style:italic; color:var(--c-accent); }
+  .kicker { font:500 10px/1.6 var(--font-mono); letter-spacing:.22em; text-transform:uppercase; color:var(--c-faint); }
+
+  header.app { position:sticky; top:0; z-index:9; display:flex; align-items:center; justify-content:space-between;
+    gap:12px; padding:12px 20px; background:rgba(10,18,12,.92); backdrop-filter:blur(6px); border-bottom:1px solid var(--c-border); }
+  .wordmark { font-family:var(--font-display); font-size:20px; white-space:nowrap; text-decoration:none; color:var(--c-text); }
+  header.app .mode { font:500 10px/1 var(--font-mono); letter-spacing:.18em; color:var(--c-accent); text-transform:uppercase; }
+  header.app a.switch { font:500 11px/1 var(--font-mono); letter-spacing:.08em; color:var(--c-faint);
+    border:1px solid var(--c-border); border-radius:999px; padding:7px 14px; text-decoration:none; white-space:nowrap; }
+  header.app a.switch:hover { color:var(--c-accent); border-color:var(--c-accent); }
+
+  .shell { display:grid; grid-template-columns:minmax(0,1fr) 420px; min-height:calc(100vh - 57px); }
+  @media (max-width: 900px){ .shell { grid-template-columns:1fr; } aside.panel { border-left:none; border-top:1px solid var(--c-border);} }
+
+  main.canvas { padding:36px 32px 64px; }
+  .canvas-note { font:500 10px/1.6 var(--font-mono); letter-spacing:.14em; color:var(--c-faint); margin-bottom:20px; }
+  .canvas-note b { color:var(--c-accent); font-weight:500; }
+  #deck [data-layer] { cursor:crosshair; outline:1px dashed transparent; outline-offset:4px; transition:outline-color .15s; }
+  #deck [data-layer]:hover { outline-color:var(--c-border-strong); }
+  #deck [data-layer].selected { outline:1.5px dashed var(--c-accent); }
+  #deck [data-layer].op-applied { outline:1.5px solid var(--c-sage); }
+
+  .slide { max-width:860px; }
+  .slide h1 { font-family:var(--font-display); font-weight:400; font-size:clamp(30px,5vw,52px); line-height:1.08; letter-spacing:-.015em; margin:18px 0 16px; }
+  .slide p.lede { color:var(--c-muted); max-width:34em; }
+  .cta { display:inline-block; margin-top:22px; font:600 12px/1 var(--font-mono); letter-spacing:.1em; text-transform:uppercase;
+    color:var(--c-on-accent); background:var(--c-accent); padding:13px 24px; border-radius:999px; text-decoration:none; }
+  .stats { display:flex; flex-wrap:wrap; gap:14px; margin-top:36px; }
+  .stat { flex:1 1 150px; background:var(--c-surface); border:1px solid var(--c-border); border-radius:18px; padding:16px 18px; }
+  .stat .v { font-family:var(--font-display); font-size:34px; line-height:1.1; }
+  .stat:first-child .v { color:var(--c-accent); }
+  .stat .k { font:500 9px/1.6 var(--font-mono); letter-spacing:.18em; text-transform:uppercase; color:var(--c-faint); margin-top:4px; }
+
+  aside.panel { border-left:1px solid var(--c-border); background:var(--c-surface); display:flex; flex-direction:column; min-width:0; }
+  .panel-head { padding:14px 18px; border-bottom:1px solid var(--c-border); }
+  .panel-head label { font:500 9.5px/1 var(--font-mono); letter-spacing:.18em; text-transform:uppercase; color:var(--c-faint); display:block; margin-bottom:8px; }
+  select, textarea, input[type=text] { width:100%; background:var(--c-raised); color:var(--c-text);
+    border:1px solid var(--c-border); border-radius:8px; padding:9px 12px; font:400 13px/1.5 var(--font-body); }
+  select { font-family:var(--font-mono); font-size:12px; }
+  textarea { resize:vertical; min-height:64px; }
+  select:focus, textarea:focus, input:focus { outline:none; border-color:var(--c-accent); }
+  .panel-body { padding:18px; overflow-y:auto; flex:1; }
+  .panel-body h3 { font-family:var(--font-display); font-weight:400; font-size:20px; margin-bottom:10px; }
+  .hint { color:var(--c-faint); font-size:13px; }
+  .field { margin-top:14px; }
+  .field label { font:500 9.5px/1 var(--font-mono); letter-spacing:.18em; text-transform:uppercase; color:var(--c-faint); display:block; margin-bottom:6px; }
+  .field .fixed { font:500 11px/1.6 var(--font-mono); color:var(--c-sage); word-break:break-all; }
+  .optype { display:flex; gap:6px; flex-wrap:wrap; }
+  .optype button { font:500 10px/1 var(--font-mono); letter-spacing:.08em; text-transform:uppercase; color:var(--c-faint);
+    background:none; border:1px solid var(--c-border); border-radius:999px; padding:8px 13px; cursor:pointer; }
+  .optype button.on { color:var(--c-on-accent); background:var(--c-accent); border-color:var(--c-accent); }
+  .lane-note { font:500 10px/1.7 var(--font-mono); color:var(--c-faint); margin-top:6px; }
+  .lane-note b { color:var(--c-accent); font-weight:600; }
+  .submit { margin-top:18px; width:100%; font:600 12px/1 var(--font-mono); letter-spacing:.1em; text-transform:uppercase;
+    color:var(--c-on-accent); background:var(--c-accent); border:none; border-radius:999px; padding:14px; cursor:pointer; }
+  .submit:hover { background:var(--c-accent-hover); }
+  .reject { margin-top:14px; border:1px solid var(--c-rust); border-radius:12px; padding:12px 14px;
+    color:var(--c-rust); font-size:13px; background:rgba(216,116,79,.06); }
+  .reject code { font:500 11px/1.6 var(--font-mono); }
+  .opjson { margin-top:14px; background:var(--c-raised); border:1px solid var(--c-border); border-radius:12px;
+    padding:12px 14px; font:500 11px/1.7 var(--font-mono); color:var(--c-muted); white-space:pre-wrap; word-break:break-all; }
+  .oplist { border-top:1px dotted var(--c-border); margin-top:20px; padding-top:14px; }
+  .opentry { display:flex; gap:8px; align-items:baseline; flex-wrap:wrap; padding:7px 0; border-bottom:1px dotted var(--c-border); font:500 11px/1.6 var(--font-mono); }
+  .opentry .id { color:var(--c-text); }
+  .opentry .lane-tag { color:var(--c-bg); border-radius:999px; padding:2px 8px; font-size:9px; letter-spacing:.08em; text-transform:uppercase; }
+  .opentry .who { color:var(--c-faint); margin-left:auto; }
+  footer.actions { padding:14px 18px; border-top:1px solid var(--c-border); display:flex; gap:10px; align-items:center; }
+  footer.actions button.export { font:500 11px/1 var(--font-mono); letter-spacing:.08em; color:var(--c-faint);
+    background:none; border:1px solid var(--c-border); border-radius:999px; padding:9px 14px; cursor:pointer; }
+  footer.actions button.export:hover { color:var(--c-sage); border-color:var(--c-sage); }
+  footer.actions .nosave { font:500 9.5px/1.6 var(--font-mono); color:var(--c-faint); }
+  footer.actions .nosave b { color:var(--c-rust); font-weight:600; text-decoration:line-through; }
+</style>
+</head>
+<body data-layer="page" data-name="editor-poc" data-module="poc">
+
+<header class="app">
+  <a class="wordmark" href="../index.html">AIPET<em>.studio</em></a>
+  <span class="mode">Editor · PatchOp Composer</span>
+  <a class="switch" href="inspector.html">→ Inspector POC</a>
+</header>
+
+<div class="shell">
+  <main class="canvas" data-layer="section" data-name="canvas" data-module="poc">
+    <p class="canvas-note">CANVAS — 變更只有一條路：<b>發 PatchOp</b> · 點元素開始編輯</p>
+
+    <div id="deck">
+      <section class="slide" data-layer="section" data-name="hero" data-module="demo-deck">
+        <p class="kicker" data-layer="label" data-name="hero-kicker" data-module="demo-deck">AIPET.STUDIO · DEMO DECK</p>
+        <h1 data-layer="heading" data-name="hero-title" data-module="demo-deck">
+          三節拍，跑出<em>可稽核的設計</em>。
+        </h1>
+        <p class="lede" data-layer="text" data-name="hero-lede" data-module="demo-deck">
+          Builder 出候選、Auditor 給證據、Synthesis 由人收斂——每一條變更都有出處，
+          每一次決策都寫回 wiki。
+        </p>
+        <a class="cta" data-layer="cta" data-name="hero-cta" data-module="demo-deck">加入閉環</a>
+
+        <div class="stats" data-layer="component" data-name="stat-row" data-module="demo-deck">
+          <div class="stat" data-layer="card" data-name="stat-rounds" data-module="demo-deck">
+            <div class="v">12</div><div class="k">closed loops</div>
+          </div>
+          <div class="stat" data-layer="card" data-name="stat-decisions" data-module="demo-deck">
+            <div class="v">47</div><div class="k">decisions logged</div>
+          </div>
+          <div class="stat" data-layer="card" data-name="stat-pass" data-module="demo-deck">
+            <div class="v">84%</div><div class="k">first-pass audit</div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <aside class="panel" data-layer="section" data-name="editor-panel" data-module="poc">
+    <div class="panel-head">
+      <label for="actor">Acting as（runtime 依 charter 攔截越權 lane）</label>
+      <select id="actor">
+        <option value="orchestrator-human">orchestrator-human — 全 lane + governance</option>
+        <option value="design-agent">design-agent — typography/color/component/layout/svg/particle</option>
+        <option value="copy-agent">copy-agent — content only</option>
+        <option value="red-team-agent">red-team-agent — 只審不改（無任何 lane）</option>
+      </select>
+    </div>
+
+    <div class="panel-body" id="panelBody"></div>
+
+    <footer class="actions">
+      <button class="export" id="exportBtn">↓ 匯出 workspace-exports（單向）</button>
+      <span class="nosave"><b>儲存 HTML</b> 不存在——HTML 是 op log 的投影</span>
+    </footer>
+  </aside>
+</div>
+
+<script>
+/* charter lane 權限（真相源：wiki/schema/agents/*.charter.md） */
+const LANES = {
+  'orchestrator-human': ['typography','color','component','layout','content','svg','particle','governance'],
+  'design-agent': ['typography','color','component','layout','svg','particle'],
+  'copy-agent': ['content'],
+  'red-team-agent': [],
+};
+const CHARTER = {
+  'design-agent': 'wiki/schema/agents/design-agent.charter.md#forbidden',
+  'copy-agent': 'wiki/schema/agents/copy-agent.charter.md#forbidden',
+  'red-team-agent': 'wiki/schema/agents/red-team-agent.charter.md#forbidden',
+  'orchestrator-human': 'wiki/schema/agents/orchestrator-human.charter.md',
+};
+
+/* 可用的語意色 token（demo 子集） */
+const COLOR_TOKENS = ['color.accent','color.text','color.text-muted','color.sage'];
+const TOKEN_VALUE = {
+  'color.accent':'var(--c-accent)','color.text':'var(--c-text)',
+  'color.text-muted':'var(--c-muted)','color.sage':'var(--c-sage)',
+};
+
+let selected = null;
+let opType = null;          // 'replace-text' | 'set-token'
+let opSeq = 6;              // demo：延續 inspector 的 op-005
+const emittedOps = [];
+
+const body = document.getElementById('panelBody');
+const actorSel = document.getElementById('actor');
+
+const laneOf = t => t === 'replace-text' ? 'content' : 'color';
+const laneColor = l => ({content:'var(--c-series-gold)', color:'var(--c-series-amber)', governance:'var(--c-raised)'}[l] || 'var(--c-series-rust)');
+
+function render(){
+  if(!selected){
+    body.innerHTML = `<h3>選一個元素開始</h3>
+      <p class="hint">點畫布上任何帶 data-layer 的元素。Editor 不會讓你「改 HTML」——
+      它幫你把意圖組成一筆 PatchOp：lane 自動判定、rationale 必填、refs 指向規格條文。
+      送出後 op 立即套用到畫布並寫入 op log。</p>
+      ${renderOplist()}`;
+    return;
+  }
+  const d = selected.dataset;
+  const isText = ['label','heading','text','cta'].includes(d.layer);
+  body.innerHTML = `
+    <h3>${d.name}</h3>
+    <p class="hint">data-layer: <b style="color:var(--c-text)">${d.layer}</b> · module: ${d.module}</p>
+
+    <div class="field">
+      <label>Op type（決定 lane）</label>
+      <div class="optype">
+        <button id="btnText" ${isText ? '' : 'disabled style="opacity:.35;cursor:not-allowed"'}>replace-text → content</button>
+        <button id="btnToken">set-token → color</button>
+      </div>
+      <p class="lane-note" id="laneNote"></p>
+    </div>
+
+    <div id="opFields"></div>
+    ${renderOplist()}`;
+
+  const btnText = document.getElementById('btnText');
+  const btnToken = document.getElementById('btnToken');
+  if(isText) btnText.addEventListener('click', () => { opType = 'replace-text'; renderFields(); });
+  btnToken.addEventListener('click', () => { opType = 'set-token'; renderFields(); });
+  if(opType) renderFields();
+}
+
+function renderFields(){
+  document.getElementById('btnText')?.classList.toggle('on', opType === 'replace-text');
+  document.getElementById('btnToken')?.classList.toggle('on', opType === 'set-token');
+
+  const lane = laneOf(opType);
+  const actor = actorSel.value;
+  const allowed = LANES[actor].includes(lane);
+  document.getElementById('laneNote').innerHTML =
+    `lane = <b>${lane}</b> · actor = ${actor} → ${allowed ? '<span style="color:var(--c-sage)">charter 允許</span>' : '<span style="color:var(--c-rust)">越權，將被攔截</span>'}`;
+
+  const wrap = document.getElementById('opFields');
+  const currentText = selected.textContent.trim().replace(/\s+/g,' ');
+  wrap.innerHTML = `
+    ${opType === 'replace-text' ? `
+      <div class="field"><label>New text</label>
+        <textarea id="fldText">${currentText}</textarea></div>` : `
+      <div class="field"><label>Semantic token（值來自橋接表，不硬編碼）</label>
+        <select id="fldToken">${COLOR_TOKENS.map(t => `<option>${t}</option>`).join('')}</select></div>`}
+    <div class="field"><label>Rationale（必填——無 rationale 的變更不得進 log）</label>
+      <textarea id="fldWhy" placeholder="為什麼做這個修改？Auditor 與 Synthesis 都會讀。"></textarea></div>
+    <div class="field"><label>Refs</label>
+      <p class="fixed" id="fldRefs">${opType === 'replace-text' ? 'wiki/schema/voice-and-tone.md#tone' : 'stylepacks/aipet-loyal-shadow/DESIGN.md#用色規則'}</p></div>
+    <button class="submit" id="emitBtn">發 PatchOp</button>
+    <div id="result"></div>`;
+
+  document.getElementById('emitBtn').addEventListener('click', emit);
+}
+
+function emit(){
+  const actor = actorSel.value;
+  const lane = laneOf(opType);
+  const why = document.getElementById('fldWhy').value.trim();
+  const result = document.getElementById('result');
+
+  /* runtime 攔截 ①：rationale 必填 */
+  if(!why){
+    result.innerHTML = `<div class="reject">拒收：rationale 為空。無 rationale 的變更不得進 op log。</div>`;
+    return;
+  }
+  /* runtime 攔截 ②：charter lane 越權（硬性） */
+  if(!LANES[actor].includes(lane)){
+    result.innerHTML = `<div class="reject">op 被 runtime 攔截：<code>${actor}</code> 無 <code>${lane}</code> lane 權限。<br>
+      依據 → <code>${CHARTER[actor]}</code>${actor === 'red-team-agent' ? '（審計者不動手，修改權回到 Builder 節拍）' : ''}</div>`;
+    return;
+  }
+
+  const d = selected.dataset;
+  const op = {
+    id: `op-${String(opSeq++).padStart(3,'0')}`,
+    lane, agent: actor,
+    target: { dataLayer: d.layer, dataName: d.name, dataModule: d.module },
+    op: opType,
+    payload: opType === 'replace-text'
+      ? { text: document.getElementById('fldText').value }
+      : { token: document.getElementById('fldToken').value },
+    rationale: why,
+    refs: [document.getElementById('fldRefs').textContent],
+  };
+
+  /* 套用（op → 畫布；不是人手 → DOM） */
+  if(opType === 'replace-text'){
+    selected.textContent = op.payload.text;
+  } else {
+    selected.style.color = TOKEN_VALUE[op.payload.token];
+  }
+  selected.classList.add('op-applied');
+  setTimeout(() => selected.classList.remove('op-applied'), 1200);
+
+  emittedOps.unshift(op);
+  result.innerHTML = `<div class="opjson">${JSON.stringify(op, null, 2)}</div>`;
+  refreshOplist();
+}
+
+function renderOplist(){
+  return `<div class="oplist"><label class="kicker" style="display:block;margin-bottom:6px">Session op log（append-only）</label>
+    <div id="oplistBody">${emittedOps.length ? '' : '<p class="hint">本回合尚未發出任何 op。</p>'}</div></div>`;
+}
+function refreshOplist(){
+  const el = document.getElementById('oplistBody');
+  if(el) el.innerHTML = emittedOps.map(o =>
+    `<div class="opentry"><span class="id">${o.id}</span>
+     <span class="lane-tag" style="background:${laneColor(o.lane)}">${o.lane}</span>
+     <span>${o.target.dataName}</span><span class="who">${o.agent}</span></div>`).join('');
+}
+
+actorSel.addEventListener('change', () => { if(selected && opType) renderFields(); });
+
+document.getElementById('deck').addEventListener('click', e => {
+  const el = e.target.closest('[data-layer]');
+  if(!el) return;
+  e.preventDefault();
+  document.querySelectorAll('#deck .selected').forEach(x => x.classList.remove('selected'));
+  el.classList.add('selected');
+  selected = el;
+  opType = null;
+  render();
+  refreshOplist();
+});
+
+/* 匯出：唯一合法的 HTML 出口（單向，不回流） */
+document.getElementById('exportBtn').addEventListener('click', () => {
+  const blob = new Blob(
+    ['<!-- workspace-exports · derived artifact · do not edit -->\n' + document.getElementById('deck').innerHTML],
+    { type:'text/html' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'demo-deck.export.html';
+  a.click();
+  URL.revokeObjectURL(a.href);
+});
+
+render();
+</script>
+</body>
+</html>
