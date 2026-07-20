@@ -15,7 +15,8 @@
   },
   "navigation": {
     "theory": "理論",
-    "style": "樣式"
+    "style": "樣式",
+    "projects": "專案"
   },
   "theory": {
     "title": "AIPET 框架理論",

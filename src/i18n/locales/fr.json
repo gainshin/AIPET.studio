@@ -15,7 +15,8 @@
   },
   "navigation": {
     "theory": "Théorie",
-    "style": "Style"
+    "style": "Style",
+    "projects": "Projets"
   },
   "theory": {
     "title": "Théorie du framework AIPET",

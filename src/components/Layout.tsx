@@ -15,6 +15,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
   const navigation = [
     { name: t('navigation.theory'), href: '/theory' },
     { name: t('navigation.style'), href: '/style' },
+    { name: t('navigation.projects'), href: '/projects' },
   ];
 
   const languages = [
