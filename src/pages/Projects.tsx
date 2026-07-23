@@ -35,14 +35,14 @@ const DEMOS = [
   {
     href: '/poc/inspector.html',
     name: 'Inspector',
-    tagline: 'Read-only observation',
-    desc: '點選畫布上任何帶 data-layer 的節點，觀測它的身份、動過它的 PatchOp、rationale 與規格引用。沒有任何寫入路徑。',
+    tagline: 'Do 為主 · Read-only observation',
+    desc: '觀測與稽核面：點選畫布節點，看它的身份、動過它的 PatchOp、rationale 與規格引用。沒有任何寫入路徑——反饋階段的核查介面。',
   },
   {
     href: '/poc/editor.html',
     name: 'Editor',
-    tagline: 'PatchOp composer',
-    desc: '變更的唯一入口。選取節點、組出一筆 PatchOp——lane 自動判定、rationale 必填，runtime 依 agent charter 攔截越權操作。',
+    tagline: 'Do + Chat 均衡 · Hybrid UI',
+    desc: '變更的唯一入口，走四階段：喚醒（能做什麼）→ 表達（自然語言意圖 + 畫布選取雙區聯動）→ 確認（ThoughtChain 過程可見）→ 反饋（候選 + 審計證據 + 人類三選一收斂）。',
   },
 ];
 

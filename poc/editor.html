@@ -8,13 +8,14 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@500;600&family=Noto+Serif+TC:wght@500&family=Noto+Sans+TC:wght@300;400&display=swap">
 <style>
+  /* 語意 token → CSS 變數（真相源：stylepacks/aipet-loyal-shadow/DESIGN.md） */
   :root {
     --c-bg:#0A120C; --c-surface:#0F1810; --c-raised:#141D16;
     --c-border:#243027; --c-border-strong:#3A4A3E;
     --c-text:#E8E0C8; --c-muted:#C5C4B0; --c-faint:#9A9A80;
     --c-accent:#FF9A3C; --c-accent-hover:#FFD66E; --c-on-accent:#0A120C;
     --c-sage:#7DDC8C; --c-rust:#D8744F;
-    --c-series-amber:#C96F1E; --c-series-gold:#9E962A; --c-series-rust:#CF6A45;
+    --c-series-amber:#C96F1E; --c-series-gold:#9E962A;
     --font-display:'EB Garamond','Noto Serif TC',Georgia,serif;
     --font-body:'Inter','Noto Sans TC',system-ui,sans-serif;
     --font-mono:'JetBrains Mono',ui-monospace,'SF Mono',monospace;
@@ -27,14 +28,15 @@
   header.app { position:sticky; top:0; z-index:9; display:flex; align-items:center; justify-content:space-between;
     gap:12px; padding:12px 20px; background:rgba(10,18,12,.92); backdrop-filter:blur(6px); border-bottom:1px solid var(--c-border); }
   .wordmark { font-family:var(--font-display); font-size:20px; white-space:nowrap; text-decoration:none; color:var(--c-text); }
-  header.app .mode { font:500 10px/1 var(--font-mono); letter-spacing:.18em; color:var(--c-accent); text-transform:uppercase; }
+  header.app .mode { font:500 10px/1 var(--font-mono); letter-spacing:.14em; color:var(--c-accent); text-transform:uppercase; text-align:center; }
   header.app a.switch { font:500 11px/1 var(--font-mono); letter-spacing:.08em; color:var(--c-faint);
     border:1px solid var(--c-border); border-radius:999px; padding:7px 14px; text-decoration:none; white-space:nowrap; }
   header.app a.switch:hover { color:var(--c-accent); border-color:var(--c-accent); }
 
-  .shell { display:grid; grid-template-columns:minmax(0,1fr) 420px; min-height:calc(100vh - 57px); }
-  @media (max-width: 900px){ .shell { grid-template-columns:1fr; } aside.panel { border-left:none; border-top:1px solid var(--c-border);} }
+  .shell { display:grid; grid-template-columns:minmax(0,1fr) 440px; min-height:calc(100vh - 57px); }
+  @media (max-width: 960px){ .shell { grid-template-columns:1fr; } aside.panel { border-left:none; border-top:1px solid var(--c-border);} }
 
+  /* ── 畫布（Do 區）───────────────────────── */
   main.canvas { padding:36px 32px 64px; }
   .canvas-note { font:500 10px/1.6 var(--font-mono); letter-spacing:.14em; color:var(--c-faint); margin-bottom:20px; }
   .canvas-note b { color:var(--c-accent); font-weight:500; }
@@ -53,59 +55,101 @@
   .stat .v { font-family:var(--font-display); font-size:34px; line-height:1.1; }
   .stat:first-child .v { color:var(--c-accent); }
   .stat .k { font:500 9px/1.6 var(--font-mono); letter-spacing:.18em; text-transform:uppercase; color:var(--c-faint); margin-top:4px; }
+  .footnote { margin-top:40px; font:500 10px/1.6 var(--font-mono); letter-spacing:.1em; color:var(--c-faint); }
 
+  /* ── 右欄（Chat 區）───────────────────────── */
   aside.panel { border-left:1px solid var(--c-border); background:var(--c-surface); display:flex; flex-direction:column; min-width:0; }
-  .panel-head { padding:14px 18px; border-bottom:1px solid var(--c-border); }
-  .panel-head label { font:500 9.5px/1 var(--font-mono); letter-spacing:.18em; text-transform:uppercase; color:var(--c-faint); display:block; margin-bottom:8px; }
-  select, textarea, input[type=text] { width:100%; background:var(--c-raised); color:var(--c-text);
-    border:1px solid var(--c-border); border-radius:8px; padding:9px 12px; font:400 13px/1.5 var(--font-body); }
-  select { font-family:var(--font-mono); font-size:12px; }
-  textarea { resize:vertical; min-height:64px; }
-  select:focus, textarea:focus, input:focus { outline:none; border-color:var(--c-accent); }
   .panel-body { padding:18px; overflow-y:auto; flex:1; }
-  .panel-body h3 { font-family:var(--font-display); font-weight:400; font-size:20px; margin-bottom:10px; }
+  .stage { margin-bottom:22px; }
+  .stage-head { display:flex; align-items:baseline; gap:8px; margin-bottom:10px; }
+  .stage-no { font-family:var(--font-display); font-style:italic; font-size:15px; color:var(--c-accent); }
+  .stage-head .kicker { color:var(--c-faint); }
+  .stage-head .map { font:500 9px/1.6 var(--font-mono); color:var(--c-border-strong); margin-left:auto; text-align:right; }
   .hint { color:var(--c-faint); font-size:13px; }
-  .field { margin-top:14px; }
-  .field label { font:500 9.5px/1 var(--font-mono); letter-spacing:.18em; text-transform:uppercase; color:var(--c-faint); display:block; margin-bottom:6px; }
-  .field .fixed { font:500 11px/1.6 var(--font-mono); color:var(--c-sage); word-break:break-all; }
-  .optype { display:flex; gap:6px; flex-wrap:wrap; }
-  .optype button { font:500 10px/1 var(--font-mono); letter-spacing:.08em; text-transform:uppercase; color:var(--c-faint);
-    background:none; border:1px solid var(--c-border); border-radius:999px; padding:8px 13px; cursor:pointer; }
-  .optype button.on { color:var(--c-on-accent); background:var(--c-accent); border-color:var(--c-accent); }
-  .lane-note { font:500 10px/1.7 var(--font-mono); color:var(--c-faint); margin-top:6px; }
-  .lane-note b { color:var(--c-accent); font-weight:600; }
-  .submit { margin-top:18px; width:100%; font:600 12px/1 var(--font-mono); letter-spacing:.1em; text-transform:uppercase;
-    color:var(--c-on-accent); background:var(--c-accent); border:none; border-radius:999px; padding:14px; cursor:pointer; }
-  .submit:hover { background:var(--c-accent-hover); }
-  .reject { margin-top:14px; border:1px solid var(--c-rust); border-radius:12px; padding:12px 14px;
-    color:var(--c-rust); font-size:13px; background:rgba(216,116,79,.06); }
-  .reject code { font:500 11px/1.6 var(--font-mono); }
-  .opjson { margin-top:14px; background:var(--c-raised); border:1px solid var(--c-border); border-radius:12px;
-    padding:12px 14px; font:500 11px/1.7 var(--font-mono); color:var(--c-muted); white-space:pre-wrap; word-break:break-all; }
-  .oplist { border-top:1px dotted var(--c-border); margin-top:20px; padding-top:14px; }
-  .opentry { display:flex; gap:8px; align-items:baseline; flex-wrap:wrap; padding:7px 0; border-bottom:1px dotted var(--c-border); font:500 11px/1.6 var(--font-mono); }
+
+  .chips { display:flex; flex-wrap:wrap; gap:6px; margin-top:10px; }
+  .chip { font:500 11px/1.5 var(--font-mono); color:var(--c-muted); background:var(--c-raised);
+    border:1px solid var(--c-border); border-radius:999px; padding:7px 13px; cursor:pointer; }
+  .chip:hover { color:var(--c-accent); border-color:var(--c-accent); }
+
+  .sender { margin-top:12px; }
+  .target-chip { display:inline-flex; align-items:center; gap:6px; font:500 10px/1 var(--font-mono);
+    color:var(--c-sage); border:1px dashed var(--c-sage); border-radius:999px; padding:6px 11px; margin-bottom:8px; }
+  .target-chip.none { color:var(--c-faint); border-color:var(--c-border); }
+  textarea { width:100%; background:var(--c-raised); color:var(--c-text); border:1px solid var(--c-border);
+    border-radius:10px; padding:10px 12px; font:400 13px/1.6 var(--font-body); resize:vertical; min-height:56px; }
+  textarea:focus { outline:none; border-color:var(--c-accent); }
+  .send { margin-top:8px; width:100%; font:600 12px/1 var(--font-mono); letter-spacing:.1em; text-transform:uppercase;
+    color:var(--c-on-accent); background:var(--c-accent); border:none; border-radius:999px; padding:12px; cursor:pointer; }
+  .send:hover { background:var(--c-accent-hover); }
+
+  .think { border-left:1px solid var(--c-border); padding-left:14px; }
+  .tstep { display:flex; gap:8px; align-items:baseline; padding:5px 0; font:500 11px/1.7 var(--font-mono); color:var(--c-muted); }
+  .tstep .ok { color:var(--c-sage); }
+  .tstep .src { color:var(--c-sage); }
+  .tstep .warn { color:var(--c-rust); }
+
+  .cand { border:1px solid var(--c-border); border-radius:14px; background:var(--c-raised); padding:14px; margin-top:12px; }
+  .cand .head { display:flex; align-items:center; gap:8px; flex-wrap:wrap; }
+  .cand .name { font-family:var(--font-display); font-size:18px; }
+  .cand .lane { font:600 9px/1 var(--font-mono); letter-spacing:.1em; text-transform:uppercase;
+    padding:4px 8px; border-radius:999px; background:var(--c-series-gold); color:var(--c-bg); }
+  .cand .lane.color { background:var(--c-series-amber); }
+  .cand .lane.governance { background:var(--c-raised); color:var(--c-accent); border:1px solid var(--c-accent); }
+  .cand .agent { font:500 10px/1 var(--font-mono); color:var(--c-faint); margin-left:auto; }
+  .cand .payload { font:500 12px/1.6 var(--font-mono); color:var(--c-text); margin-top:9px; word-break:break-all; }
+  .cand .why { color:var(--c-muted); font-size:13px; margin-top:7px; }
+  .cand .srcs { display:flex; flex-wrap:wrap; gap:6px; margin-top:9px; }
+  .cand .srcs span { font:500 9.5px/1.4 var(--font-mono); color:var(--c-sage); border:1px solid var(--c-border);
+    border-radius:6px; padding:3px 8px; word-break:break-all; }
+  .audit { margin-top:10px; padding-top:9px; border-top:1px dotted var(--c-border); font-size:12.5px; color:var(--c-muted); }
+  .audit b { font:600 9.5px/1 var(--font-mono); letter-spacing:.08em; border-radius:999px; padding:3px 8px; margin-right:7px; }
+  .audit b.pass { background:var(--c-sage); color:var(--c-bg); }
+  .audit b.warn { background:var(--c-rust); color:var(--c-bg); }
+  .cand .preview { margin-top:10px; font:500 10px/1 var(--font-mono); letter-spacing:.08em; color:var(--c-faint);
+    background:none; border:1px solid var(--c-border); border-radius:999px; padding:7px 12px; cursor:pointer; }
+  .cand .preview:hover, .cand .preview.on { color:var(--c-accent); border-color:var(--c-accent); }
+
+  .actions { display:flex; flex-wrap:wrap; gap:8px; margin-top:14px; }
+  .actions button { font:600 11px/1 var(--font-mono); letter-spacing:.08em; border-radius:999px; padding:11px 16px; cursor:pointer; border:none; }
+  .actions .adopt { background:var(--c-accent); color:var(--c-on-accent); }
+  .actions .adopt:hover { background:var(--c-accent-hover); }
+  .actions .none { background:none; color:var(--c-faint); border:1px solid var(--c-border); }
+  .actions .none:hover { color:var(--c-rust); border-color:var(--c-rust); }
+  .synthesis-note { font:500 9.5px/1.7 var(--font-mono); color:var(--c-faint); margin-top:10px; }
+  .synthesis-note b { color:var(--c-accent); font-weight:600; }
+
+  .decision { margin-top:12px; border:1px solid var(--c-sage); border-radius:12px; padding:11px 13px;
+    font:500 11px/1.7 var(--font-mono); color:var(--c-sage); background:rgba(125,220,140,.05); }
+  .reset { display:inline-block; margin-top:12px; font:500 10px/1 var(--font-mono); letter-spacing:.08em;
+    color:var(--c-faint); border:1px solid var(--c-border); border-radius:999px; padding:8px 13px; cursor:pointer; background:none; }
+  .reset:hover { color:var(--c-accent); border-color:var(--c-accent); }
+
+  .oplist { border-top:1px dotted var(--c-border); margin-top:8px; padding-top:12px; }
+  .opentry { display:flex; gap:8px; align-items:baseline; flex-wrap:wrap; padding:6px 0; border-bottom:1px dotted var(--c-border); font:500 11px/1.6 var(--font-mono); }
   .opentry .id { color:var(--c-text); }
   .opentry .lane-tag { color:var(--c-bg); border-radius:999px; padding:2px 8px; font-size:9px; letter-spacing:.08em; text-transform:uppercase; }
   .opentry .who { color:var(--c-faint); margin-left:auto; }
-  footer.actions { padding:14px 18px; border-top:1px solid var(--c-border); display:flex; gap:10px; align-items:center; }
-  footer.actions button.export { font:500 11px/1 var(--font-mono); letter-spacing:.08em; color:var(--c-faint);
+
+  footer.actionsbar { padding:12px 18px; border-top:1px solid var(--c-border); display:flex; gap:10px; align-items:center; flex-wrap:wrap; }
+  footer.actionsbar button.export { font:500 11px/1 var(--font-mono); letter-spacing:.08em; color:var(--c-faint);
     background:none; border:1px solid var(--c-border); border-radius:999px; padding:9px 14px; cursor:pointer; }
-  footer.actions button.export:hover { color:var(--c-sage); border-color:var(--c-sage); }
-  footer.actions .nosave { font:500 9.5px/1.6 var(--font-mono); color:var(--c-faint); }
-  footer.actions .nosave b { color:var(--c-rust); font-weight:600; text-decoration:line-through; }
+  footer.actionsbar button.export:hover { color:var(--c-sage); border-color:var(--c-sage); }
+  footer.actionsbar .nosave { font:500 9.5px/1.6 var(--font-mono); color:var(--c-faint); }
+  footer.actionsbar .nosave b { color:var(--c-rust); font-weight:600; text-decoration:line-through; }
 </style>
 </head>
 <body data-layer="page" data-name="editor-poc" data-module="poc">
 
 <header class="app">
   <a class="wordmark" href="../index.html">AIPET<em>.studio</em></a>
-  <span class="mode">Editor · PatchOp Composer</span>
+  <span class="mode">Editor · Do + Chat 均衡（Hybrid UI）</span>
   <a class="switch" href="inspector.html">→ Inspector POC</a>
 </header>
 
 <div class="shell">
   <main class="canvas" data-layer="section" data-name="canvas" data-module="poc">
-    <p class="canvas-note">CANVAS — 變更只有一條路：<b>發 PatchOp</b> · 點元素開始編輯</p>
+    <p class="canvas-note">CANVAS（Do 區）— 點元素 = 給 agent 提供 target context（雙區聯動）· 變更只有一條路：<b>PatchOp</b></p>
 
     <div id="deck">
       <section class="slide" data-layer="section" data-name="hero" data-module="demo-deck">
@@ -130,24 +174,73 @@
             <div class="v">84%</div><div class="k">first-pass audit</div>
           </div>
         </div>
+
+        <!-- 故意缺 data-module：governance 示範用 -->
+        <p class="footnote" data-layer="text" data-name="deck-footnote">AIPET.STUDIO · PROTOTYPE · 2026</p>
       </section>
     </div>
   </main>
 
   <aside class="panel" data-layer="section" data-name="editor-panel" data-module="poc">
-    <div class="panel-head">
-      <label for="actor">Acting as（runtime 依 charter 攔截越權 lane）</label>
-      <select id="actor">
-        <option value="orchestrator-human">orchestrator-human — 全 lane + governance</option>
-        <option value="design-agent">design-agent — typography/color/component/layout/svg/particle</option>
-        <option value="copy-agent">copy-agent — content only</option>
-        <option value="red-team-agent">red-team-agent — 只審不改（無任何 lane）</option>
-      </select>
+    <div class="panel-body" id="flow">
+
+      <!-- 01 喚醒 -->
+      <section class="stage" id="stageWelcome">
+        <div class="stage-head">
+          <span class="stage-no">01</span><span class="kicker">喚醒 · Welcome &amp; Prompts</span>
+          <span class="map">RICH: Role + Intention</span>
+        </div>
+        <p class="hint">我是這塊畫布的變更協調員。你說意圖，我路由給對的 worker agent 產出候選；
+        收斂永遠由你（Curator）做。我能做的事：</p>
+        <div class="chips" id="prompts">
+          <button class="chip" data-intent="改文案，讓 CTA 更有行動力" data-target="hero-cta">改 CTA 文案</button>
+          <button class="chip" data-intent="標題強調色想試替代方案" data-target="hero-title">試替代強調色</button>
+          <button class="chip" data-intent="頁尾那行好像沒掛模組標註，補一下" data-target="deck-footnote">補齊標註</button>
+        </div>
+      </section>
+
+      <!-- 02 表達 -->
+      <section class="stage" id="stageSender">
+        <div class="stage-head">
+          <span class="stage-no">02</span><span class="kicker">表達 · Sender</span>
+          <span class="map">Chat 意圖 ＋ Do 選取</span>
+        </div>
+        <div id="targetChip" class="target-chip none">target: 未選取（點畫布或用快捷意圖）</div>
+        <div class="sender">
+          <textarea id="intentInput" placeholder="用自然語言說你要什麼，例如：CTA 口氣再積極一點"></textarea>
+          <button class="send" id="sendBtn">送出意圖</button>
+        </div>
+      </section>
+
+      <!-- 03 確認 -->
+      <section class="stage" id="stageThink" hidden>
+        <div class="stage-head">
+          <span class="stage-no">03</span><span class="kicker">確認 · ThoughtChain</span>
+          <span class="map">Builder 節拍（過程可見）</span>
+        </div>
+        <div class="think" id="thinkSteps"></div>
+      </section>
+
+      <!-- 04 反饋 -->
+      <section class="stage" id="stageFeedback" hidden>
+        <div class="stage-head">
+          <span class="stage-no">04</span><span class="kicker">反饋 · Results &amp; Actions</span>
+          <span class="map">Auditor 證據 → Synthesis 三選一</span>
+        </div>
+        <div id="candidates"></div>
+        <div class="actions" id="decisionActions"></div>
+        <p class="synthesis-note">Synthesis 由<b>人</b>收斂——agent 不採納自己的候選（憲法第 1 條）。</p>
+        <div id="decisionResult"></div>
+      </section>
+
+      <!-- session op log -->
+      <section class="oplist">
+        <span class="kicker">Session op log（append-only）</span>
+        <div id="oplistBody"><p class="hint" style="margin-top:6px">本回合尚未有 op 進 log。</p></div>
+      </section>
     </div>
 
-    <div class="panel-body" id="panelBody"></div>
-
-    <footer class="actions">
+    <footer class="actionsbar">
       <button class="export" id="exportBtn">↓ 匯出 workspace-exports（單向）</button>
       <span class="nosave"><b>儲存 HTML</b> 不存在——HTML 是 op log 的投影</span>
     </footer>
@@ -155,159 +248,82 @@
 </div>
 
 <script>
-/* charter lane 權限（真相源：wiki/schema/agents/*.charter.md） */
-const LANES = {
-  'orchestrator-human': ['typography','color','component','layout','content','svg','particle','governance'],
-  'design-agent': ['typography','color','component','layout','svg','particle'],
-  'copy-agent': ['content'],
-  'red-team-agent': [],
-};
-const CHARTER = {
-  'design-agent': 'wiki/schema/agents/design-agent.charter.md#forbidden',
-  'copy-agent': 'wiki/schema/agents/copy-agent.charter.md#forbidden',
-  'red-team-agent': 'wiki/schema/agents/red-team-agent.charter.md#forbidden',
-  'orchestrator-human': 'wiki/schema/agents/orchestrator-human.charter.md',
-};
+/* ────────────────────────────────────────────────────────────
+   Demo 腳本化 agent（無真實 LLM）：意圖 → lane 判定 → 路由 worker
+   → ThoughtChain → 2 候選 + Red Team 審計 → 人類三選一 → 寫回 log
+   ──────────────────────────────────────────────────────────── */
 
-/* 可用的語意色 token（demo 子集） */
-const COLOR_TOKENS = ['color.accent','color.text','color.text-muted','color.sage'];
-const TOKEN_VALUE = {
-  'color.accent':'var(--c-accent)','color.text':'var(--c-text)',
-  'color.text-muted':'var(--c-muted)','color.sage':'var(--c-sage)',
-};
-
-let selected = null;
-let opType = null;          // 'replace-text' | 'set-token'
-let opSeq = 6;              // demo：延續 inspector 的 op-005
+const $ = id => document.getElementById(id);
+let selected = null, scenario = null, opSeq = 6;
 const emittedOps = [];
+const laneColor = l => ({content:'var(--c-series-gold)', color:'var(--c-series-amber)', governance:'transparent'}[l]);
 
-const body = document.getElementById('panelBody');
-const actorSel = document.getElementById('actor');
+/* 三個腳本化情境（依意圖關鍵字路由） */
+const SCENARIOS = {
+  copy: {
+    match: /文案|口氣|行動|cta|字|說法/i, lane: 'content', agent: 'copy-agent', target: 'hero-cta',
+    think: [
+      ['解析意圖', '「更有行動力」→ content lane'],
+      ['查 wiki', 'voice-and-tone.md#cta ｜「CTA 用系統母語，不用泛用詞」', 'src'],
+      ['charter 檢查', 'copy-agent ✓ content lane（forbidden 無違反）'],
+      ['Builder', '產出 2 個 candidate（replace-text）'],
+      ['Red Team', '四層判準審計，附證據回填'],
+    ],
+    candidates: [
+      { name:'A', payload:'replace-text → 「啟動第一個閉環」',
+        why:'動詞開頭、指向系統母語「閉環」；不誇張。',
+        refs:['wiki/schema/voice-and-tone.md#cta'],
+        audit:{ level:'pass', note:'四層全過；與 voice keywords「direct」一致。' },
+        apply: el => el.textContent = '啟動第一個閉環' },
+      { name:'B', payload:'replace-text → 「現在就開始閉環」',
+        why:'加時間壓力詞，行動力更強。',
+        refs:['wiki/schema/voice-and-tone.md#cta'],
+        audit:{ level:'warn', note:'「現在就」貼近 voice avoid「hype」邊緣——證據：DESIGN.md voice.avoid。' },
+        apply: el => el.textContent = '現在就開始閉環' },
+    ],
+  },
+  color: {
+    match: /色|顏色|color|強調/i, lane: 'color', agent: 'design-agent', target: 'hero-title',
+    think: [
+      ['解析意圖', '「強調色替代方案」→ color lane'],
+      ['查 wiki', 'DESIGN.md#用色規則 ｜「amber 是唯一強調色」', 'src'],
+      ['charter 檢查', 'design-agent ✓ color lane'],
+      ['Builder', '產出 2 個 candidate（set-token，只講語意 token）'],
+      ['Red Team', '對照當前載入規格（非外部資料集）審計'],
+    ],
+    candidates: [
+      { name:'A', payload:'set-token → color.accent-hover（amber-300 提亮）',
+        why:'同色相內提亮，維持「一盞燈」紀律。',
+        refs:['stylepacks/aipet-loyal-shadow/DESIGN.md#用色規則'],
+        audit:{ level:'pass', note:'同 amber 家族，規格允許。' },
+        apply: el => { const em = el.querySelector('em'); if(em) em.style.color = 'var(--c-accent-hover)'; } },
+      { name:'B', payload:'set-token → color.sage（換綠色強調）',
+        why:'試把強調換成次要識別色。',
+        refs:['stylepacks/aipet-loyal-shadow/DESIGN.md#用色規則'],
+        audit:{ level:'warn', note:'違反規格原文：「amber-400 僅限強調」「sage 與 amber 不同時出現在同一元件」。建議否決。' },
+        apply: el => { const em = el.querySelector('em'); if(em) em.style.color = 'var(--c-sage)'; } },
+    ],
+  },
+  governance: {
+    match: /標註|module|governance|補/i, lane: 'governance', agent: 'orchestrator-human', target: 'deck-footnote',
+    think: [
+      ['解析意圖', '「補模組標註」→ governance lane'],
+      ['掃描畫布', 'deck-footnote 缺 data-module ｜憲法第 8 條：無標註者 Auditor 直接 fail', 'src'],
+      ['charter 檢查', 'governance lane 僅 orchestrator-human 可發——此 op 需 Curator 簽核', 'warn'],
+      ['Builder', '草擬 1 個 candidate（set-attr），等人簽核'],
+    ],
+    candidates: [
+      { name:'A', payload:'set-attr → data-module="demo-deck"',
+        why:'補齊標註使其可被 Auditor 定位；機器起草、人簽核。',
+        refs:['CLAUDE.md#憲法', 'wiki/schema/agents/orchestrator-human.charter.md'],
+        audit:{ level:'pass', note:'governance 類 op，簽核後生效並寫入 log。' },
+        apply: el => el.setAttribute('data-module', 'demo-deck') },
+    ],
+    single: true,
+  },
+};
 
-const laneOf = t => t === 'replace-text' ? 'content' : 'color';
-const laneColor = l => ({content:'var(--c-series-gold)', color:'var(--c-series-amber)', governance:'var(--c-raised)'}[l] || 'var(--c-series-rust)');
-
-function render(){
-  if(!selected){
-    body.innerHTML = `<h3>選一個元素開始</h3>
-      <p class="hint">點畫布上任何帶 data-layer 的元素。Editor 不會讓你「改 HTML」——
-      它幫你把意圖組成一筆 PatchOp：lane 自動判定、rationale 必填、refs 指向規格條文。
-      送出後 op 立即套用到畫布並寫入 op log。</p>
-      ${renderOplist()}`;
-    return;
-  }
-  const d = selected.dataset;
-  const isText = ['label','heading','text','cta'].includes(d.layer);
-  body.innerHTML = `
-    <h3>${d.name}</h3>
-    <p class="hint">data-layer: <b style="color:var(--c-text)">${d.layer}</b> · module: ${d.module}</p>
-
-    <div class="field">
-      <label>Op type（決定 lane）</label>
-      <div class="optype">
-        <button id="btnText" ${isText ? '' : 'disabled style="opacity:.35;cursor:not-allowed"'}>replace-text → content</button>
-        <button id="btnToken">set-token → color</button>
-      </div>
-      <p class="lane-note" id="laneNote"></p>
-    </div>
-
-    <div id="opFields"></div>
-    ${renderOplist()}`;
-
-  const btnText = document.getElementById('btnText');
-  const btnToken = document.getElementById('btnToken');
-  if(isText) btnText.addEventListener('click', () => { opType = 'replace-text'; renderFields(); });
-  btnToken.addEventListener('click', () => { opType = 'set-token'; renderFields(); });
-  if(opType) renderFields();
-}
-
-function renderFields(){
-  document.getElementById('btnText')?.classList.toggle('on', opType === 'replace-text');
-  document.getElementById('btnToken')?.classList.toggle('on', opType === 'set-token');
-
-  const lane = laneOf(opType);
-  const actor = actorSel.value;
-  const allowed = LANES[actor].includes(lane);
-  document.getElementById('laneNote').innerHTML =
-    `lane = <b>${lane}</b> · actor = ${actor} → ${allowed ? '<span style="color:var(--c-sage)">charter 允許</span>' : '<span style="color:var(--c-rust)">越權，將被攔截</span>'}`;
-
-  const wrap = document.getElementById('opFields');
-  const currentText = selected.textContent.trim().replace(/\s+/g,' ');
-  wrap.innerHTML = `
-    ${opType === 'replace-text' ? `
-      <div class="field"><label>New text</label>
-        <textarea id="fldText">${currentText}</textarea></div>` : `
-      <div class="field"><label>Semantic token（值來自橋接表，不硬編碼）</label>
-        <select id="fldToken">${COLOR_TOKENS.map(t => `<option>${t}</option>`).join('')}</select></div>`}
-    <div class="field"><label>Rationale（必填——無 rationale 的變更不得進 log）</label>
-      <textarea id="fldWhy" placeholder="為什麼做這個修改？Auditor 與 Synthesis 都會讀。"></textarea></div>
-    <div class="field"><label>Refs</label>
-      <p class="fixed" id="fldRefs">${opType === 'replace-text' ? 'wiki/schema/voice-and-tone.md#tone' : 'stylepacks/aipet-loyal-shadow/DESIGN.md#用色規則'}</p></div>
-    <button class="submit" id="emitBtn">發 PatchOp</button>
-    <div id="result"></div>`;
-
-  document.getElementById('emitBtn').addEventListener('click', emit);
-}
-
-function emit(){
-  const actor = actorSel.value;
-  const lane = laneOf(opType);
-  const why = document.getElementById('fldWhy').value.trim();
-  const result = document.getElementById('result');
-
-  /* runtime 攔截 ①：rationale 必填 */
-  if(!why){
-    result.innerHTML = `<div class="reject">拒收：rationale 為空。無 rationale 的變更不得進 op log。</div>`;
-    return;
-  }
-  /* runtime 攔截 ②：charter lane 越權（硬性） */
-  if(!LANES[actor].includes(lane)){
-    result.innerHTML = `<div class="reject">op 被 runtime 攔截：<code>${actor}</code> 無 <code>${lane}</code> lane 權限。<br>
-      依據 → <code>${CHARTER[actor]}</code>${actor === 'red-team-agent' ? '（審計者不動手，修改權回到 Builder 節拍）' : ''}</div>`;
-    return;
-  }
-
-  const d = selected.dataset;
-  const op = {
-    id: `op-${String(opSeq++).padStart(3,'0')}`,
-    lane, agent: actor,
-    target: { dataLayer: d.layer, dataName: d.name, dataModule: d.module },
-    op: opType,
-    payload: opType === 'replace-text'
-      ? { text: document.getElementById('fldText').value }
-      : { token: document.getElementById('fldToken').value },
-    rationale: why,
-    refs: [document.getElementById('fldRefs').textContent],
-  };
-
-  /* 套用（op → 畫布；不是人手 → DOM） */
-  if(opType === 'replace-text'){
-    selected.textContent = op.payload.text;
-  } else {
-    selected.style.color = TOKEN_VALUE[op.payload.token];
-  }
-  selected.classList.add('op-applied');
-  setTimeout(() => selected.classList.remove('op-applied'), 1200);
-
-  emittedOps.unshift(op);
-  result.innerHTML = `<div class="opjson">${JSON.stringify(op, null, 2)}</div>`;
-  refreshOplist();
-}
-
-function renderOplist(){
-  return `<div class="oplist"><label class="kicker" style="display:block;margin-bottom:6px">Session op log（append-only）</label>
-    <div id="oplistBody">${emittedOps.length ? '' : '<p class="hint">本回合尚未發出任何 op。</p>'}</div></div>`;
-}
-function refreshOplist(){
-  const el = document.getElementById('oplistBody');
-  if(el) el.innerHTML = emittedOps.map(o =>
-    `<div class="opentry"><span class="id">${o.id}</span>
-     <span class="lane-tag" style="background:${laneColor(o.lane)}">${o.lane}</span>
-     <span>${o.target.dataName}</span><span class="who">${o.agent}</span></div>`).join('');
-}
-
-actorSel.addEventListener('change', () => { if(selected && opType) renderFields(); });
-
+/* ── 雙區聯動：畫布選取 = target context ── */
 document.getElementById('deck').addEventListener('click', e => {
   const el = e.target.closest('[data-layer]');
   if(!el) return;
@@ -315,13 +331,132 @@ document.getElementById('deck').addEventListener('click', e => {
   document.querySelectorAll('#deck .selected').forEach(x => x.classList.remove('selected'));
   el.classList.add('selected');
   selected = el;
-  opType = null;
-  render();
-  refreshOplist();
+  const chip = $('targetChip');
+  chip.className = 'target-chip';
+  chip.textContent = `target: ${el.dataset.name} · ${el.dataset.layer}`;
 });
 
+/* ── 喚醒：快捷意圖 chips ── */
+document.querySelectorAll('#prompts .chip').forEach(c => c.addEventListener('click', () => {
+  $('intentInput').value = c.dataset.intent;
+  const el = document.querySelector(`#deck [data-name="${c.dataset.target}"]`);
+  if(el) el.click();
+  $('intentInput').focus();
+}));
+
+/* ── 表達 → 確認（ThoughtChain 逐步顯示）── */
+$('sendBtn').addEventListener('click', () => {
+  const text = $('intentInput').value.trim();
+  if(!text) return;
+  scenario = Object.values(SCENARIOS).find(s => s.match.test(text)) || SCENARIOS.copy;
+  if(!selected || selected.dataset.name !== scenario.target){
+    const el = document.querySelector(`#deck [data-name="${scenario.target}"]`);
+    if(el) el.click();
+  }
+  $('stageThink').hidden = false;
+  $('stageFeedback').hidden = true;
+  $('candidates').innerHTML = '';
+  $('decisionActions').innerHTML = '';
+  $('decisionResult').innerHTML = '';
+  const steps = $('thinkSteps');
+  steps.innerHTML = '';
+  scenario.think.forEach((s, i) => {
+    setTimeout(() => {
+      const cls = s[2] === 'warn' ? 'warn' : s[2] === 'src' ? 'src' : 'ok';
+      steps.insertAdjacentHTML('beforeend',
+        `<div class="tstep"><span class="${cls === 'warn' ? 'warn' : 'ok'}">${s[2] === 'warn' ? '▲' : '✓'}</span>
+         <span><b style="color:var(--c-text)">${s[0]}</b> — <span class="${cls === 'src' ? 'src' : ''}">${s[1]}</span></span></div>`);
+      steps.lastElementChild.scrollIntoView({ block:'nearest' });
+      if(i === scenario.think.length - 1) setTimeout(showCandidates, 350);
+    }, 420 * (i + 1));
+  });
+});
+
+/* ── 反饋：candidates + 審計證據 + 三選一 ── */
+const original = new Map();
+function targetEl(){ return document.querySelector(`#deck [data-name="${scenario.target}"]`); }
+function snapshot(el){ if(!original.has(el)) original.set(el, el.cloneNode(true)); }
+function restore(){
+  const el = targetEl();
+  if(original.has(el)){ el.replaceWith(original.get(el).cloneNode(true)); original.delete(el); bindNothing(); }
+}
+function bindNothing(){ /* 還原後 selected 參照失效即可，點擊監聽掛在 #deck 上不受影響 */ }
+
+function showCandidates(){
+  $('stageFeedback').hidden = false;
+  const box = $('candidates');
+  box.innerHTML = scenario.candidates.map(c => `
+    <div class="cand" data-cand="${c.name}">
+      <div class="head">
+        <span class="name">Candidate ${c.name}</span>
+        <span class="lane ${scenario.lane}">${scenario.lane}</span>
+        <span class="agent">${scenario.agent}</span>
+      </div>
+      <p class="payload">${c.payload}</p>
+      <p class="why">${c.why}</p>
+      <div class="srcs">${c.refs.map(r => `<span>${r}</span>`).join('')}</div>
+      <div class="audit"><b class="${c.audit.level}">${c.audit.level === 'pass' ? 'AUDIT PASS' : 'AUDIT WARN'}</b>${c.audit.note}</div>
+      <button class="preview" data-prev="${c.name}">預覽 ${c.name}</button>
+    </div>`).join('');
+
+  box.querySelectorAll('.preview').forEach(btn => btn.addEventListener('click', () => {
+    const c = scenario.candidates.find(x => x.name === btn.dataset.prev);
+    const el = targetEl();
+    const on = btn.classList.contains('on');
+    box.querySelectorAll('.preview').forEach(b => b.classList.remove('on'));
+    restore();
+    if(!on){ snapshot(el); c.apply(targetEl()); btn.classList.add('on'); }
+  }));
+
+  const acts = $('decisionActions');
+  acts.innerHTML = scenario.candidates.map(c =>
+    `<button class="adopt" data-adopt="${c.name}">採 ${c.name}</button>`).join('') +
+    `<button class="none" data-adopt="none">都不採 → 改 schema</button>`;
+  acts.querySelectorAll('button').forEach(b => b.addEventListener('click', () => decide(b.dataset.adopt)));
+}
+
+function decide(which){
+  restore();
+  const result = $('decisionResult');
+  if(which === 'none'){
+    pushOp({ id:`log-${String(opSeq++).padStart(3,'0')}`, lane:'governance', agent:'orchestrator-human',
+      target:'schema', kind:'decision' });
+    result.innerHTML = `<div class="decision">三選一：都不採。→ 建議進 Curator Console：
+      候選皆不理想通常是 schema 缺條文——修規格比修頁面有效。已記 decision 進 log（demo）。</div>
+      <button class="reset" onclick="resetFlow()">再跑一個意圖</button>`;
+    return;
+  }
+  const c = scenario.candidates.find(x => x.name === which);
+  const el = targetEl();
+  snapshot(el); c.apply(targetEl());
+  targetEl().classList.add('op-applied');
+  original.delete(el);
+  pushOp({ id:`op-${String(opSeq++).padStart(3,'0')}`, lane:scenario.lane, agent:scenario.agent, target:scenario.target });
+  pushOp({ id:`log-${String(opSeq++).padStart(3,'0')}`, lane:'governance', agent:'orchestrator-human', target:'decisions/', kind:'decision' });
+  result.innerHTML = `<div class="decision">三選一：採 ${which}（${scenario.agent} 的 op 生效）。
+    decision + rationale 已寫回 wiki/log.md 與 preferences.jsonl（demo 模擬）——閉環完成。</div>
+    <button class="reset" onclick="resetFlow()">再跑一個意圖</button>`;
+}
+
+function resetFlow(){
+  scenario = null;
+  $('stageThink').hidden = true;
+  $('stageFeedback').hidden = true;
+  $('intentInput').value = '';
+  document.querySelectorAll('#deck .op-applied').forEach(x => x.classList.remove('op-applied'));
+  $('stageWelcome').scrollIntoView({ block:'start', behavior:'smooth' });
+}
+
+function pushOp(o){
+  emittedOps.unshift(o);
+  $('oplistBody').innerHTML = emittedOps.map(x =>
+    `<div class="opentry"><span class="id">${x.id}</span>
+     <span class="lane-tag" style="background:${laneColor(x.lane)};${x.lane==='governance' ? 'color:var(--c-accent);border:1px solid var(--c-accent);' : ''}">${x.kind === 'decision' ? 'decision' : x.lane}</span>
+     <span>${x.target}</span><span class="who">${x.agent}</span></div>`).join('');
+}
+
 /* 匯出：唯一合法的 HTML 出口（單向，不回流） */
-document.getElementById('exportBtn').addEventListener('click', () => {
+$('exportBtn').addEventListener('click', () => {
   const blob = new Blob(
     ['<!-- workspace-exports · derived artifact · do not edit -->\n' + document.getElementById('deck').innerHTML],
     { type:'text/html' });
@@ -331,8 +466,6 @@ document.getElementById('exportBtn').addEventListener('click', () => {
   a.click();
   URL.revokeObjectURL(a.href);
 });
-
-render();
 </script>
 </body>
 </html>
