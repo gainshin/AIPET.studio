@@ -1,5 +1,5 @@
 import React from 'react';
-import { GANTT_PHASES, SPRINTS, AiTier } from '../../data/course-v5/gantt';
+import { GANTT_PHASES, SPRINTS, AiTier } from '../../data/demo/gantt';
 
 /**
  * Figure 01 · Timeline — UX activities · 6 sprints × 28 documents

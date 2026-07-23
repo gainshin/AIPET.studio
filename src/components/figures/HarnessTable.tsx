@@ -1,5 +1,5 @@
 import React from 'react';
-import { HARNESS_ROWS } from '../../data/course-v5/harness';
+import { HARNESS_ROWS } from '../../data/demo/harness';
 
 /**
  * Figure 03 · Level table — Harness 五層壓縮映射到設計工作流

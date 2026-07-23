@@ -365,7 +365,7 @@ const StyleGuide: React.FC = () => {
           title={<>Data wears <em>work clothes</em></>}
           lede={
             <>
-              三個課程 V5 的真實 figure，各自示範一種 spec 原語：timeline、diagram、
+              三個實戰級 figure，各自示範一種 spec 原語：timeline、diagram、
               level table。series 色階經六項檢查驗證（CVD 最差鄰對 ΔE 11.1 → 直標與
               2px 縫為強制編碼）；sequential ramp 亮度單調遞減已數值驗證。
               任何斷點都不出現水平捲軸——桌面 SVG 等比縮放、窄版換直列版式。
@@ -377,7 +377,7 @@ const StyleGuide: React.FC = () => {
             <div className="bg-surface border border-line rounded-card p-5 sm:p-6"
               data-layer="card" data-name="figure-card-gantt" data-module="style">
               <p className="font-mono text-[11px] uppercase tracking-kicker text-faint mb-2">
-                Figure 01 · Timeline — Course C1
+                Figure 01 · Timeline
               </p>
               <h3 className="font-display text-2xl mb-2">完整甘特圖</h3>
               <p className="text-xs text-muted mb-5 max-w-2xl">
@@ -396,7 +396,7 @@ const StyleGuide: React.FC = () => {
             <div className="bg-surface border border-line rounded-card p-5 sm:p-6"
               data-layer="card" data-name="figure-card-architecture" data-module="style">
               <p className="font-mono text-[11px] uppercase tracking-kicker text-faint mb-2">
-                Figure 02 · Diagram — Course C2 · Wiki-as-Interface
+                Figure 02 · Diagram · Wiki-as-Interface
               </p>
               <h3 className="font-display text-2xl mb-2">三欄架構</h3>
               <p className="text-xs text-muted mb-5 max-w-2xl">
@@ -415,7 +415,7 @@ const StyleGuide: React.FC = () => {
             <div className="bg-surface border border-line rounded-card p-5 sm:p-6"
               data-layer="card" data-name="figure-card-harness" data-module="style">
               <p className="font-mono text-[11px] uppercase tracking-kicker text-faint mb-2">
-                Figure 03 · Level table — Course C4
+                Figure 03 · Level table
               </p>
               <h3 className="font-display text-2xl mb-2">Harness 五層壓縮映射到設計工作流</h3>
               <p className="text-xs text-muted mb-5 max-w-2xl">
