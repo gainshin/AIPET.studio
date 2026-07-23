@@ -1,0 +1,120 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="1530" viewBox="0 0 1280 1530" role="img" aria-labelledby="pt-t pt-d">
+  <title id="pt-t">POC 階段 · UX 文件產出時間軸</title>
+  <desc id="pt-d">五個次階段 S0 到 S4,各 UX 文件的產出時點;鏽紅為定稿產出、金為跨期活文件、墨為畫面類投影;S4 結束即 POC 交付</desc>
+  <rect width="1280" height="1530" fill="#f7f3ea"/>
+
+  <!-- header -->
+  <text x="72" y="60" font-family="'IBM Plex Mono',Menlo,monospace" font-size="17" font-weight="700" letter-spacing="3" fill="#4a3f30">UX ACTIVITY</text>
+  <text x="72" y="86" font-family="'Noto Serif TC','Songti TC',serif" font-size="15" font-style="italic" fill="#a89e87">&#8212; output documents</text>
+
+  <!-- POC bracket -->
+  <text x="887" y="34" font-family="'IBM Plex Mono',Menlo,monospace" font-size="15" font-weight="700" letter-spacing="4" fill="#7a2e1f" text-anchor="middle">&#8212; POC 階段 &#8212;</text>
+  <path d="M 552 48 L 552 56 M 552 48 L 1222 48 M 1222 48 L 1222 56" fill="none" stroke="#7a2e1f" stroke-width="1.8"/>
+
+  <!-- column headers -->
+  <g font-family="'Noto Serif TC','Songti TC',serif" font-size="30" font-style="italic" font-weight="700" fill="#7a2e1f" text-anchor="middle">
+    <text x="619" y="96">S0</text><text x="753" y="96">S1</text><text x="887" y="96">S2</text><text x="1021" y="96">S3</text><text x="1155" y="96">S4</text>
+  </g>
+  <g font-family="'Noto Sans TC','PingFang TC',sans-serif" font-size="17" fill="#1e1a15" text-anchor="middle">
+    <text x="619" y="124">探索期</text><text x="753" y="124">研究期</text><text x="887" y="124">架構期</text><text x="1021" y="124">設計期</text><text x="1155" y="124">驗證期</text>
+  </g>
+  <line x1="72" y1="140" x2="1222" y2="140" stroke="#4a3f30" stroke-width="1.8"/>
+
+  <!-- grid -->
+  <line x1="552" y1="140" x2="552" y2="1418" stroke="#4a3f30" stroke-width="1.8"/>
+  <g stroke="#e4dcc3" stroke-width="1.5">
+    <line x1="686" y1="140" x2="686" y2="1418"/><line x1="820" y1="140" x2="820" y2="1418"/>
+    <line x1="954" y1="140" x2="954" y2="1418"/><line x1="1088" y1="140" x2="1088" y2="1418"/>
+  </g>
+  <line x1="1222" y1="140" x2="1222" y2="1418" stroke="#7a2e1f" stroke-width="2.5" stroke-dasharray="7 5"/>
+
+  <!-- ══ 探索 ══ -->
+  <text x="72" y="182" font-family="'Noto Serif TC','Songti TC',serif" font-size="25" font-weight="700" fill="#1e1a15">探索 <tspan font-size="16" font-style="italic" fill="#7a6a55">&#8212; Discovery</tspan></text>
+  <line x1="72" y1="196" x2="552" y2="196" stroke="#d2c8b0" stroke-width="1.5"/>
+  <g font-family="'Noto Sans TC','PingFang TC',sans-serif" font-size="18" fill="#1e1a15">
+    <text x="96" y="230">利害關係人地圖</text><text x="96" y="276">問題陳述</text><text x="96" y="322">競品分析</text>
+  </g>
+  <g font-family="'IBM Plex Mono',Menlo,monospace" font-size="13" letter-spacing="1.5" fill="#a89e87">
+    <text x="308" y="230">STAKEHOLDER MAP</text><text x="308" y="276">PROBLEM STATEMENT</text><text x="308" y="322">COMPETITIVE ANALYSIS</text>
+  </g>
+  <rect x="560" y="211" width="118" height="26" fill="#7a2e1f"/>
+  <rect x="560" y="257" width="118" height="26" fill="#7a2e1f"/>
+  <rect x="560" y="303" width="252" height="26" fill="#7a2e1f"/>
+
+  <!-- ══ 研究 ══ -->
+  <text x="72" y="388" font-family="'Noto Serif TC','Songti TC',serif" font-size="25" font-weight="700" fill="#1e1a15">研究 <tspan font-size="16" font-style="italic" fill="#7a6a55">&#8212; Research</tspan></text>
+  <line x1="72" y1="402" x2="552" y2="402" stroke="#d2c8b0" stroke-width="1.5"/>
+  <g font-family="'Noto Sans TC','PingFang TC',sans-serif" font-size="18" fill="#1e1a15">
+    <text x="96" y="436">使用者訪談</text><text x="96" y="482">使用者輪廓</text><text x="96" y="528">旅程地圖</text>
+  </g>
+  <g font-family="'IBM Plex Mono',Menlo,monospace" font-size="13" letter-spacing="1.5" fill="#a89e87">
+    <text x="308" y="436">USER INTERVIEWS</text><text x="308" y="482">PERSONA</text><text x="308" y="528">JOURNEY MAP</text>
+  </g>
+  <rect x="560" y="417" width="252" height="26" fill="#7a2e1f"/>
+  <rect x="694" y="463" width="118" height="26" fill="#7a2e1f"/>
+  <rect x="694" y="509" width="386" height="26" fill="#c49a56"/>
+
+  <!-- ══ 定義 ══ -->
+  <text x="72" y="594" font-family="'Noto Serif TC','Songti TC',serif" font-size="25" font-weight="700" fill="#1e1a15">定義 <tspan font-size="16" font-style="italic" fill="#7a6a55">&#8212; Definition</tspan></text>
+  <line x1="72" y1="608" x2="552" y2="608" stroke="#d2c8b0" stroke-width="1.5"/>
+  <g font-family="'Noto Sans TC','PingFang TC',sans-serif" font-size="18" fill="#1e1a15">
+    <text x="96" y="642">使用案例</text><text x="96" y="688">設計情境</text><text x="96" y="734">成功指標</text>
+  </g>
+  <g font-family="'IBM Plex Mono',Menlo,monospace" font-size="13" letter-spacing="1.5" fill="#a89e87">
+    <text x="308" y="642">USE CASES</text><text x="308" y="688">DESIGN SCENARIOS</text><text x="308" y="734">SUCCESS METRICS</text>
+  </g>
+  <rect x="694" y="623" width="118" height="26" fill="#7a2e1f"/>
+  <rect x="694" y="669" width="252" height="26" fill="#7a2e1f"/>
+  <rect x="694" y="715" width="118" height="26" fill="#7a2e1f"/>
+
+  <!-- ══ 架構 ══ -->
+  <text x="72" y="800" font-family="'Noto Serif TC','Songti TC',serif" font-size="25" font-weight="700" fill="#1e1a15">架構 <tspan font-size="16" font-style="italic" fill="#7a6a55">&#8212; Architecture</tspan></text>
+  <line x1="72" y1="814" x2="552" y2="814" stroke="#d2c8b0" stroke-width="1.5"/>
+  <g font-family="'Noto Sans TC','PingFang TC',sans-serif" font-size="18" fill="#1e1a15">
+    <text x="96" y="848">資訊架構 IA</text><text x="96" y="894">模組清單</text><text x="96" y="940">頁面清單</text><text x="96" y="986">使用者流程</text><text x="96" y="1032">導覽模型</text>
+  </g>
+  <g font-family="'IBM Plex Mono',Menlo,monospace" font-size="13" letter-spacing="1.5" fill="#a89e87">
+    <text x="308" y="848">INFO ARCHITECTURE</text><text x="308" y="894">MODULE LIST</text><text x="308" y="940">PAGE LIST</text><text x="308" y="986">USER FLOW</text><text x="308" y="1032">NAVIGATION MODEL</text>
+  </g>
+  <rect x="828" y="833" width="118" height="26" fill="#c49a56"/>
+  <rect x="828" y="879" width="118" height="26" fill="#7a2e1f"/>
+  <rect x="828" y="925" width="118" height="26" fill="#7a2e1f"/>
+  <rect x="828" y="971" width="252" height="26" fill="#c49a56"/>
+  <rect x="828" y="1017" width="118" height="26" fill="#7a2e1f"/>
+
+  <!-- ══ 設計 ══ -->
+  <text x="72" y="1098" font-family="'Noto Serif TC','Songti TC',serif" font-size="25" font-weight="700" fill="#1e1a15">設計 <tspan font-size="16" font-style="italic" fill="#7a6a55">&#8212; Design</tspan></text>
+  <line x1="72" y1="1112" x2="552" y2="1112" stroke="#d2c8b0" stroke-width="1.5"/>
+  <g font-family="'Noto Sans TC','PingFang TC',sans-serif" font-size="18" fill="#1e1a15">
+    <text x="96" y="1146">線框稿</text><text x="96" y="1192">視覺設計</text><text x="96" y="1238">原型</text>
+  </g>
+  <g font-family="'IBM Plex Mono',Menlo,monospace" font-size="13" letter-spacing="1.5" fill="#a89e87">
+    <text x="308" y="1146">WIREFRAMES</text><text x="308" y="1192">VISUAL DESIGN</text><text x="308" y="1238">PROTOTYPE</text>
+  </g>
+  <rect x="962" y="1127" width="118" height="26" fill="#1e1a15"/>
+  <rect x="962" y="1173" width="118" height="26" fill="#1e1a15"/>
+  <rect x="962" y="1219" width="252" height="26" fill="#1e1a15"/>
+
+  <!-- ══ 驗證 ══ -->
+  <text x="72" y="1304" font-family="'Noto Serif TC','Songti TC',serif" font-size="25" font-weight="700" fill="#1e1a15">驗證 <tspan font-size="16" font-style="italic" fill="#7a6a55">&#8212; Validation</tspan></text>
+  <line x1="72" y1="1318" x2="552" y2="1318" stroke="#d2c8b0" stroke-width="1.5"/>
+  <g font-family="'Noto Sans TC','PingFang TC',sans-serif" font-size="18" fill="#1e1a15">
+    <text x="96" y="1352">可用性測試(RITE)</text><text x="96" y="1398">POC 展示包</text>
+  </g>
+  <g font-family="'IBM Plex Mono',Menlo,monospace" font-size="13" letter-spacing="1.5" fill="#a89e87">
+    <text x="308" y="1352">USABILITY / RITE</text><text x="308" y="1398">POC SHOWCASE</text>
+  </g>
+  <rect x="1096" y="1333" width="118" height="26" fill="#7a2e1f"/>
+  <rect x="1096" y="1379" width="118" height="26" fill="#7a2e1f"/>
+
+  <line x1="72" y1="1418" x2="1222" y2="1418" stroke="#4a3f30" stroke-width="1.5"/>
+
+  <!-- legend + footer -->
+  <g font-family="'Noto Sans TC','PingFang TC',sans-serif" font-size="15" fill="#4a3f30">
+    <rect x="72" y="1444" width="26" height="16" fill="#7a2e1f"/><text x="108" y="1458">定稿產出 &#183; 該期收斂</text>
+    <rect x="310" y="1444" width="26" height="16" fill="#c49a56"/><text x="346" y="1458">活文件 &#183; 跨期持續演進</text>
+    <rect x="572" y="1444" width="26" height="16" fill="#1e1a15"/><text x="608" y="1458">畫面 &#183; 文件的投影,最後才出現</text>
+  </g>
+  <text x="1222" y="1458" font-family="'IBM Plex Mono',Menlo,monospace" font-size="14" font-weight="700" letter-spacing="1" fill="#7a2e1f" text-anchor="end">POC 交付 &#8594; ENGINEERING</text>
+  <text x="72" y="1500" font-family="'IBM Plex Mono',Menlo,monospace" font-size="13" letter-spacing="1" fill="#a89e87">每份文件 = 一個三節拍回合:BUILDER 草擬 &#8594; AUDITOR 引規格 &#8594; 你收斂寫回 WIKI</text>
+</svg>

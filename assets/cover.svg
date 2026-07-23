@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="620" viewBox="0 0 1280 620" role="img" aria-labelledby="cv-t cv-d">
+  <title id="cv-t">AIPET.studio cover</title>
+  <desc id="cv-d">把 UX 文件變成 UI 的可稽核工作流</desc>
+  <rect width="1280" height="620" fill="#f7f3ea"/>
+  <rect x="72" y="56" width="1136" height="508" fill="#fdfaf1" stroke="#d2c8b0" stroke-width="2"/>
+  <line x1="176" y1="56" x2="176" y2="564" stroke="#d2c8b0" stroke-width="2"/>
+  <text x="112" y="118" font-family="'IBM Plex Mono',Menlo,monospace" font-size="17" font-weight="700" fill="#7a2e1f" text-anchor="middle" transform="rotate(-90 112 118)"></text>
+  <text x="124" y="120" font-family="'IBM Plex Mono',Menlo,monospace" font-size="16" font-weight="700" fill="#4a3f30" text-anchor="end">AIPET</text>
+  <text x="124" y="142" font-family="'IBM Plex Mono',Menlo,monospace" font-size="13" fill="#a89e87" text-anchor="end">studio</text>
+  <line x1="224" y1="128" x2="1156" y2="128" stroke="#e4dcc3" stroke-width="2"/>
+  <text x="224" y="108" font-family="'IBM Plex Mono',Menlo,monospace" font-size="16" font-weight="600" letter-spacing="2" fill="#7a6a55">UX DOCUMENTS &#8594; AUDITABLE UI</text>
+  <text x="224" y="236" font-family="'Noto Serif TC','Songti TC',serif" font-size="88" font-weight="800" fill="#1e1a15">AIPET<tspan fill="#7a2e1f">.studio</tspan></text>
+  <text x="228" y="296" font-family="'Noto Sans TC','PingFang TC',sans-serif" font-size="30" fill="#4a3f30">把 UX 文件變成 UI 的可稽核工作流</text>
+  <text x="228" y="336" font-family="'Noto Sans TC','PingFang TC',sans-serif" font-size="19" fill="#7a6a55">畫面是文件的投影;沒有文件出處的畫面,叫 slop。</text>
+  <g font-family="'Noto Sans TC','PingFang TC',sans-serif" font-size="17" fill="#1e1a15">
+    <rect x="228" y="392" width="212" height="52" fill="#fdfaf1" stroke="#d2c8b0" stroke-width="1.5"/>
+    <text x="334" y="424" text-anchor="middle">每個畫面有<tspan font-weight="700">文件出處</tspan></text>
+    <rect x="456" y="392" width="248" height="52" fill="#fdfaf1" stroke="#d2c8b0" stroke-width="1.5"/>
+    <text x="580" y="424" text-anchor="middle">每筆變更有<tspan font-weight="700">理由與引用</tspan></text>
+    <rect x="720" y="392" width="212" height="52" fill="#fdfaf1" stroke="#d2c8b0" stroke-width="1.5"/>
+    <text x="826" y="424" text-anchor="middle">每次審計<tspan font-weight="700">可查證</tspan></text>
+    <rect x="948" y="392" width="212" height="52" fill="#fff" stroke="#7a2e1f" stroke-width="2"/>
+    <text x="1054" y="424" text-anchor="middle" fill="#7a2e1f">每個決策有<tspan font-weight="700">負責的人</tspan></text>
+  </g>
+  <line x1="224" y1="496" x2="1156" y2="496" stroke="#e4dcc3" stroke-width="2"/>
+  <text x="224" y="532" font-family="'IBM Plex Mono',Menlo,monospace" font-size="14" letter-spacing="1" fill="#a89e87">TOOL &#215; TEXTBOOK &#183; 雙擊即開 &#183; 三欄架構 &#183; 三節拍 &#183; 五席 CHARTER</text>
+  <text x="1156" y="532" font-family="'IBM Plex Mono',Menlo,monospace" font-size="14" fill="#a89e87" text-anchor="end">after Bush (1945) &#183; Karpathy (2026)</text>
+</svg>

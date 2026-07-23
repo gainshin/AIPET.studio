@@ -1,0 +1,155 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="1010" viewBox="0 0 1280 1010" role="img" aria-labelledby="vw-t vw-d">
+  <title id="vw-t">同一 feature 四種技術棧,與五步 variants 工作流</title>
+  <desc id="vw-d">同一句 PRD 在四種技術棧長成四套設計語言;五步流程把 N 個 variants 收斂為可審閱可追溯的決策,第四步是設計師判斷</desc>
+  <rect width="1280" height="1010" fill="#f7f3ea"/>
+  <defs>
+    <marker id="v-gold" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0 L8 4 L0 8 Z" fill="#c49a56"/></marker>
+  </defs>
+
+  <!-- ── band 1: four stacks ── -->
+  <text x="64" y="58" font-family="'Noto Serif TC','Songti TC',serif" font-size="27" font-weight="700" fill="#1e1a15">同一 feature × 四種技術棧 <tspan font-size="15" font-style="italic" fill="#7a6a55">&#8212; same feature, four design languages</tspan></text>
+  <text x="64" y="88" font-family="'Noto Sans TC','PingFang TC',sans-serif" font-size="15" fill="#4a3f30">PRD 寫的是同一句話;設計師的工作是在 prompt 裡把對應棧的限制與 idioms 講清楚——沒講,AI 給你「四不像」。</text>
+
+  <g font-family="'Noto Sans TC','PingFang TC',sans-serif">
+    <!-- card i -->
+    <rect x="64" y="112" width="270" height="316" fill="#fdfaf1" stroke="#d2c8b0" stroke-width="1.5"/>
+    <text x="88" y="164" font-family="'Noto Serif TC','Songti TC',serif" font-size="34" font-style="italic" font-weight="700" fill="#c49a56">i.</text>
+    <text x="88" y="204" font-family="'Noto Serif TC','Songti TC',serif" font-size="22" font-weight="700" fill="#1e1a15">原生 App</text>
+    <text x="88" y="226" font-family="'IBM Plex Mono',Menlo,monospace" font-size="11" letter-spacing="2" fill="#a89e87">NATIVE MOBILE</text>
+    <line x1="88" y1="240" x2="310" y2="240" stroke="#e4dcc3" stroke-width="1.5"/>
+    <text x="88" y="266" font-family="'IBM Plex Mono',Menlo,monospace" font-size="11" letter-spacing="2" fill="#7a6a55">UI 樣態</text>
+    <text x="88" y="290" font-size="14" fill="#1e1a15">Settings 子頁 &#183; toggle list &#183; 分組</text>
+    <text x="88" y="312" font-size="13" fill="#7a6a55">限制:push 權限 &#183; touch &#8805; 44pt</text>
+    <text x="88" y="342" font-family="'IBM Plex Mono',Menlo,monospace" font-size="11" letter-spacing="2" fill="#7a6a55">PROMPT 必帶</text>
+    <g font-family="'IBM Plex Mono',Menlo,monospace" font-size="12" fill="#4a3f30">
+      <rect x="88" y="354" width="106" height="24" fill="#e8dcba"/><text x="96" y="371">platform HIG</text>
+      <rect x="202" y="354" width="60" height="24" fill="#e8dcba"/><text x="210" y="371">push</text>
+      <rect x="88" y="384" width="102" height="24" fill="#e8dcba"/><text x="96" y="401">device sync</text>
+    </g>
+
+    <!-- card ii -->
+    <rect x="358" y="112" width="270" height="316" fill="#fdfaf1" stroke="#d2c8b0" stroke-width="1.5"/>
+    <text x="382" y="164" font-family="'Noto Serif TC','Songti TC',serif" font-size="34" font-style="italic" font-weight="700" fill="#c49a56">ii.</text>
+    <text x="382" y="204" font-family="'Noto Serif TC','Songti TC',serif" font-size="22" font-weight="700" fill="#1e1a15">響應式網站</text>
+    <text x="382" y="226" font-family="'IBM Plex Mono',Menlo,monospace" font-size="11" letter-spacing="2" fill="#a89e87">RESPONSIVE WEB</text>
+    <line x1="382" y1="240" x2="604" y2="240" stroke="#e4dcc3" stroke-width="1.5"/>
+    <text x="382" y="266" font-family="'IBM Plex Mono',Menlo,monospace" font-size="11" letter-spacing="2" fill="#7a6a55">UI 樣態</text>
+    <text x="382" y="290" font-size="14" fill="#1e1a15">Settings page &#183; email 偏好中心</text>
+    <text x="382" y="312" font-size="13" fill="#7a6a55">限制:多瀏覽器 &#183; 無 push &#183; breakpoint</text>
+    <text x="382" y="342" font-family="'IBM Plex Mono',Menlo,monospace" font-size="11" letter-spacing="2" fill="#7a6a55">PROMPT 必帶</text>
+    <g font-family="'IBM Plex Mono',Menlo,monospace" font-size="12" fill="#4a3f30">
+      <rect x="382" y="354" width="104" height="24" fill="#e8dcba"/><text x="390" y="371">breakpoints</text>
+      <rect x="494" y="354" width="118" height="24" fill="#e8dcba"/><text x="502" y="371">email provider</text>
+      <rect x="382" y="384" width="150" height="24" fill="#e8dcba"/><text x="390" y="401">unsubscribe legal</text>
+    </g>
+
+    <!-- card iii -->
+    <rect x="652" y="112" width="270" height="316" fill="#fdfaf1" stroke="#d2c8b0" stroke-width="1.5"/>
+    <text x="676" y="164" font-family="'Noto Serif TC','Songti TC',serif" font-size="34" font-style="italic" font-weight="700" fill="#c49a56">iii.</text>
+    <text x="676" y="204" font-family="'Noto Serif TC','Songti TC',serif" font-size="22" font-weight="700" fill="#1e1a15">SaaS 後台</text>
+    <text x="676" y="226" font-family="'IBM Plex Mono',Menlo,monospace" font-size="11" letter-spacing="2" fill="#a89e87">SAAS DASHBOARD</text>
+    <line x1="676" y1="240" x2="898" y2="240" stroke="#e4dcc3" stroke-width="1.5"/>
+    <text x="676" y="266" font-family="'IBM Plex Mono',Menlo,monospace" font-size="11" letter-spacing="2" fill="#7a6a55">UI 樣態</text>
+    <text x="676" y="290" font-size="14" fill="#1e1a15">Admin settings &#183; bulk op &#183; table</text>
+    <text x="676" y="312" font-size="13" fill="#7a6a55">限制:tenant 隔離 &#183; audit log 強制</text>
+    <text x="676" y="342" font-family="'IBM Plex Mono',Menlo,monospace" font-size="11" letter-spacing="2" fill="#7a6a55">PROMPT 必帶</text>
+    <g font-family="'IBM Plex Mono',Menlo,monospace" font-size="12" fill="#4a3f30">
+      <rect x="676" y="354" width="94" height="24" fill="#e8dcba"/><text x="684" y="371">role model</text>
+      <rect x="778" y="354" width="130" height="24" fill="#e8dcba"/><text x="786" y="371">tenant boundary</text>
+      <rect x="676" y="384" width="98" height="24" fill="#e8dcba"/><text x="684" y="401">compliance</text>
+    </g>
+
+    <!-- card iv -->
+    <rect x="946" y="112" width="270" height="316" fill="#fdfaf1" stroke="#d2c8b0" stroke-width="1.5"/>
+    <text x="970" y="164" font-family="'Noto Serif TC','Songti TC',serif" font-size="34" font-style="italic" font-weight="700" fill="#c49a56">iv.</text>
+    <text x="970" y="204" font-family="'Noto Serif TC','Songti TC',serif" font-size="22" font-weight="700" fill="#1e1a15">Copilot &#183; 對話優先</text>
+    <text x="970" y="226" font-family="'IBM Plex Mono',Menlo,monospace" font-size="11" letter-spacing="2" fill="#a89e87">CHAT-FIRST AGENT</text>
+    <line x1="970" y1="240" x2="1192" y2="240" stroke="#e4dcc3" stroke-width="1.5"/>
+    <text x="970" y="266" font-family="'IBM Plex Mono',Menlo,monospace" font-size="11" letter-spacing="2" fill="#7a6a55">UI 樣態</text>
+    <text x="970" y="290" font-size="14" fill="#1e1a15">無 settings page &#183; 自然語言設定</text>
+    <text x="970" y="312" font-size="13" fill="#7a6a55">限制:無持久 UI &#183; recall 不可靠</text>
+    <text x="970" y="342" font-family="'IBM Plex Mono',Menlo,monospace" font-size="11" letter-spacing="2" fill="#7a6a55">PROMPT 必帶</text>
+    <g font-family="'IBM Plex Mono',Menlo,monospace" font-size="12" fill="#4a3f30">
+      <rect x="970" y="354" width="112" height="24" fill="#e8dcba"/><text x="978" y="371">conv. memory</text>
+      <rect x="1090" y="354" width="122" height="24" fill="#e8dcba"/><text x="1098" y="371">fallback to GUI</text>
+      <rect x="970" y="384" width="122" height="24" fill="#e8dcba"/><text x="978" y="401">recall confirm</text>
+    </g>
+  </g>
+
+  <!-- ── band 2: 5-step workflow ── -->
+  <text x="64" y="500" font-family="'Noto Serif TC','Songti TC',serif" font-size="27" font-weight="700" fill="#1e1a15">AI Variants 工作流 <tspan font-size="15" font-style="italic" fill="#7a6a55">&#8212; 5 steps from PRD to reviewable variants</tspan></text>
+  <text x="64" y="530" font-family="'Noto Sans TC','PingFang TC',sans-serif" font-size="15" fill="#4a3f30">Gen-AI 的價值不是「一次給對」,是「<tspan font-weight="700">一次給很多</tspan>」;真正的設計判斷在 Step 04,那是 AI 替代不掉的部分。</text>
+
+  <g font-family="'Noto Sans TC','PingFang TC',sans-serif">
+    <!-- 01 -->
+    <rect x="64" y="576" width="214" height="356" fill="#fdfaf1" stroke="#d2c8b0" stroke-width="1.5"/>
+    <text x="86" y="632" font-family="'Noto Serif TC','Songti TC',serif" font-size="34" font-style="italic" font-weight="700" fill="#7a2e1f">01</text>
+    <text x="86" y="666" font-size="19" font-weight="700" fill="#1e1a15">抽取 feature</text>
+    <text x="86" y="688" font-family="'IBM Plex Mono',Menlo,monospace" font-size="11" letter-spacing="1.5" fill="#a89e87">EXTRACT FROM PRD</text>
+    <text x="86" y="722" font-size="14" fill="#4a3f30">從 PRD 拆出可獨立測試</text>
+    <text x="86" y="744" font-size="14" fill="#4a3f30">的最小 feature 單位,</text>
+    <text x="86" y="766" font-size="14" fill="#4a3f30">去掉 PM 的修飾語。</text>
+    <line x1="86" y1="846" x2="256" y2="846" stroke="#d2c8b0" stroke-width="1" stroke-dasharray="3 3"/>
+    <text x="86" y="874" font-family="'IBM Plex Mono',Menlo,monospace" font-size="12" fill="#4a3f30"><tspan font-weight="700" fill="#7a2e1f">IN</tspan> &#183; PRD 段落</text>
+    <text x="86" y="898" font-family="'IBM Plex Mono',Menlo,monospace" font-size="12" fill="#4a3f30"><tspan font-weight="700" fill="#7a2e1f">OUT</tspan> &#183; feature statement</text>
+    <line x1="280" y1="754" x2="294" y2="754" stroke="#c49a56" stroke-width="2.5" marker-end="url(#v-gold)"/>
+
+    <!-- 02 -->
+    <rect x="298" y="576" width="214" height="356" fill="#fdfaf1" stroke="#d2c8b0" stroke-width="1.5"/>
+    <text x="320" y="632" font-family="'Noto Serif TC','Songti TC',serif" font-size="34" font-style="italic" font-weight="700" fill="#7a2e1f">02</text>
+    <text x="320" y="666" font-size="19" font-weight="700" fill="#1e1a15">指定技術棧</text>
+    <text x="320" y="688" font-family="'IBM Plex Mono',Menlo,monospace" font-size="11" letter-spacing="1.5" fill="#a89e87">PIN THE STACK</text>
+    <text x="320" y="722" font-size="14" fill="#4a3f30">明確告訴 AI 是哪一棧</text>
+    <text x="320" y="744" font-size="14" fill="#4a3f30">+ 主要 viewport</text>
+    <text x="320" y="766" font-size="14" fill="#4a3f30">+ design system tokens。</text>
+    <line x1="320" y1="846" x2="490" y2="846" stroke="#d2c8b0" stroke-width="1" stroke-dasharray="3 3"/>
+    <text x="320" y="874" font-family="'IBM Plex Mono',Menlo,monospace" font-size="12" fill="#4a3f30"><tspan font-weight="700" fill="#7a2e1f">IN</tspan> &#183; feature + 棧限制</text>
+    <text x="320" y="898" font-family="'IBM Plex Mono',Menlo,monospace" font-size="12" fill="#4a3f30"><tspan font-weight="700" fill="#7a2e1f">OUT</tspan> &#183; 完整 prompt context</text>
+    <line x1="514" y1="754" x2="528" y2="754" stroke="#c49a56" stroke-width="2.5" marker-end="url(#v-gold)"/>
+
+    <!-- 03 -->
+    <rect x="532" y="576" width="214" height="356" fill="#fdfaf1" stroke="#d2c8b0" stroke-width="1.5"/>
+    <text x="554" y="632" font-family="'Noto Serif TC','Songti TC',serif" font-size="34" font-style="italic" font-weight="700" fill="#7a2e1f">03</text>
+    <text x="554" y="666" font-size="19" font-weight="700" fill="#1e1a15">生成 N 個 variants</text>
+    <text x="554" y="688" font-family="'IBM Plex Mono',Menlo,monospace" font-size="11" letter-spacing="1.5" fill="#a89e87">FAN OUT</text>
+    <text x="554" y="722" font-size="14" fill="#4a3f30">要求 3–5 個變體,每個</text>
+    <text x="554" y="744" font-size="14" fill="#4a3f30">走不同 UX 取徑:極簡 /</text>
+    <text x="554" y="766" font-size="14" fill="#4a3f30">dense / progressive</text>
+    <text x="554" y="788" font-size="14" fill="#4a3f30">disclosure / opt-out。</text>
+    <line x1="554" y1="846" x2="724" y2="846" stroke="#d2c8b0" stroke-width="1" stroke-dasharray="3 3"/>
+    <text x="554" y="874" font-family="'IBM Plex Mono',Menlo,monospace" font-size="12" fill="#4a3f30"><tspan font-weight="700" fill="#7a2e1f">IN</tspan> &#183; prompt</text>
+    <text x="554" y="898" font-family="'IBM Plex Mono',Menlo,monospace" font-size="12" fill="#4a3f30"><tspan font-weight="700" fill="#7a2e1f">OUT</tspan> &#183; N 個 prototype</text>
+    <line x1="748" y1="754" x2="762" y2="754" stroke="#c49a56" stroke-width="2.5" marker-end="url(#v-gold)"/>
+
+    <!-- 04 highlighted -->
+    <rect x="766" y="576" width="214" height="356" fill="#f3ece0" stroke="#7a2e1f" stroke-width="2.5"/>
+    <rect x="806" y="562" width="134" height="28" fill="#7a2e1f"/>
+    <text x="873" y="581" font-family="'IBM Plex Mono',Menlo,monospace" font-size="12" font-weight="700" letter-spacing="2" fill="#fdfaf1" text-anchor="middle">DESIGNER PIVOT</text>
+    <text x="788" y="640" font-family="'Noto Serif TC','Songti TC',serif" font-size="34" font-style="italic" font-weight="700" fill="#7a2e1f">04</text>
+    <text x="788" y="674" font-size="19" font-weight="700" fill="#7a2e1f">對照判準篩選</text>
+    <text x="788" y="696" font-family="'IBM Plex Mono',Menlo,monospace" font-size="11" letter-spacing="1.5" fill="#a89e87">JUDGE &amp; SELECT</text>
+    <text x="788" y="730" font-size="14" fill="#4a3f30">不是「哪個漂亮」。</text>
+    <text x="788" y="752" font-size="14" fill="#4a3f30">對三組判準:&#9312; UX 原則</text>
+    <text x="788" y="774" font-size="14" fill="#4a3f30">&#9313; tech idioms &#9314; design</text>
+    <text x="788" y="796" font-size="14" fill="#4a3f30">system 一致性。</text>
+    <line x1="788" y1="846" x2="958" y2="846" stroke="#c49a56" stroke-width="1" stroke-dasharray="3 3"/>
+    <text x="788" y="874" font-family="'IBM Plex Mono',Menlo,monospace" font-size="12" fill="#4a3f30"><tspan font-weight="700" fill="#7a2e1f">IN</tspan> &#183; N 個 variants</text>
+    <text x="788" y="898" font-family="'IBM Plex Mono',Menlo,monospace" font-size="12" fill="#4a3f30"><tspan font-weight="700" fill="#7a2e1f">OUT</tspan> &#183; 選定 + reasoning</text>
+    <line x1="982" y1="754" x2="996" y2="754" stroke="#c49a56" stroke-width="2.5" marker-end="url(#v-gold)"/>
+
+    <!-- 05 -->
+    <rect x="1000" y="576" width="214" height="356" fill="#fdfaf1" stroke="#d2c8b0" stroke-width="1.5"/>
+    <text x="1022" y="632" font-family="'Noto Serif TC','Songti TC',serif" font-size="34" font-style="italic" font-weight="700" fill="#7a2e1f">05</text>
+    <text x="1022" y="666" font-size="19" font-weight="700" fill="#1e1a15">寫進決策日誌</text>
+    <text x="1022" y="688" font-family="'IBM Plex Mono',Menlo,monospace" font-size="11" letter-spacing="1.5" fill="#a89e87">LOG THE DECISION</text>
+    <text x="1022" y="722" font-size="14" fill="#4a3f30">「為什麼選 B 不選 A」</text>
+    <text x="1022" y="744" font-size="14" fill="#4a3f30">寫進 wiki/decisions/。</text>
+    <text x="1022" y="766" font-size="14" fill="#4a3f30">被否決方案、否決理由、</text>
+    <text x="1022" y="788" font-size="14" fill="#4a3f30">trade-off 都要留。</text>
+    <line x1="1022" y1="846" x2="1192" y2="846" stroke="#d2c8b0" stroke-width="1" stroke-dasharray="3 3"/>
+    <text x="1022" y="874" font-family="'IBM Plex Mono',Menlo,monospace" font-size="12" fill="#4a3f30"><tspan font-weight="700" fill="#7a2e1f">IN</tspan> &#183; 選定 variant</text>
+    <text x="1022" y="898" font-family="'IBM Plex Mono',Menlo,monospace" font-size="12" fill="#4a3f30"><tspan font-weight="700" fill="#7a2e1f">OUT</tspan> &#183; immutable 紀錄</text>
+  </g>
+
+  <text x="64" y="978" font-family="'IBM Plex Mono',Menlo,monospace" font-size="13" letter-spacing="1" fill="#a89e87">一次給很多 &#8594; 收斂為一份可審閱、可追溯的選擇 &#183; STEP 04 是 AI 替代不掉的部分</text>
+</svg>

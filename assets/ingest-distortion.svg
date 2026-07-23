@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="700" viewBox="0 0 1280 700" role="img" aria-labelledby="id-t id-d">
+  <title id="id-t">失真風險:MarkItDown 跑得過、設計知識被掏空的四種情境</title>
+  <desc id="id-d">四種來源在轉檔後表面可讀但設計知識流失,Curator 必須人工補回;對應工具的 ingest QA 檢查</desc>
+  <rect width="1280" height="700" fill="#f7f3ea"/>
+  <text x="64" y="56" font-family="'Noto Serif TC','Songti TC',serif" font-size="26" font-weight="700" fill="#1e1a15">失真風險 <tspan font-size="15" font-style="italic" fill="#7a6a55">&#8212; MarkItDown 跑得過,但設計知識被掏空的四種情境</tspan></text>
+  <text x="64" y="90" font-family="'Noto Sans TC','PingFang TC',sans-serif" font-size="15" fill="#4a3f30"><tspan font-weight="700" fill="#7a2e1f">convert &#8800; understand</tspan>。要學的不是修工具,是<tspan font-weight="700">在工具失真的地方插入自己的判斷</tspan>。</text>
+
+  <!-- header -->
+  <g font-family="'IBM Plex Mono',Menlo,monospace" font-size="13" font-weight="700" letter-spacing="2" fill="#7a6a55">
+    <text x="72" y="140">來源類型</text>
+    <text x="330" y="140">MARKITDOWN 處理後</text>
+    <text x="656" y="140">設計知識的損失</text>
+    <text x="948" y="140">CURATOR 必須補的</text>
+  </g>
+  <line x1="64" y1="156" x2="1216" y2="156" stroke="#1e1a15" stroke-width="2"/>
+
+  <g font-family="'Noto Sans TC','PingFang TC',sans-serif" font-size="15">
+    <!-- row 1 -->
+    <text x="72" y="204" font-size="17" font-weight="700" fill="#1e1a15">Figma 匯出 PDF</text>
+    <text x="330" y="204" fill="#4a3f30">圖被 OCR 或變 base64 embed</text>
+    <text x="656" y="204" fill="#4a3f30">元件結構、tokens、variants 全失</text>
+    <rect x="948" y="186" width="238" height="26" fill="#e8dcba"/>
+    <text x="956" y="205" font-family="'IBM Plex Mono',Menlo,monospace" font-size="13" fill="#4a3f30">component reference page</text>
+    <line x1="64" y1="248" x2="1216" y2="248" stroke="#e4dcc3" stroke-width="1.5"/>
+    <!-- row 2 -->
+    <text x="72" y="296" font-size="17" font-weight="700" fill="#1e1a15">流程圖 / wireframe</text>
+    <text x="330" y="296" fill="#4a3f30">圖片轉描述性文字(OCR)</text>
+    <text x="656" y="296" fill="#4a3f30">空間關係、連線意義消失</text>
+    <text x="948" y="296" fill="#4a3f30">手寫 <tspan font-family="'IBM Plex Mono',Menlo,monospace" font-size="13">Mermaid</tspan> / frontmatter 補連線語意</text>
+    <line x1="64" y1="340" x2="1216" y2="340" stroke="#e4dcc3" stroke-width="1.5"/>
+    <!-- row 3 -->
+    <text x="72" y="388" font-size="17" font-weight="700" fill="#1e1a15">會議錄音</text>
+    <text x="330" y="388" fill="#4a3f30">逐字稿(含時間戳)</text>
+    <text x="656" y="388" fill="#4a3f30">誰主張什麼、誰反駁——需手工 markup</text>
+    <rect x="948" y="370" width="128" height="26" fill="#e8dcba"/>
+    <text x="956" y="389" font-family="'IBM Plex Mono',Menlo,monospace" font-size="13" fill="#4a3f30">decision log</text>
+    <text x="1086" y="388" fill="#4a3f30">+ 發言者歸屬</text>
+    <line x1="64" y1="432" x2="1216" y2="432" stroke="#e4dcc3" stroke-width="1.5"/>
+    <!-- row 4 -->
+    <text x="72" y="480" font-size="17" font-weight="700" fill="#1e1a15">複雜版面 Word</text>
+    <text x="330" y="480" fill="#4a3f30">主結構保留,註解 / 修訂紀錄常掉</text>
+    <text x="656" y="480" fill="#4a3f30">side comments、track changes 不見</text>
+    <text x="948" y="480" fill="#4a3f30">關鍵 comment 手動抽到 page bottom</text>
+  </g>
+  <line x1="64" y1="524" x2="1216" y2="524" stroke="#1e1a15" stroke-width="1.5"/>
+
+  <!-- footer: tool tie-in -->
+  <rect x="64" y="560" width="1152" height="84" fill="#fdfaf1" stroke="#d2c8b0" stroke-width="1.5"/>
+  <text x="96" y="596" font-family="'Noto Sans TC','PingFang TC',sans-serif" font-size="15" fill="#1e1a15">工具的 <tspan font-family="'IBM Plex Mono',Menlo,monospace" font-size="14" font-weight="700" fill="#7a2e1f">ingest QA</tspan> 四項檢查即對應這四種情境:資訊密度比對 &#183; 圖表存活率 &#183; 層級保留度 &#183; 設計語意標註缺口。</text>
+  <text x="96" y="624" font-family="'Noto Sans TC','PingFang TC',sans-serif" font-size="15" fill="#4a3f30">不通過 &#8594; 標記 <tspan font-family="'IBM Plex Mono',Menlo,monospace" font-size="14" fill="#7a2e1f">needs-curation</tspan>,空殼 markdown 擋在 wiki 門外。</text>
+</svg>

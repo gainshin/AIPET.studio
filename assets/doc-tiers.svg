@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="880" viewBox="0 0 1280 880" role="img" aria-labelledby="dt-t dt-d">
+  <title id="dt-t">28 種 UX 文件的三層儲存規範</title>
+  <desc id="dt-d">Tier A 純 Markdown 68%,Tier B Markdown 加圖 18%,Tier C Figma 原生 14%;前兩層共 86% 為 agent 可讀可審的版本化文件</desc>
+  <rect width="1280" height="880" fill="#f7f3ea"/>
+  <text x="64" y="56" font-family="'Noto Serif TC','Songti TC',serif" font-size="27" font-weight="700" fill="#1e1a15">28 種 UX 文件 × 儲存規範 <tspan font-size="15" font-style="italic" fill="#7a6a55">&#8212; where each document lives</tspan></text>
+
+  <!-- 86% bracket over A+B -->
+  <text x="458" y="96" font-family="'IBM Plex Mono',Menlo,monospace" font-size="14" font-weight="700" letter-spacing="2" fill="#7a2e1f" text-anchor="middle">86% &#183; AGENT 可讀可審 &#183; VERSIONED MARKDOWN</text>
+  <path d="M 64 108 L 64 116 M 64 108 L 852 108 M 852 108 L 852 116" fill="none" stroke="#7a2e1f" stroke-width="1.8"/>
+
+  <g font-family="'Noto Sans TC','PingFang TC',sans-serif">
+    <!-- Tier A -->
+    <rect x="64" y="132" width="382" height="520" fill="#fdfaf1" stroke="#d2c8b0" stroke-width="1.5"/>
+    <rect x="88" y="164" width="26" height="16" fill="#7a2e1f"/>
+    <text x="126" y="178" font-family="'IBM Plex Mono',Menlo,monospace" font-size="13" font-weight="700" letter-spacing="2" fill="#4a3f30">TIER A &#183; PURE MD</text>
+    <text x="422" y="184" font-family="'Noto Serif TC','Songti TC',serif" font-size="34" font-style="italic" font-weight="700" fill="#7a2e1f" text-anchor="end">68%</text>
+    <text x="88" y="222" font-family="'Noto Serif TC','Songti TC',serif" font-size="22" font-weight="700" fill="#1e1a15">純 Markdown &#183; agent-native</text>
+    <text x="88" y="250" font-size="14" fill="#4a3f30">有 schema 的結構化文件,可被 agent</text>
+    <text x="88" y="272" font-size="14" fill="#4a3f30">查詢、引用、版本控管。</text>
+    <line x1="88" y1="292" x2="422" y2="292" stroke="#e4dcc3" stroke-width="1.5"/>
+    <text x="88" y="318" font-family="'IBM Plex Mono',Menlo,monospace" font-size="12" letter-spacing="1.5" fill="#7a6a55">19 份 &#183; wiki/*.md</text>
+    <g font-family="'IBM Plex Mono',Menlo,monospace" font-size="12" fill="#4a3f30">
+      <rect x="88" y="334" width="150" height="24" fill="#e8dcba"/><text x="96" y="351">stakeholder map</text>
+      <rect x="246" y="334" width="136" height="24" fill="#e8dcba"/><text x="254" y="351">problem stmt</text>
+      <rect x="88" y="364" width="112" height="24" fill="#e8dcba"/><text x="96" y="381">persona</text>
+      <rect x="208" y="364" width="112" height="24" fill="#e8dcba"/><text x="216" y="381">use case</text>
+      <rect x="88" y="394" width="128" height="24" fill="#e8dcba"/><text x="96" y="411">page list</text>
+      <rect x="224" y="394" width="108" height="24" fill="#e8dcba"/><text x="232" y="411">tokens</text>
+      <rect x="88" y="424" width="140" height="24" fill="#e8dcba"/><text x="96" y="441">decision log</text>
+      <rect x="236" y="424" width="112" height="24" fill="#e8dcba"/><text x="244" y="441">metrics</text>
+    </g>
+    <text x="88" y="486" font-size="13" fill="#a89e87">…共 19 份(module / navigation / research …)</text>
+    <text x="88" y="620" font-size="14" font-weight="700" fill="#7a2e1f">畫面之外的一切判斷,都在這層。</text>
+
+    <!-- Tier B -->
+    <rect x="470" y="132" width="382" height="520" fill="#fdfaf1" stroke="#d2c8b0" stroke-width="1.5"/>
+    <rect x="494" y="164" width="26" height="16" fill="#c49a56"/>
+    <text x="532" y="178" font-family="'IBM Plex Mono',Menlo,monospace" font-size="13" font-weight="700" letter-spacing="2" fill="#4a3f30">TIER B &#183; MD+DIAGRAM</text>
+    <text x="828" y="184" font-family="'Noto Serif TC','Songti TC',serif" font-size="34" font-style="italic" font-weight="700" fill="#c49a56" text-anchor="end">18%</text>
+    <text x="494" y="222" font-family="'Noto Serif TC','Songti TC',serif" font-size="22" font-weight="700" fill="#1e1a15">Markdown 基礎的 html 可視化</text>
+    <text x="494" y="250" font-size="14" fill="#4a3f30">prose 主體 + 內嵌 Mermaid / PlantUML /</text>
+    <text x="494" y="272" font-size="14" fill="#4a3f30">結構化區塊,空間語意寫在文字裡。</text>
+    <line x1="494" y1="292" x2="828" y2="292" stroke="#e4dcc3" stroke-width="1.5"/>
+    <text x="494" y="318" font-family="'IBM Plex Mono',Menlo,monospace" font-size="12" letter-spacing="1.5" fill="#7a6a55">5 份 &#183; wiki/*.md + 圖塊</text>
+    <g font-family="'IBM Plex Mono',Menlo,monospace" font-size="12" fill="#4a3f30">
+      <rect x="494" y="334" width="128" height="24" fill="#e8dcba"/><text x="502" y="351">journey map</text>
+      <rect x="630" y="334" width="52" height="24" fill="#e8dcba"/><text x="638" y="351">IA</text>
+      <rect x="494" y="364" width="108" height="24" fill="#e8dcba"/><text x="502" y="381">user flow</text>
+      <rect x="610" y="364" width="140" height="24" fill="#e8dcba"/><text x="618" y="381">state diagram</text>
+      <rect x="494" y="394" width="164" height="24" fill="#e8dcba"/><text x="502" y="411">service blueprint</text>
+    </g>
+    <text x="494" y="620" font-size="14" font-weight="700" fill="#4a3f30">圖是文字的渲染,不是另一份真相。</text>
+
+    <!-- Tier C -->
+    <rect x="876" y="132" width="340" height="520" fill="#fdfaf1" stroke="#d2c8b0" stroke-width="1.5"/>
+    <rect x="900" y="164" width="26" height="16" fill="#1e1a15"/>
+    <text x="938" y="178" font-family="'IBM Plex Mono',Menlo,monospace" font-size="13" font-weight="700" letter-spacing="2" fill="#4a3f30">TIER C &#183; FIGMA</text>
+    <text x="1192" y="184" font-family="'Noto Serif TC','Songti TC',serif" font-size="34" font-style="italic" font-weight="700" fill="#1e1a15" text-anchor="end">14%</text>
+    <text x="900" y="222" font-family="'Noto Serif TC','Songti TC',serif" font-size="22" font-weight="700" fill="#1e1a15">視覺 / 空間原生</text>
+    <text x="900" y="250" font-size="14" fill="#4a3f30">Figma 是交付 hub;過程可用 Pencil 中介,</text>
+    <text x="900" y="272" font-size="14" fill="#4a3f30">仍基於本地 IDE 讀取 UX 文件協作。</text>
+    <line x1="900" y1="292" x2="1192" y2="292" stroke="#e4dcc3" stroke-width="1.5"/>
+    <text x="900" y="318" font-family="'IBM Plex Mono',Menlo,monospace" font-size="12" letter-spacing="1.5" fill="#7a6a55">4 份 &#183; figma files</text>
+    <g font-family="'IBM Plex Mono',Menlo,monospace" font-size="12" fill="#4a3f30">
+      <rect x="900" y="334" width="110" height="24" fill="#efe9d8"/><text x="908" y="351">wireframe</text>
+      <rect x="1018" y="334" width="140" height="24" fill="#efe9d8"/><text x="1026" y="351">visual design</text>
+      <rect x="900" y="364" width="106" height="24" fill="#efe9d8"/><text x="908" y="381">prototype</text>
+      <rect x="1014" y="364" width="112" height="24" fill="#efe9d8"/><text x="1022" y="381">component</text>
+    </g>
+    <text x="900" y="620" font-size="14" font-weight="700" fill="#4a3f30">畫面 = 前兩層文件的投影。</text>
+  </g>
+
+  <!-- footer thesis -->
+  <rect x="64" y="688" width="1152" height="140" fill="#fdfaf1" stroke="#7a2e1f" stroke-width="1.8"/>
+  <g font-family="'Noto Sans TC','PingFang TC',sans-serif" font-size="16" fill="#1e1a15">
+    <text x="96" y="732">這 <tspan font-weight="700" fill="#7a2e1f">86%</tspan> 不會被 prompt-to-UI 自動生成——它們本來就不是「畫面」,而是讓畫面<tspan font-weight="700">可被執行、可被審計、可被工程交付</tspan>的中介結構。</text>
+    <text x="96" y="764">AI 可以草擬、檢查一致性、在 agent 工作流裡被引用;<tspan font-weight="700">判斷仍在設計師</tspan>——</text>
+    <text x="96" y="796">只是判斷的產出物,從 Figma frame 延展到 <tspan font-family="'IBM Plex Mono',Menlo,monospace" font-size="15" fill="#7a2e1f">versioned markdown</tspan>。</text>
+  </g>
+</svg>

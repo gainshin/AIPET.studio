@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="700" viewBox="0 0 1280 700" role="img" aria-labelledby="tc-t tc-d">
+  <title id="tc-t">三欄架構</title>
+  <desc id="tc-d">不可變原始素材,經 ingest 進入 LLM Wiki 第二大腦,由人類 Orchestrator 策展並編排四個專責 agent</desc>
+  <rect width="1280" height="700" fill="#fdfaf1"/>
+  <defs>
+    <marker id="c-ink" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L8 4 L0 8 Z" fill="#4a3f30"/></marker>
+    <marker id="c-gray" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L8 4 L0 8 Z" fill="#a89e87"/></marker>
+  </defs>
+  <g font-family="'IBM Plex Mono',Menlo,monospace" font-weight="700" letter-spacing="2">
+    <text x="72" y="64" font-size="16" fill="#4a3f30">RAW SOURCES</text>
+    <text x="72" y="86" font-size="12" font-weight="400" letter-spacing="0" fill="#a89e87" font-style="italic">immutable &#183; 永不改寫</text>
+    <text x="480" y="64" font-size="16" fill="#4a3f30">LLM WIKI</text>
+    <text x="480" y="86" font-size="12" font-weight="400" letter-spacing="0" fill="#a89e87" font-style="italic">第二大腦 &#183; git-native</text>
+    <text x="1000" y="64" font-size="16" fill="#4a3f30">UX AGENTS</text>
+    <text x="1000" y="86" font-size="12" font-weight="400" letter-spacing="0" fill="#a89e87" font-style="italic">focused workers</text>
+  </g>
+
+  <g font-family="'Noto Sans TC','PingFang TC',sans-serif" font-size="17">
+    <!-- left column -->
+    <g fill="#1e1a15">
+      <rect x="72" y="110" width="228" height="58" fill="#fdfaf1" stroke="#1e1a15" stroke-width="1.5"/><text x="186" y="145" text-anchor="middle">產品規格 PRD</text>
+      <rect x="72" y="182" width="228" height="58" fill="#fdfaf1" stroke="#1e1a15" stroke-width="1.5"/><text x="186" y="217" text-anchor="middle">使用者旅程</text>
+      <rect x="72" y="254" width="228" height="58" fill="#fdfaf1" stroke="#1e1a15" stroke-width="1.5"/><text x="186" y="289" text-anchor="middle">模塊 / 頁面清單</text>
+      <rect x="72" y="326" width="228" height="58" fill="#fdfaf1" stroke="#1e1a15" stroke-width="1.5"/><text x="186" y="361" text-anchor="middle">使用者流程</text>
+      <rect x="72" y="398" width="228" height="58" fill="#fdfaf1" stroke="#1e1a15" stroke-width="1.5"/><text x="186" y="433" text-anchor="middle">研究 / 訪談紀錄</text>
+    </g>
+    <g stroke="#a89e87" stroke-width="1.8" stroke-dasharray="5 5">
+      <line x1="300" y1="139" x2="452" y2="230" marker-end="url(#c-gray)"/>
+      <line x1="300" y1="283" x2="452" y2="300" marker-end="url(#c-gray)"/>
+      <line x1="300" y1="427" x2="452" y2="370" marker-end="url(#c-gray)"/>
+    </g>
+    <text x="376" y="200" font-family="'IBM Plex Mono',Menlo,monospace" font-size="13" font-weight="700" letter-spacing="1" fill="#7a6a55">INGEST &#8594;</text>
+    <text x="376" y="220" font-family="'IBM Plex Mono',Menlo,monospace" font-size="12" fill="#a89e87" font-style="italic">MarkItDown + QA</text>
+
+    <!-- middle: wiki -->
+    <rect x="456" y="110" width="440" height="500" fill="#fdfaf1" stroke="#1e1a15" stroke-width="2.5"/>
+    <g fill="#1e1a15">
+      <rect x="480" y="140" width="188" height="80" fill="#f7f3ea" stroke="#c49a56" stroke-width="1.5"/>
+      <text x="574" y="174" text-anchor="middle" font-family="'IBM Plex Mono',Menlo,monospace" font-size="15" font-weight="700">index.md</text>
+      <text x="574" y="200" text-anchor="middle" font-size="14" fill="#7a6a55">分類目錄</text>
+      <rect x="684" y="140" width="188" height="80" fill="#f7f3ea" stroke="#c49a56" stroke-width="1.5"/>
+      <text x="778" y="174" text-anchor="middle" font-family="'IBM Plex Mono',Menlo,monospace" font-size="15" font-weight="700">log.md</text>
+      <text x="778" y="200" text-anchor="middle" font-size="14" fill="#7a6a55">時序 &#183; append-only</text>
+      <rect x="480" y="236" width="392" height="76" fill="#f7f3ea" stroke="#c49a56" stroke-width="1.5"/>
+      <text x="676" y="268" text-anchor="middle" font-size="16" font-weight="700">策展主題頁 persona/ &#183; decisions/</text>
+      <text x="676" y="294" text-anchor="middle" font-size="14" fill="#7a6a55">28 種 UX 文件歸位</text>
+      <rect x="480" y="328" width="392" height="60" fill="none" stroke="#a89e87" stroke-width="1.5" stroke-dasharray="6 4"/>
+      <text x="676" y="354" text-anchor="middle" font-size="14" fill="#7a6a55">cross-ref &#183; backlinks &#183; tags</text>
+      <text x="676" y="376" text-anchor="middle" font-family="'IBM Plex Mono',Menlo,monospace" font-size="11" letter-spacing="1" fill="#a89e87">THE THING THAT DEGRADES IF UN-MAINTAINED</text>
+      <rect x="480" y="404" width="392" height="120" fill="#efe9d8" stroke="#4a3f30" stroke-width="1.5"/>
+      <text x="504" y="436" font-size="16" font-weight="700">Schema / CoT — 槓桿層</text>
+      <text x="504" y="464" font-size="14" fill="#4a3f30">lint 規則 &#183; 檔名規範 &#183; voice &amp; tone &#183; agent charters</text>
+      <text x="504" y="492" font-size="14" font-weight="700" fill="#7a2e1f">改 schema 比改每個頁面有效</text>
+      <text x="676" y="560" text-anchor="middle" font-family="'IBM Plex Mono',Menlo,monospace" font-size="13" font-weight="700" letter-spacing="2" fill="#c49a56">&#8593; LINT &#183; PERIODIC AUDIT &#8593;</text>
+    </g>
+
+    <!-- query arrows -->
+    <line x1="896" y1="300" x2="972" y2="300" stroke="#4a3f30" stroke-width="2" marker-end="url(#c-ink)"/>
+    <line x1="972" y1="340" x2="896" y2="340" stroke="#4a3f30" stroke-width="2" marker-end="url(#c-ink)"/>
+    <text x="934" y="280" font-family="'IBM Plex Mono',Menlo,monospace" font-size="13" font-weight="700" letter-spacing="1" fill="#7a6a55" text-anchor="middle">QUERY</text>
+
+    <!-- right column -->
+    <g fill="#1e1a15">
+      <rect x="976" y="110" width="232" height="74" fill="#fdfaf1" stroke="#1e1a15" stroke-width="1.5"/>
+      <text x="1000" y="142" font-size="18" font-weight="700">Design Agent</text>
+      <text x="1000" y="168" font-size="14" fill="#7a6a55">畫 UI &#183; 產 prototype</text>
+      <rect x="976" y="196" width="232" height="74" fill="#fdfaf1" stroke="#1e1a15" stroke-width="1.5"/>
+      <text x="1000" y="228" font-size="18" font-weight="700">Research Agent</text>
+      <text x="1000" y="254" font-size="14" fill="#7a6a55">訪談 &#183; 產 insight</text>
+      <rect x="976" y="282" width="232" height="74" fill="#fdfaf1" stroke="#1e1a15" stroke-width="1.5"/>
+      <text x="1000" y="314" font-size="18" font-weight="700">Copy Agent</text>
+      <text x="1000" y="340" font-size="14" fill="#7a6a55">UX 微文案 &#183; voice</text>
+      <rect x="976" y="368" width="232" height="74" fill="#fdfaf1" stroke="#1e1a15" stroke-width="1.5"/>
+      <text x="1000" y="400" font-size="18" font-weight="700">Red Team Agent</text>
+      <text x="1000" y="426" font-size="14" fill="#7a6a55">矛盾 &#183; 對抗檢查</text>
+      <rect x="976" y="466" width="232" height="86" fill="#fff" stroke="#7a2e1f" stroke-width="3"/>
+      <text x="1000" y="500" font-size="18" font-weight="700" fill="#7a2e1f">Orchestrator</text>
+      <text x="1000" y="528" font-size="14" fill="#7a2e1f">= YOU &#183; the curator</text>
+    </g>
+    <text x="72" y="668" font-family="'IBM Plex Mono',Menlo,monospace" font-size="14" letter-spacing="1" fill="#a89e87">AGENTS 不直接讀 RAW SOURCES &#183; 一切經 WIKI &#183; 編排是寫作行為</text>
+  </g>
+</svg>
