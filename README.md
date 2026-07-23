@@ -4,8 +4,12 @@
 screenshot-to-UI—是把設計判斷先寫成文件，讓 AI 在人類監督下把文件變成
 介面。畫面是文件的投影；沒有文件出處的畫面，在這裡叫 **slop**。
 
+![三條路徑的出處比較](assets/positioning.svg)
+
 這個 repo（＝專案資料夾，附完整修改歷史）同時是**工具**和**教材**。
 你不需要是工程師才能用它—先從下面選你的入口。
+
+![AIPET.studio cover](assets/cover.svg)
 
 ---
 
@@ -79,6 +83,10 @@ AI 的思考過程攤開可見、有另一個 AI 當審核提出反對意見、*
 | agent | 被指派特定職責的 AI 角色，有授權範圍 | 一個只被允許做份內事的外包協作者 |
 | terminal／npm | 指令視窗／工程打包工具 | 路徑 A 用不到；路徑 B 會碰三行 |
 
+![28 種 UX 文件的三層儲存規範](assets/doc-tiers.svg)
+
+![失真風險:MarkItDown 跑得過、設計知識被掏空的四種情境](assets/ingest-distortion.svg)
+
 ---
 
 ## 路徑 B：UX 設計主管—你已經在做的事，這裡都有對應物
@@ -95,6 +103,10 @@ AI 的思考過程攤開可見、有另一個 AI 當審核提出反對意見、*
 | 組件庫規範 | 五席 agent charter + lane 權限 | 越權修改被 runtime 攔截，不靠 code review 抓 |
 | design tokens 表 | [StylePack DESIGN.md](stylepacks/aipet-loyal-shadow/DESIGN.md) + [橋接表](stylepacks/_bridge.map.json) | 單一真相源：改文件、介面自動跟上；橋接完整性機器驗證 |
 | UX 文件版本管理 | git + append-only log（[oplog](schemas/oplog.schema.json)） | 歷史不可改寫，修正用新版本疊加 |
+
+![三欄架構](assets/three-columns.svg)
+
+![同一 feature 四種技術棧,與五步 variants 工作流](assets/variants-workflow.svg)
 
 **上手（三行指令，或請工程師代跑）**：
 
@@ -119,6 +131,8 @@ npm run dev           # http://localhost:3000 → 看 /style 頁
 你可能正在做第一個產品、自己摸索半自動化的 AI 工作流，
 但沒受過用戶訪談或 UX writing 訓練。兩個直接可用的東西：
 
+![三節拍辯證](assets/three-beats.svg)
+
 **1 · 三節拍 = 你的迭代循環**（一個 feature 一回合）：
 
 | 節拍 | 動作 | 對你的意義 |
@@ -133,6 +147,9 @@ npm run dev           # http://localhost:3000 → 看 /style 頁
 有越權攔截、產出可被審計。
 
 **2 · 28 種 UX 文件清單 = 你的補課地圖**。
+
+![POC 階段 · UX 文件產出時間軸](assets/poc-timeline.svg)
+
 [wikischema](schemas/wikischema.schema.json) 裡鎖定了 28 種 UX 文件
 （persona、訪談紀錄、可用性測試計畫、文案表……）。把它當 checklist：
 你的產品現在有幾種？沒有的那些，就是你「只靠自己用產品看評測」
