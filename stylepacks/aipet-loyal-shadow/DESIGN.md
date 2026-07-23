@@ -3,8 +3,8 @@ name: aipet-loyal-shadow
 title: AIPET Loyal Shadow
 version: 0.1.0
 status: draft
-source: "reverse-extracted from SCALE_AI_consortium_twin3_V2.html（PrivacyUX × Twin3 deck，2026-07）"
-description: 深林綠黑 + 奶油字 + 琥珀襯線強調——AIPET.studio 的品牌識別系統，與 PrivacyUX × Twin3 deck 同一血脈
+source: "reverse-extracted from an internal reference deck（2026-07；來源文件為內部素材，不隨本 repo 公開）"
+description: 深林綠黑 + 奶油字 + 琥珀襯線強調——AIPET.studio 的品牌識別系統
 tokens:
   color:
     forest-950: "#0A120C"
@@ -72,7 +72,7 @@ voice:
 
 「忠實影子」——受託、沉靜、有劇場感。深林綠黑不是純黑（#0A120C 帶綠），
 奶油字不是純白（#E8E0C8 帶暖）；琥珀橘只在強調處出現，像黑暗中的一盞燈。
-與 PrivacyUX × Twin3 consortium deck 共用同一設計語言，讓品牌跨專案可辨。
+反向抽取自一份內部參考 deck，讓品牌跨專案可辨。
 
 ## 用色規則
 

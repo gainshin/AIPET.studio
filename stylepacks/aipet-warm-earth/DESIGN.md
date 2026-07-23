@@ -3,7 +3,7 @@ name: aipet-warm-earth
 title: AIPET Warm Earth
 version: 0.1.0
 status: needs-curation
-source: "待反向抽取：CTBC deck（尚未 ingest；本稿為佔位初稿，色票與規則需以 deck 實際樣式校正）"
+source: "待反向抽取：一份內部教學/策展參考 deck（尚未 ingest；本稿為佔位初稿，色票與規則需以來源實際樣式校正）"
 description: 大地暖色系——陶土、砂岩、鼠尾草綠，給教學與策展場景的沉穩底色
 tokens:
   color:
@@ -51,8 +51,8 @@ voice:
 
 # AIPET Warm Earth StylePack（佔位初稿）
 
-> **needs-curation**：本 pack 依規劃應由 CTBC deck 反向抽取。deck 尚未 ingest 進
-> `sources/`，以下為佔位初稿；deck 到位後需逐項校正色票、字級與規則，
+> **needs-curation**：本 pack 依規劃應由一份內部參考 deck 反向抽取。來源尚未
+> ingest 進 `sources/`，以下為佔位初稿；到位後需逐項校正色票、字級與規則，
 > 並將 `status` 升為 `draft`、`source` 改寫為實際出處。
 
 ## 定位
