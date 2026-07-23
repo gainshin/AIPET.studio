@@ -12,6 +12,12 @@
 /build
 /dist
 
+# 本地規劃文件 — 內部規劃與決策脈絡，不進公開 repo
+# （檔案保留在本地工作區；已用 git rm --cached 解除追蹤）
+/PLAN.md
+/CLAUDE.md
+/docs/
+
 # logs
 /logs
 
