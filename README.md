@@ -21,6 +21,10 @@ screenshot-to-UI—是把設計判斷先寫成文件，讓 AI 在人類監督下
 [templates/ux-workspace-starter/](templates/ux-workspace-starter/)
 整個資料夾—那是你的第二大腦起始包（純 Markdown，不需要終端機）。
 
+想知道這個 repo 是怎麼一步步做出來的？看
+[CHANGELOG.md](CHANGELOG.md)—每次修改都用白話寫了一遍，不需要看懂
+`git log`。
+
 ---
 
 ## 路徑 A：設計工具使用者—雙擊就能開始
