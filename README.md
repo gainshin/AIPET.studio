@@ -17,6 +17,10 @@ screenshot-to-UI——是把設計判斷先寫成文件，讓 AI 在人類監督
 | **B · UX 設計主管** | PRD、ticket、QA 驗收、組件庫 | [路徑 B](#路徑-bux-設計主管你已經在做的事這裡都有對應物) | 三行指令（可請工程師代跑） |
 | **C · AI PM** | 產品迭代、自建 AI 工作流 | [路徑 C](#路徑-cai-pm把三節拍當你的產品迭代循環) | 同 B |
 
+想直接開自己的專案？複製
+[templates/ux-workspace-starter/](templates/ux-workspace-starter/)
+整個資料夾——那是你的第二大腦起始包（純 Markdown，不需要終端機）。
+
 ---
 
 ## 路徑 A：設計工具使用者——雙擊就能開始
